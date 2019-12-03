@@ -1,0 +1,20 @@
+PODS:
+  - CCVodSDK (4.2.3)
+  - Masonry (1.1.0)
+
+DEPENDENCIES:
+  - CCVodSDK
+  - Masonry
+
+SPEC REPOS:
+  trunk:
+    - CCVodSDK
+    - Masonry
+
+SPEC CHECKSUMS:
+  CCVodSDK: afb0534c80f99bf36bc168fbfaac91fcec6a03a3
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+
+PODFILE CHECKSUM: 87d25ac589b35385787e7cd88a3785192b532774
+
+COCOAPODS: 1.8.4
