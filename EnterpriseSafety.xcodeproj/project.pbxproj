@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,8 @@
 		E570F485238F9C2F004CAF0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E570F484238F9C2F004CAF0C /* Assets.xcassets */; };
 		E570F488238F9C2F004CAF0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E570F486238F9C2F004CAF0C /* LaunchScreen.storyboard */; };
 		E570F48B238F9C2F004CAF0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E570F48A238F9C2F004CAF0C /* main.m */; };
+		E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E596D1F523989E6700C72F17 /* GKCycleScrollView.m */; };
+		E596D1FA23989E6700C72F17 /* GKCycleScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E596D1F823989E6700C72F17 /* GKCycleScrollViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,11 @@
 		E570F487238F9C2F004CAF0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E570F489238F9C2F004CAF0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E570F48A238F9C2F004CAF0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E596D1F523989E6700C72F17 /* GKCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCycleScrollView.m; sourceTree = "<group>"; };
+		E596D1F623989E6700C72F17 /* GKCycleScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCycleScrollViewCell.h; sourceTree = "<group>"; };
+		E596D1F723989E6700C72F17 /* GKCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCycleScrollView.h; sourceTree = "<group>"; };
+		E596D1F823989E6700C72F17 /* GKCycleScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCycleScrollViewCell.m; sourceTree = "<group>"; };
+		E596D1FC2398A73A00C72F17 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		EAAF088EA0AD5F4C9F746636 /* Pods-EnterpriseSafety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnterpriseSafety.debug.xcconfig"; path = "Target Support Files/Pods-EnterpriseSafety/Pods-EnterpriseSafety.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +72,6 @@
 				EAAF088EA0AD5F4C9F746636 /* Pods-EnterpriseSafety.debug.xcconfig */,
 				1B7F7829590936439CDC05DA /* Pods-EnterpriseSafety.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -117,6 +123,8 @@
 		E570F477238F9C2B004CAF0C /* EnterpriseSafety */ = {
 			isa = PBXGroup;
 			children = (
+				E596D1FB2398A6E800C72F17 /* plus */,
+				E596D1F423989E2800C72F17 /* MyScrollView */,
 				E54CE3232394C204002931E4 /* Images */,
 				E54CE31C2394A1AC002931E4 /* MyController */,
 				E54CE31B2394A188002931E4 /* CourseController */,
@@ -129,6 +137,25 @@
 				E570F48A238F9C2F004CAF0C /* main.m */,
 			);
 			path = EnterpriseSafety;
+			sourceTree = "<group>";
+		};
+		E596D1F423989E2800C72F17 /* MyScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				E596D1F723989E6700C72F17 /* GKCycleScrollView.h */,
+				E596D1F523989E6700C72F17 /* GKCycleScrollView.m */,
+				E596D1F623989E6700C72F17 /* GKCycleScrollViewCell.h */,
+				E596D1F823989E6700C72F17 /* GKCycleScrollViewCell.m */,
+			);
+			path = MyScrollView;
+			sourceTree = "<group>";
+		};
+		E596D1FB2398A6E800C72F17 /* plus */ = {
+			isa = PBXGroup;
+			children = (
+				E596D1FC2398A73A00C72F17 /* PrefixHeader.pch */,
+			);
+			path = plus;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,9 +274,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E596D1FA23989E6700C72F17 /* GKCycleScrollViewCell.m in Sources */,
 				E570F47A238F9C2B004CAF0C /* AppDelegate.m in Sources */,
 				E54CE31F2394A236002931E4 /* MyViewController.m in Sources */,
 				E570F48B238F9C2F004CAF0C /* main.m in Sources */,
+				E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */,
 				E54CE3222394A251002931E4 /* CourseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -378,7 +407,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -393,6 +422,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8R4PW72DGB;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/EnterpriseSafety/plus/PrefixHeader.pch";
 				INFOPLIST_FILE = EnterpriseSafety/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -411,6 +442,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8R4PW72DGB;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/EnterpriseSafety/plus/PrefixHeader.pch";
 				INFOPLIST_FILE = EnterpriseSafety/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

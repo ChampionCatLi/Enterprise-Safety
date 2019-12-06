@@ -31,7 +31,7 @@
 }
 
 -(void)initView{
-    self.view.backgroundColor=[UIColor orangeColor];
+    self.view.backgroundColor=[UIColor whiteColor];
     
     
 }

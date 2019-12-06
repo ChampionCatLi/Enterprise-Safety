@@ -1,0 +1,1 @@
+../../../CCVodSDK/include/DWVideoDataAdapter.h
