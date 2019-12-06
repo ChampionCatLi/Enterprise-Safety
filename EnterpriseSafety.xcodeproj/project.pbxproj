@@ -43,6 +43,7 @@
 		E596D1F723989E6700C72F17 /* GKCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCycleScrollView.h; sourceTree = "<group>"; };
 		E596D1F823989E6700C72F17 /* GKCycleScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCycleScrollViewCell.m; sourceTree = "<group>"; };
 		E596D1FC2398A73A00C72F17 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E5AD4812239A3CFB0074EBCD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		EAAF088EA0AD5F4C9F746636 /* Pods-EnterpriseSafety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnterpriseSafety.debug.xcconfig"; path = "Target Support Files/Pods-EnterpriseSafety/Pods-EnterpriseSafety.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				E596D1FC2398A73A00C72F17 /* PrefixHeader.pch */,
+				E5AD4812239A3CFB0074EBCD /* Header.h */,
 			);
 			path = plus;
 			sourceTree = "<group>";

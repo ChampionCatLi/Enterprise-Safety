@@ -19,7 +19,7 @@
 }
 
 -(void) initView{
-    self.backgroundColor=[UIColor orangeColor];
+    self.backgroundColor=[UIColor whiteColor];
         [self addSubview:self.titleLabel];
         
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {

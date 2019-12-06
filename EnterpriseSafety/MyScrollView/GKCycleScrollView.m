@@ -225,6 +225,7 @@
     self.isInfiniteLoop     = YES;
     self.minimumCellAlpha   = 1.0f;
     self.autoScrollTime     = 3.0f;
+
     
     // 添加scrollView
     [self addSubview:self.scrollView];

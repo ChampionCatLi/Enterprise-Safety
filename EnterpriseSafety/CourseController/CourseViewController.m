@@ -27,6 +27,7 @@
         self.tabBarItem.title=@"我的课程";
         self.tabBarItem.image=[UIImage imageNamed:@"movie"];
         [self setTitle:@"我的课程"];
+    
     }
     return self;
 }
@@ -41,11 +42,12 @@
 
 #pragma init
 -(void) initView{
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    NSLog(@"nav height %f",self.navigationController.view.frame.size.height);
     [self.view addSubview: self.cycleScrollView];
+    self.view.backgroundColor=[UIColor colorWithRed:245/255.0  green:245/255.0  blue:245/255.0  alpha:1];
     [self.cycleScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
-        make.top.equalTo(self.view.mas_top).offset(105);
+        make.top.equalTo(self.view.mas_top).offset(15+kZDNavigationBarHeight);
         make.height.mas_equalTo(200.0f);
     }];
     [self.cycleScrollView reloadData];
