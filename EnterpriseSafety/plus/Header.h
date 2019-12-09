@@ -30,4 +30,6 @@
 #define kAdaptedWidth47(width)              (width * (kScreenWidth / 375))
 
 #define kNavigationBarBottom  (kZDStatusBarHeight + kZDNavigationBarHeight)
+
+
 #endif /* Header_h */

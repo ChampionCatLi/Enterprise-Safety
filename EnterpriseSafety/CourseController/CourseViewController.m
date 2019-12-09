@@ -27,7 +27,7 @@
         self.tabBarItem.title=@"我的课程";
         self.tabBarItem.image=[UIImage imageNamed:@"movie"];
         [self setTitle:@"我的课程"];
-    
+        
     }
     return self;
 }
@@ -41,17 +41,22 @@
 
 
 #pragma init
+
+
+#pragma init
 -(void) initView{
+    self.edgesForExtendedLayout = UIRectEdgeNone;//这句话就是从导航栏下面开始计算高度
     NSLog(@"nav height %f",self.navigationController.view.frame.size.height);
     [self.view addSubview: self.cycleScrollView];
     self.view.backgroundColor=[UIColor colorWithRed:245/255.0  green:245/255.0  blue:245/255.0  alpha:1];
     [self.cycleScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
-        make.top.equalTo(self.view.mas_top).offset(15+kZDNavigationBarHeight);
+        make.top.equalTo(self.view.mas_top).offset(15);
         make.height.mas_equalTo(200.0f);
     }];
     [self.cycleScrollView reloadData];
 }
+
 -(void) initData{
     self.dataArr=@[@{@"title": @"我是标题我是标题1我是标题我是标题1我是标题我是标题1我是标题我是标题1",@"img_url":@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3724300455,3419815340&fm=26&gp=0.jpg"},@{@"title":@"我是标题我是标题",@"img_url":@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3657258270,1485602730&fm=26&gp=0.jpg"}
     ];}
