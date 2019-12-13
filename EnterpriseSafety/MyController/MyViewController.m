@@ -129,8 +129,7 @@
 -(UIImageView *)learnHistoryIcon{
     
     if (_learnHistoryIcon==nil) {
-        
-        UIImage * image=[UIImage imageNamed:@"le"];
+        UIImage * image=[UIImage imageNamed:@"learn_history@3x.png"];
         _learnHistoryIcon=[[UIImageView alloc] initWithImage:image];
         
         
