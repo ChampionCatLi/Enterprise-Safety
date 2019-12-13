@@ -39,6 +39,11 @@
  退出登录
  */
 @property(nonatomic,strong)UIView * loginOutItem;
+@property(nonatomic,strong)UIImageView * loginOutIcon;
+@property(nonatomic,strong)UILabel * loginOutTitle;
+
+
+
 
 @end
 
@@ -69,13 +74,13 @@
         make.centerX.equalTo(self.headerImageView.mas_centerX);
         make.centerY.equalTo(self.headerImageView.mas_centerY).offset(70);
     }];
-    
     [self.view addSubview:self.learnHistoryItem];
+    [self.view addSubview:self.loginOutItem];
 }
 
 
 
-# pragma mark - init view
+# pragma mark - init topBackGround
 -(UIView *) topBackGroundView{
     if (_topBackGroundView==nil) {
         _topBackGroundView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,  200)];
@@ -104,11 +109,14 @@
         [_nameLabel sizeToFit];
         _nameLabel.text=@"过年了";
         _nameLabel.font=[UIFont systemFontOfSize:15];
+        [_nameLabel setTextColor:LCRGBColor(33,33,33)];
         [_topBackGroundView addSubview:self.nameLabel];
     }
     
     return _nameLabel;
 }
+
+#pragma init learn History  item
 /**
  学习历史条目
  */
@@ -118,6 +126,10 @@
         _learnHistoryItem.backgroundColor=[UIColor whiteColor];
         [_learnHistoryItem addSubview:self.learnHistoryIcon];
         [_learnHistoryItem addSubview:self.learnHistoryTitle];
+        [_learnHistoryTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.learnHistoryIcon.mas_right).offset(15);
+            make.centerY.equalTo(self.learnHistoryIcon.mas_centerY);
+        }];
         [_learnHistoryItem addSubview:self.rightIcon];
         }
     return _learnHistoryItem;
@@ -131,17 +143,60 @@
     if (_learnHistoryIcon==nil) {
         UIImage * image=[UIImage imageNamed:@"learn_history@3x.png"];
         _learnHistoryIcon=[[UIImageView alloc] initWithImage:image];
-        
+        _learnHistoryIcon.frame=CGRectMake(15, 10, 30, 30);
         
     }
     return _learnHistoryIcon;
 }
+/**
+ 学习历史标题
+ */
+-(UILabel *)learnHistoryTitle{
+    
+    if (_learnHistoryTitle==nil) {
+        _learnHistoryTitle=[[UILabel alloc]init ];
+        _learnHistoryTitle.text=@"学习档案";
+        _learnHistoryTitle.font=[UIFont systemFontOfSize:16];
+    }
+    
+    return _learnHistoryTitle;
+}
 
+#pragma login out item
 
+-(UIView *)loginOutItem{
+    
+    if (_loginOutItem==nil) {
+        _loginOutItem=[[UIView alloc] initWithFrame:CGRectMake(0, self.learnHistoryItem.frame.origin.y+75, SCREEN_WIDTH, 50)];
+        _loginOutItem.backgroundColor=[UIColor whiteColor];
+        
+        [_loginOutItem addSubview:self.loginOutIcon];
+        [_loginOutItem addSubview:self.loginOutTitle];
+        
+    }
+    return _loginOutItem;
+}
 
-
-
-
+-(UIImageView *)loginOutIcon{
+    if (_loginOutIcon==nil) {
+        UIImage * image=[UIImage imageNamed:@"exit.png"];
+        _loginOutIcon=[[UIImageView alloc] initWithImage:image];
+        _loginOutIcon.frame=CGRectMake(15, 10, 30, 30);
+    }
+    
+    
+    return _loginOutIcon;
+}
+-(UILabel *)loginOutTitle{
+    
+    if (_loginOutTitle==nil) {
+        _loginOutTitle=[[UILabel alloc] initWithFrame:CGRectMake(60, 10, 100 , 30)];
+        _loginOutTitle.text=@"退出登录";
+        _loginOutTitle.font=[UIFont systemFontOfSize:16];
+    }
+    
+    return _loginOutTitle;
+}
 /*
  #pragma mark - Navigation
  
