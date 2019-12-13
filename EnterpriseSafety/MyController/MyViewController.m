@@ -7,7 +7,7 @@
 //
 
 #import "MyViewController.h"
-
+#import "LoginController.h"
 @interface MyViewController ()
 /**
  上边 背景view
@@ -56,26 +56,28 @@
         self.tabBarItem.title=@"个人中心";
         self.tabBarItem.image=[UIImage imageNamed:@"movie"];
         [self setTitle:@"个人中心"];
-
+        
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.edgesForExtendedLayout = UIRectEdgeNone;//这句话就是从导航栏下面开始计算高度
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self initView];
 }
 
 -(void)initView{
-    self.view.backgroundColor=[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
-   [self.view addSubview:self.topBackGroundView];
+    self.view.backgroundColor=LCRGBColor(245, 245, 245);
+    [self.view addSubview:self.topBackGroundView];
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.headerImageView.mas_centerX);
         make.centerY.equalTo(self.headerImageView.mas_centerY).offset(70);
     }];
     [self.view addSubview:self.learnHistoryItem];
     [self.view addSubview:self.loginOutItem];
+    [_learnHistoryItem addSubview:self.rightIcon];
+    
 }
 
 
@@ -85,13 +87,13 @@
     if (_topBackGroundView==nil) {
         _topBackGroundView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,  200)];
         _topBackGroundView.backgroundColor=[UIColor whiteColor];
-    
+        
     }
     return _topBackGroundView;
 }
 -(UIImageView *)headerImageView{
     if (_headerImageView==nil) {
-         UIImage *image = [UIImage imageNamed:@"camera_sample.png"];
+        UIImage *image = [UIImage imageNamed:@"camera_sample.png"];
         _headerImageView=[[UIImageView alloc] initWithImage:image];
         _headerImageView.frame=CGRectMake(SCREEN_WIDTH*0.5-40,40, 80, 80);
         [_topBackGroundView addSubview:self.headerImageView];
@@ -116,7 +118,7 @@
     return _nameLabel;
 }
 
-#pragma init learn History  item
+#pragma mark -init learn History  item
 /**
  学习历史条目
  */
@@ -130,8 +132,10 @@
             make.left.equalTo(self.learnHistoryIcon.mas_right).offset(15);
             make.centerY.equalTo(self.learnHistoryIcon.mas_centerY);
         }];
-        [_learnHistoryItem addSubview:self.rightIcon];
-        }
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(learnHistoryOnclick)];
+        [_learnHistoryItem addGestureRecognizer:tap];
+        
+    }
     return _learnHistoryItem;
     
 }
@@ -162,16 +166,22 @@
     return _learnHistoryTitle;
 }
 
-#pragma login out item
+#pragma mark - login out item
 
 -(UIView *)loginOutItem{
     
     if (_loginOutItem==nil) {
-        _loginOutItem=[[UIView alloc] initWithFrame:CGRectMake(0, self.learnHistoryItem.frame.origin.y+75, SCREEN_WIDTH, 50)];
+        _loginOutItem=[[UIView alloc] initWithFrame:CGRectMake(0, self.learnHistoryItem.frame.origin.y+65, SCREEN_WIDTH, 50)];
         _loginOutItem.backgroundColor=[UIColor whiteColor];
-        
         [_loginOutItem addSubview:self.loginOutIcon];
         [_loginOutItem addSubview:self.loginOutTitle];
+        
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginOutOnclick)];
+        
+        _loginOutItem.userInteractionEnabled=YES;
+        [_loginOutItem addGestureRecognizer:tap];
+        
         
     }
     return _loginOutItem;
@@ -183,7 +193,6 @@
         _loginOutIcon=[[UIImageView alloc] initWithImage:image];
         _loginOutIcon.frame=CGRectMake(15, 10, 30, 30);
     }
-    
     
     return _loginOutIcon;
 }
@@ -197,14 +206,19 @@
     
     return _loginOutTitle;
 }
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+
+
+#pragma mark -onclick
+
+-(void) loginOutOnclick{
+    LoginController *loginController=[[LoginController alloc] init];
+    [self.navigationController pushViewController:loginController animated:YES];}
+
+-(void) learnHistoryOnclick{
+    
+    NSLog(@"学习档案被点击了~~~");
+}
+
+
 
 @end
