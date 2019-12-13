@@ -35,6 +35,7 @@
     tabBarController.viewControllers=@[courseNav,myNav];
     tabBarController.tabBar.translucent=NO;
     tabBarController.tabBar.barTintColor=[UIColor whiteColor];
+    tabBarController.selectedIndex=1;
     self.window.rootViewController =tabBarController;
     
 
