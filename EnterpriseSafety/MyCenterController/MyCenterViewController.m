@@ -6,9 +6,9 @@
 //  Copyright © 2019 chao. All rights reserved.
 //
 
-#import "MyViewController.h"
+#import "MyCenterViewController.h"
 #import "LoginController.h"
-@interface MyViewController ()
+@interface MyCenterViewController ()
 /**
  上边 背景view
  */
@@ -47,7 +47,7 @@
 
 @end
 
-@implementation MyViewController
+@implementation MyCenterViewController
 
 
 -(instancetype)init{
@@ -68,7 +68,7 @@
 }
 
 -(void)initView{
-    self.view.backgroundColor=LCRGBColor(245, 245, 245);
+    self.view.backgroundColor=LCBackGroundColor;
     [self.view addSubview:self.topBackGroundView];
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.headerImageView.mas_centerX);
@@ -211,8 +211,11 @@
 #pragma mark -onclick
 
 -(void) loginOutOnclick{
+    
     LoginController *loginController=[[LoginController alloc] init];
-    [self.navigationController pushViewController:loginController animated:YES];}
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginController];
+    [self presentViewController:navigationController animated:NO completion:NULL];
+}
 
 -(void) learnHistoryOnclick{
     

@@ -7,7 +7,8 @@
 //
 
 #import "MainTabBar.h"
-
+#import "CourseViewController.h"
+#import "MyCenterViewController.h"
 @implementation MainTabBar
 
 /*
@@ -17,5 +18,32 @@
     // Drawing code
 }
 */
+
+-(instancetype) init {
+    self=[super init];
+    if (self) {
+        
+        
+           CourseViewController * courseVC= [[CourseViewController alloc] init];
+           UINavigationController * courseNav =[[UINavigationController alloc] initWithRootViewController:courseVC];
+        courseNav.title=LCMainCourseTitle;
+         
+           MyCenterViewController * myVC=[[MyCenterViewController alloc] init];
+           UINavigationController * myNav=[[UINavigationController alloc] initWithRootViewController:myVC];
+           myNav.title=LCMainMyCenterTitle;
+        
+        
+        [self setViewControllers:@[courseNav,myNav]];
+
+//           tabBarController.tabBar.barTintColor=[UIColor whiteColor];
+        
+        
+    }
+    
+    return self;
+    
+    
+}
+
 
 @end

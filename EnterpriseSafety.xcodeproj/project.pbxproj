@@ -16,7 +16,7 @@
 		E501783D23A38DBE002AD49C /* MainTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E501783C23A38DBE002AD49C /* MainTabBar.m */; };
 		E51280E723A33902006C3A4A /* camera_sample@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E51280E623A33902006C3A4A /* camera_sample@3x.png */; };
 		E51280E923A33962006C3A4A /* learn_history@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E51280E823A33962006C3A4A /* learn_history@3x.png */; };
-		E54CE31F2394A236002931E4 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54CE31E2394A236002931E4 /* MyViewController.m */; };
+		E54CE31F2394A236002931E4 /* MyCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54CE31E2394A236002931E4 /* MyCenterViewController.m */; };
 		E54CE3222394A251002931E4 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54CE3212394A251002931E4 /* CourseViewController.m */; };
 		E54CE3262394C23C002931E4 /* cinema.png in Resources */ = {isa = PBXBuildFile; fileRef = E54CE3242394C23C002931E4 /* cinema.png */; };
 		E54CE3272394C23C002931E4 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = E54CE3252394C23C002931E4 /* movie.png */; };
@@ -171,8 +171,8 @@
 		E501783C23A38DBE002AD49C /* MainTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBar.m; sourceTree = "<group>"; };
 		E51280E623A33902006C3A4A /* camera_sample@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_sample@3x.png"; sourceTree = "<group>"; };
 		E51280E823A33962006C3A4A /* learn_history@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learn_history@3x.png"; sourceTree = "<group>"; };
-		E54CE31D2394A236002931E4 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
-		E54CE31E2394A236002931E4 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		E54CE31D2394A236002931E4 /* MyCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterViewController.h; sourceTree = "<group>"; };
+		E54CE31E2394A236002931E4 /* MyCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCenterViewController.m; sourceTree = "<group>"; };
 		E54CE3202394A251002931E4 /* CourseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
 		E54CE3212394A251002931E4 /* CourseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		E54CE3242394C23C002931E4 /* cinema.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cinema.png; sourceTree = "<group>"; };
@@ -411,13 +411,13 @@
 			path = CourseController;
 			sourceTree = "<group>";
 		};
-		E54CE31C2394A1AC002931E4 /* MyController */ = {
+		E54CE31C2394A1AC002931E4 /* MyCenterController */ = {
 			isa = PBXGroup;
 			children = (
-				E54CE31D2394A236002931E4 /* MyViewController.h */,
-				E54CE31E2394A236002931E4 /* MyViewController.m */,
+				E54CE31D2394A236002931E4 /* MyCenterViewController.h */,
+				E54CE31E2394A236002931E4 /* MyCenterViewController.m */,
 			);
-			path = MyController;
+			path = MyCenterController;
 			sourceTree = "<group>";
 		};
 		E54CE3232394C204002931E4 /* Images */ = {
@@ -586,7 +586,7 @@
 				E596D1FB2398A6E800C72F17 /* plus */,
 				E596D1F423989E2800C72F17 /* MyScrollView */,
 				E54CE3232394C204002931E4 /* Images */,
-				E54CE31C2394A1AC002931E4 /* MyController */,
+				E54CE31C2394A1AC002931E4 /* MyCenterController */,
 				E54CE31B2394A188002931E4 /* CourseController */,
 				E570F478238F9C2B004CAF0C /* AppDelegate.h */,
 				E570F479238F9C2B004CAF0C /* AppDelegate.m */,
@@ -867,7 +867,7 @@
 				E501782523A3761E002AD49C /* LearnHistoryControoler.m in Sources */,
 				E570F47A238F9C2B004CAF0C /* AppDelegate.m in Sources */,
 				E501783523A383D9002AD49C /* LearnPlanDetailViewController.m in Sources */,
-				E54CE31F2394A236002931E4 /* MyViewController.m in Sources */,
+				E54CE31F2394A236002931E4 /* MyCenterViewController.m in Sources */,
 				E570F48B238F9C2F004CAF0C /* main.m in Sources */,
 				E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */,
 				E501783D23A38DBE002AD49C /* MainTabBar.m in Sources */,

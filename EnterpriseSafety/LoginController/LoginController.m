@@ -19,22 +19,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self initView];
     
 }
 
 #pragma mark -init view
 -(void) initView{
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.view.backgroundColor=[UIColor whiteColor];
-    self.navigationItem.titleView.backgroundColor=[UIColor whiteColor];
+    self.view.backgroundColor=[UIColor redColor];
+
+
     [self.view addSubview:self.topIconImageView];
-    
-    
 }
 -(UIImageView *) topIconImageView{
     if (_topIconImageView==nil) {
-        UIImage * image=[UIImage imageNamed:@"login@png"];
+        UIImage * image=[UIImage imageNamed:@"logo1.5x@png"];
         _topIconImageView=[[UIImageView alloc] initWithImage:image];
         _topIconImageView.frame=CGRectMake(SCREEN_WIDTH*0.5, 50, 40, 40);
         

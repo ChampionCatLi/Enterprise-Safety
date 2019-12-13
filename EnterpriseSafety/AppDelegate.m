@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "CourseViewController.h"
-#import "MyViewController.h"
+#import "MainTabBar.h"
+
 @interface AppDelegate ()
 
 
@@ -22,22 +22,7 @@
     self.window =[[UIWindow alloc]initWithFrame: [UIScreen mainScreen].bounds];
     [self.window setBackgroundColor:[UIColor whiteColor]];
     [self.window makeKeyAndVisible];
-
-    
-    CourseViewController * courseVC= [[CourseViewController alloc] init];
-    UINavigationController * courseNav =[[UINavigationController alloc] initWithRootViewController:courseVC];
-  
-    MyViewController * myVC=[[MyViewController alloc] init];
-    UINavigationController * myNav=[[UINavigationController alloc] initWithRootViewController:myVC];
-    
-    UITabBarController * tabBarController =[[UITabBarController alloc]init];
-    
-    tabBarController.viewControllers=@[courseNav,myNav];
-    tabBarController.tabBar.translucent=NO;
-    tabBarController.tabBar.barTintColor=[UIColor whiteColor];
-    tabBarController.selectedIndex=1;
-    self.window.rootViewController =tabBarController;
-    
+    _window.rootViewController=[[MainTabBar alloc] init];
 
     return YES;
 }
