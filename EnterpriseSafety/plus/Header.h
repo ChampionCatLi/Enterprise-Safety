@@ -45,4 +45,10 @@
 #define LCMainMyCenterTitle @"个人中心"
 
 
+#pragma mark - ui data
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define ITEM_HEIGHT 50
+#define MARGIN_LEFT_15 15
+
 #endif /* Header_h */

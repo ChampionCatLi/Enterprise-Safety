@@ -22,7 +22,10 @@
     self.window =[[UIWindow alloc]initWithFrame: [UIScreen mainScreen].bounds];
     [self.window setBackgroundColor:[UIColor whiteColor]];
     [self.window makeKeyAndVisible];
-    _window.rootViewController=[[MainTabBar alloc] init];
+    MainTabBar * mainTab =[[MainTabBar alloc] init];
+    mainTab.selectedIndex=1;
+    _window.rootViewController=mainTab;
+    
 
     return YES;
 }
