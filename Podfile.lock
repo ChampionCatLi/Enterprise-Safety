@@ -20,6 +20,7 @@ PODS:
     - SDWebImage/Core (= 5.4.0)
   - SDWebImage/Core (5.4.0)
   - SVProgressHUD (2.2.5)
+  - TYAttributedLabel (2.6.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - Masonry
   - SDWebImage (~> 5.0)
   - SVProgressHUD
+  - TYAttributedLabel (~> 2.6.2)
 
 SPEC REPOS:
   trunk:
@@ -35,6 +37,7 @@ SPEC REPOS:
     - Masonry
     - SDWebImage
     - SVProgressHUD
+    - TYAttributedLabel
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -42,7 +45,8 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: 5bf6aec6481ae2a062bdc59f9d6c1d1e552090e0
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  TYAttributedLabel: cb8fc910d97eb5224936d4f692a78e042af691b2
 
-PODFILE CHECKSUM: a9dc3a4d33808bb97a856fb740c0035580b3d1a9
+PODFILE CHECKSUM: df6d8fed20931b3b2ee7fc27d2ca53f6669d98e3
 
 COCOAPODS: 1.8.4

@@ -37,7 +37,7 @@
 #define LCRGBColor(r, g, b)     LCRGBAColor(r, g, b, 1.0)
 
 #define LCBackGroundColor  [UIColor colorWithWhite:245 / 255.0 alpha:1]
-
+#define LCGay616161 [UIColor colorWithWhite:97/255.0 alpha:1];
 
 #pragma mark -string
 
