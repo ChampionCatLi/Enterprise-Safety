@@ -8,6 +8,7 @@
 
 #import "MyCenterViewController.h"
 #import "LoginController.h"
+#import "LearnHistoryController.h"
 @interface MyCenterViewController ()
 /**
  上边 背景view
@@ -212,14 +213,19 @@
 
 -(void) loginOutOnclick{
     
-    LoginController *loginController=[[LoginController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginController];
-    [self presentViewController:navigationController animated:NO completion:NULL];
+        LoginController *loginController=[[LoginController alloc] init];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginController];
+        navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:navigationController animated:NO completion:NULL];
+    
+    
 }
 
 -(void) learnHistoryOnclick{
     
-    NSLog(@"学习档案被点击了~~~");
+    LearnHistoryController * learnHistoryController =[[LearnHistoryController alloc] init];
+       learnHistoryController.hidesBottomBarWhenPushed=YES;
+       [self.navigationController pushViewController:learnHistoryController animated:YES];
 }
 
 

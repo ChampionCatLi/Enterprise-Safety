@@ -11,4 +11,6 @@ pod 'TYAttributedLabel', '~> 2.6.2'
 #网络请求
 pod 'XMNetworking', '~> 1.1.0'
 pod 'AFNetworking', '~> 3.0'
+#键盘监听
+pod 'IQKeyboardManager' 
 end

@@ -1,8 +1,8 @@
 //
-//  LearnHistoryControoler.h
+//  BaseViewController.h
 //  EnterpriseSafety
 //
-//  Created by 超 on 2019/12/13.
+//  Created by 超 on 2019/12/18.
 //  Copyright © 2019 chao. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LearnHistoryControoler : UIViewController
+@interface BaseViewController : UIViewController
 
 @end
 

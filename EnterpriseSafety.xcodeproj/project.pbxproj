@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		3D83CA0FB29F2998A78D8655 /* libPods-EnterpriseSafety.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E713F215DFF7FC09AD5453E /* libPods-EnterpriseSafety.a */; };
-		E501782523A3761E002AD49C /* LearnHistoryControoler.m in Sources */ = {isa = PBXBuildFile; fileRef = E501782423A3761E002AD49C /* LearnHistoryControoler.m */; };
+		E501782523A3761E002AD49C /* LearnHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = E501782423A3761E002AD49C /* LearnHistoryController.m */; };
 		E501782923A382F5002AD49C /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = E501782823A382F5002AD49C /* LoginController.m */; };
 		E501782F23A38388002AD49C /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E501782E23A38388002AD49C /* ExamViewController.m */; };
 		E501783523A383D9002AD49C /* LearnPlanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E501783423A383D9002AD49C /* LearnPlanDetailViewController.m */; };
 		E501783923A38402002AD49C /* LearnVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E501783823A38402002AD49C /* LearnVideoViewController.m */; };
 		E501783D23A38DBE002AD49C /* MainTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E501783C23A38DBE002AD49C /* MainTabBar.m */; };
 		E51280E723A33902006C3A4A /* camera_sample@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E51280E623A33902006C3A4A /* camera_sample@3x.png */; };
+		E54136FF23A9F0040025446E /* NetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E54136FE23A9F0040025446E /* NetWorkManager.m */; };
+		E541370323A9F7370025446E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E541370223A9F7370025446E /* BaseViewController.m */; };
+		E541370623A9F9C40025446E /* LCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = E541370523A9F9C40025446E /* LCConst.m */; };
 		E54CE31F2394A236002931E4 /* MyCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54CE31E2394A236002931E4 /* MyCenterViewController.m */; };
 		E54CE3222394A251002931E4 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54CE3212394A251002931E4 /* CourseViewController.m */; };
 		E54CE3262394C23C002931E4 /* cinema.png in Resources */ = {isa = PBXBuildFile; fileRef = E54CE3242394C23C002931E4 /* cinema.png */; };
@@ -157,8 +160,8 @@
 /* Begin PBXFileReference section */
 		0E713F215DFF7FC09AD5453E /* libPods-EnterpriseSafety.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EnterpriseSafety.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7F7829590936439CDC05DA /* Pods-EnterpriseSafety.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnterpriseSafety.release.xcconfig"; path = "Target Support Files/Pods-EnterpriseSafety/Pods-EnterpriseSafety.release.xcconfig"; sourceTree = "<group>"; };
-		E501782323A3761E002AD49C /* LearnHistoryControoler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnHistoryControoler.h; sourceTree = "<group>"; };
-		E501782423A3761E002AD49C /* LearnHistoryControoler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnHistoryControoler.m; sourceTree = "<group>"; };
+		E501782323A3761E002AD49C /* LearnHistoryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnHistoryController.h; sourceTree = "<group>"; };
+		E501782423A3761E002AD49C /* LearnHistoryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnHistoryController.m; sourceTree = "<group>"; };
 		E501782723A382F5002AD49C /* LoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		E501782823A382F5002AD49C /* LoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		E501782D23A38388002AD49C /* ExamViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
@@ -170,6 +173,12 @@
 		E501783B23A38DBE002AD49C /* MainTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBar.h; sourceTree = "<group>"; };
 		E501783C23A38DBE002AD49C /* MainTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBar.m; sourceTree = "<group>"; };
 		E51280E623A33902006C3A4A /* camera_sample@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_sample@3x.png"; sourceTree = "<group>"; };
+		E54136FD23A9F0040025446E /* NetWorkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetWorkManager.h; sourceTree = "<group>"; };
+		E54136FE23A9F0040025446E /* NetWorkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetWorkManager.m; sourceTree = "<group>"; };
+		E541370123A9F7370025446E /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		E541370223A9F7370025446E /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		E541370423A9F9C40025446E /* LCConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCConst.h; sourceTree = "<group>"; };
+		E541370523A9F9C40025446E /* LCConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCConst.m; sourceTree = "<group>"; };
 		E54CE31D2394A236002931E4 /* MyCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterViewController.h; sourceTree = "<group>"; };
 		E54CE31E2394A236002931E4 /* MyCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCenterViewController.m; sourceTree = "<group>"; };
 		E54CE3202394A251002931E4 /* CourseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
@@ -351,8 +360,8 @@
 		E501782223A375B3002AD49C /* LearnHistoryController */ = {
 			isa = PBXGroup;
 			children = (
-				E501782323A3761E002AD49C /* LearnHistoryControoler.h */,
-				E501782423A3761E002AD49C /* LearnHistoryControoler.m */,
+				E501782323A3761E002AD49C /* LearnHistoryController.h */,
+				E501782423A3761E002AD49C /* LearnHistoryController.m */,
 			);
 			path = LearnHistoryController;
 			sourceTree = "<group>";
@@ -400,6 +409,24 @@
 				E501783C23A38DBE002AD49C /* MainTabBar.m */,
 			);
 			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		E54136FC23A9EFE40025446E /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				E54136FD23A9F0040025446E /* NetWorkManager.h */,
+				E54136FE23A9F0040025446E /* NetWorkManager.m */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
+		E541370023A9F7130025446E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E541370123A9F7370025446E /* BaseViewController.h */,
+				E541370223A9F7370025446E /* BaseViewController.m */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		E54CE31B2394A188002931E4 /* CourseController */ = {
@@ -577,6 +604,8 @@
 		E570F477238F9C2B004CAF0C /* EnterpriseSafety */ = {
 			isa = PBXGroup;
 			children = (
+				E541370023A9F7130025446E /* Base */,
+				E54136FC23A9EFE40025446E /* NetWork */,
 				E501783A23A38D9A002AD49C /* MainTabBar */,
 				E501783623A383E1002AD49C /* LearnVideoController */,
 				E501782C23A38360002AD49C /* ExamController */,
@@ -615,6 +644,8 @@
 			children = (
 				E596D1FC2398A73A00C72F17 /* PrefixHeader.pch */,
 				E5AD4812239A3CFB0074EBCD /* Header.h */,
+				E541370423A9F9C40025446E /* LCConst.h */,
+				E541370523A9F9C40025446E /* LCConst.m */,
 			);
 			path = plus;
 			sourceTree = "<group>";
@@ -864,15 +895,18 @@
 			files = (
 				E596D1FA23989E6700C72F17 /* GKCycleScrollViewCell.m in Sources */,
 				E501782923A382F5002AD49C /* LoginController.m in Sources */,
-				E501782523A3761E002AD49C /* LearnHistoryControoler.m in Sources */,
+				E501782523A3761E002AD49C /* LearnHistoryController.m in Sources */,
 				E570F47A238F9C2B004CAF0C /* AppDelegate.m in Sources */,
 				E501783523A383D9002AD49C /* LearnPlanDetailViewController.m in Sources */,
+				E541370323A9F7370025446E /* BaseViewController.m in Sources */,
 				E54CE31F2394A236002931E4 /* MyCenterViewController.m in Sources */,
 				E570F48B238F9C2F004CAF0C /* main.m in Sources */,
 				E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */,
+				E54136FF23A9F0040025446E /* NetWorkManager.m in Sources */,
 				E501783D23A38DBE002AD49C /* MainTabBar.m in Sources */,
 				E54CE3222394A251002931E4 /* CourseViewController.m in Sources */,
 				E501783923A38402002AD49C /* LearnVideoViewController.m in Sources */,
+				E541370623A9F9C40025446E /* LCConst.m in Sources */,
 				E501782F23A38388002AD49C /* ExamViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

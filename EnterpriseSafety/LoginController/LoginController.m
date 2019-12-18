@@ -36,12 +36,20 @@
 @property(nonatomic,strong) UIButton * loginButton;
 
 @property(nonatomic,strong) UILabel * companyNameLabel;
+
+@property(nonatomic,strong) UIView * gayLineAccount;
+@property(nonatomic,strong) UIView * gayLineOrgan;
+@property(nonatomic,strong) UIView * gayLinePassword;
+
+@property(nonatomic,copy) NSString * accountStr;
+@property(nonatomic,copy) NSString * passwordStr;
 /**
  协议
  */
 @property(nonatomic,strong) TYAttributedLabel * agreementLinkText;
 
-
+#define TAG_ACCOUNT 0x000000001
+#define TAG_PASSWORD 0x000000002
 @end
 
 @implementation LoginController
@@ -63,26 +71,35 @@
     [self.accountItem addSubview:self.accountIcon];
     [_accountIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.accountItem.mas_centerY);
-        make.left.equalTo(@MARGIN_LEFT_15);
+        make.left.equalTo(@5);
         make.size.equalTo(@25);
     }];
     [self.accountItem addSubview:self.accountField];
     [_accountField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.accountIcon.mas_right).offset(15);
-        make.right.equalTo(@SCREEN_WIDTH).offset(-15);
+        make.width.equalTo(self.accountItem.mas_width).offset(-35);
         make.centerY.equalTo(self.accountItem.mas_centerY);
+    }];
+    [self.accountItem addSubview:self.gayLineAccount];
+    [_gayLineAccount mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.accountItem.mas_bottom);
+        make.width.equalTo(self.accountItem.mas_width);
+        make.height.equalTo(@0.5);
+        make.centerX.equalTo(self.accountItem.mas_centerX);
     }];
     
     [self.view addSubview:self.organItem];
     [_organItem mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.accountItem.mas_bottom).offset(15);
-        make.width.equalTo(@SCREEN_WIDTH);
-        make.height.equalTo(@ITEM_HEIGHT);
+        make.top.equalTo(self.accountItem.mas_bottom);
+        make.width.equalTo(@(SCREEN_WIDTH-50));
+        make.height.equalTo(@55);
+        make.left.equalTo(@25);
+        make.centerX.equalTo(self.view.mas_centerX);
     }];
     [self.organItem addSubview:self.organIcon];
     [_organIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.organItem.mas_centerY);
-        make.left.equalTo(@15);
+        make.left.equalTo(@5);
         make.size.equalTo(@25);
     }];
     
@@ -91,19 +108,29 @@
         make.left.equalTo(self.organIcon.mas_right).offset(15);
         make.size.equalTo(self.accountField);
         make.centerY.equalTo(self.organItem.mas_centerY);
+    
     }];
     
+    [self.organItem addSubview:self.gayLineOrgan];
+    [_gayLineOrgan mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(self.gayLineAccount);
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.bottom.equalTo(self.organItem.mas_bottom);
+
+    }];
+//
     [self.view addSubview:self.passwordItem];
     
     [_passwordItem mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@SCREEN_WIDTH);
-        make.height.equalTo(@ITEM_HEIGHT);
-        make.top.equalTo(self.organItem.mas_bottom).offset(15);
+        make.width.equalTo(@(SCREEN_WIDTH-50));
+        make.height.equalTo(@55);
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.top.equalTo(self.organItem.mas_bottom);
     }];
     [self.passwordItem addSubview:self.passwordIcon];
     [_passwordIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(@25);
-        make.left.equalTo(@15);
+        make.left.equalTo(@5);
         make.centerY.equalTo(self.passwordItem.mas_centerY);
         
     }];
@@ -112,7 +139,16 @@
     [_passwordField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.passwordItem.mas_centerY);
         make.left.equalTo(self.passwordIcon.mas_right).offset(15);
-        make.right.equalTo(@SCREEN_WIDTH).offset(15);
+//        make.right.equalTo(@SCREEN_WIDTH).offset(-15);
+        make.size.equalTo(self.accountField);
+        
+    }];
+    [self.passwordItem addSubview:self.gayLinePassword];
+    [_gayLinePassword mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(self.gayLineAccount);
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.left.equalTo(@25);
+        make.bottom.equalTo(self.passwordItem.mas_bottom);
         
     }];
     
@@ -120,13 +156,12 @@
     [_loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.passwordItem.mas_bottom).offset(40);
         make.height.equalTo(@50);
-        make.left.equalTo(@15);
-        make.right.equalTo(@-15);
+        make.left.equalTo(@25);
         make.centerX.equalTo(self.view.mas_centerX);
     }];
     [self.view addSubview:self.companyNameLabel];
     [_companyNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view.mas_bottom).offset(-15);
+        make.bottom.equalTo(self.view.mas_bottom).offset(-25);
         make.centerX.equalTo(self.view.mas_centerX);
         
     }];
@@ -139,6 +174,7 @@
         make.bottom.equalTo(self.companyNameLabel.mas_top).offset(-20);
         
     }];
+    
 
 
     
@@ -202,8 +238,9 @@
 
 -(UIView *) accountItem {
     if (_accountItem==nil) {
-        _accountItem =[[UIView alloc] initWithFrame:CGRectMake(0, self.topIconImageView.frame.origin.y+100, SCREEN_WIDTH, ITEM_HEIGHT)];
+        _accountItem =[[UIView alloc] initWithFrame:CGRectMake(25, self.topIconImageView.frame.origin.y+100, SCREEN_WIDTH-50, 50)];
         _accountItem.backgroundColor=[UIColor whiteColor];
+    
     }
     return _accountItem;
 }
@@ -228,6 +265,8 @@
         _accountField.keyboardType=UIKeyboardTypeNumberPad;
         _accountField.placeholder=@"请输入账号";
         _accountField.borderStyle=UITextBorderStyleNone;
+        _accountField.tag=TAG_ACCOUNT;
+        [_accountField addTarget:self action:@selector(accountChangeText:) forControlEvents:UIControlEventEditingChanged];
     }
     
     return _accountField;
@@ -294,9 +333,13 @@
         _passwordField.textAlignment=NSTextAlignmentLeft;
         _passwordField.borderStyle=UITextBorderStyleNone;
         _passwordField.clearButtonMode=UITextFieldViewModeAlways;
+        _passwordField.secureTextEntry=YES;
+          [_passwordField addTarget:self action:@selector(accountChangeText:) forControlEvents:UIControlEventEditingChanged];
+        _passwordField.tag=TAG_PASSWORD;
     }
     return _passwordField;
 }
+
 
 #pragma mark -bottom  layout
 -(UIButton *) loginButton{
@@ -305,8 +348,11 @@
         _loginButton=[[UIButton alloc] init];
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
         _loginButton.backgroundColor=[UIColor whiteColor];
-        [_loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
+        [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_loginButton addTarget:self action:@selector( loginClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_loginButton.layer setMasksToBounds:YES];
+        [_loginButton.layer setCornerRadius:5];
+        _loginButton.backgroundColor=LCButtonUnclickColor;
     }
     
     return  _loginButton;
@@ -314,19 +360,32 @@
 }
 
 
+#pragma mark - init line
 
+-(UIView *) gayLineAccount{
+    if (_gayLineAccount==nil) {
+        _gayLineAccount=[[UIView alloc] init];
+        _gayLineAccount.backgroundColor=LCGayLineBDBDBD;
 
+    }
+    return _gayLineAccount;
+}
+-(UIView *) gayLineOrgan{
+    if (_gayLineOrgan==nil) {
+        _gayLineOrgan=[[UIView alloc] init];
+        _gayLineOrgan.backgroundColor=LCGayLineBDBDBD;
 
+    }
+    return _gayLineOrgan;
+}
+-(UIView *) gayLinePassword{
+    if (_gayLinePassword==nil) {
+        _gayLinePassword=[[UIView alloc] init];
+        _gayLinePassword.backgroundColor=LCGayLineBDBDBD;
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+    }
+    return _gayLinePassword;
+}
 
 #pragma mark - onclick
 
@@ -340,4 +399,25 @@
         NSLog(@"hahahahh %@",linkStr);
         
     }}
+-(void) loginClick:(UIButton *)button{
+    NSLog(@"登录");
+}
+
+#pragma mark -listener  method
+
+-(void)accountChangeText:(UITextField *)textField{
+
+    if (textField.tag==TAG_ACCOUNT) {
+        _accountStr=textField.text;
+    }else if(textField.tag==TAG_PASSWORD){
+        _passwordStr=textField.text;
+    }
+    
+  
+    
+}
+ 
+
+
+
 @end
