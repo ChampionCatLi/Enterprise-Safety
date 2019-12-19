@@ -31,9 +31,6 @@
     manager.enable=YES;
     manager.shouldResignOnTouchOutside=YES;
     manager.enableAutoToolbar=NO;
-    
-    
-    
 }
 /*
 #pragma mark - Navigation

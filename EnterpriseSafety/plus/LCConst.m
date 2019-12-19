@@ -8,3 +8,4 @@
 
 #import "LCConst.h"
 
+NSString * const GET_ACCOUNT_ORGAN =@"/m/p/a/check/";

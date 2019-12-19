@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <XMNetworking.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
 

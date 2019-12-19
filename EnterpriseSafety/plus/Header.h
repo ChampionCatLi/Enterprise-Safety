@@ -37,10 +37,10 @@
 #define LCRGBColor(r, g, b)     LCRGBAColor(r, g, b, 1.0)
 
 #define LCBackGroundColor  [UIColor colorWithWhite:245 / 255.0 alpha:1]
-#define LCGay616161 [UIColor colorWithWhite:97/255.0 alpha:1];
-#define LCGayLineBDBDBD [UIColor colorWithWhite:189/255.0 alpha:1];
-#define LCButtonUnclickColor [UIColor colorWithWhite:224/255.0 alpha:1];
-#define LCButtonclickColor [UIColor colorWithRed:33 / 255.0 150 / 255.0 243 / 255.0 alpha:1];
+#define LCGay616161 [UIColor colorWithWhite:97/255.0 alpha:1]
+#define LCGayLineBDBDBD [UIColor colorWithWhite:189/255.0 alpha:1]
+#define LCButtonUnclickColor [UIColor colorWithWhite:224/255.0 alpha:1]
+#define LCButtonclickColor [UIColor colorWithRed:33 / 255.0 150 / 255.0 243 / 255.0 alpha:1]
 
 
 
@@ -55,5 +55,9 @@
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define ITEM_HEIGHT 50
 #define MARGIN_LEFT_15 15
+
+#define mark -url
+#define net_get_account_organ @"/m/p/a/check/"
+
 
 #endif /* Header_h */

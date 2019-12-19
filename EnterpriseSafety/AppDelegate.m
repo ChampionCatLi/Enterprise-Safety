@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainTabBar.h"
+#import "NetWorkManager.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +23,8 @@
     self.window =[[UIWindow alloc]initWithFrame: [UIScreen mainScreen].bounds];
     [self.window setBackgroundColor:[UIColor whiteColor]];
     [self.window makeKeyAndVisible];
+    [self initNetWork];
+    
     MainTabBar * mainTab =[[MainTabBar alloc] init];
     mainTab.selectedIndex=1;
     _window.rootViewController=mainTab;
@@ -30,6 +33,10 @@
     return YES;
 }
 
+
+-(void) initNetWork{
+    [NetWorkManager setup];
+}
 
 #pragma mark - UISceneSession lifecycle
 

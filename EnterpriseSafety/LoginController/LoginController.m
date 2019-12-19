@@ -48,6 +48,8 @@
  */
 @property(nonatomic,strong) TYAttributedLabel * agreementLinkText;
 
+
+
 #define TAG_ACCOUNT 0x000000001
 #define TAG_PASSWORD 0x000000002
 @end
@@ -412,12 +414,43 @@
     }else if(textField.tag==TAG_PASSWORD){
         _passwordStr=textField.text;
     }
-    
-  
-    
+    if (self.accountStr.length!=0&&[self isPhoneNum:_accountStr]) {
+        //todo
+        [self getOrganInfo];
+    }
 }
- 
 
 
+#pragma mark - network
 
+-(void)getOrganInfo{
+    [XMCenter  sendRequest:^(XMRequest * _Nonnull request) {
+//        request.api= [NSString stringWithFormat:GetAccountOrgan,self.accountStr];
+        request.api=[net_get_account_organ stringByAppendingString:self.accountStr];
+        request.httpMethod=kXMHTTPMethodGET;
+        
+    } onSuccess:^(id  _Nullable responseObject) {
+      NSArray * keys=  [responseObject allKeys];
+        if ( [keys containsObject:@"message"]) {
+            NSLog(@"YES");
+        }else{
+            NSLog(@"NO");
+        }
+    
+        
+        
+    } onFailure:^(NSError * _Nullable error) {
+        NSLog(@"error");
+    } ];
+}
+
+#pragma mark --- 判断手机号是否合法 ---
+- (BOOL)isPhoneNum:(NSString *)phoneNum
+{
+    //正则表达式
+    NSString *moble = @"^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\\d{8}$";
+    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", moble];
+    return [regextestcm evaluateWithObject:phoneNum];
+
+}
 @end

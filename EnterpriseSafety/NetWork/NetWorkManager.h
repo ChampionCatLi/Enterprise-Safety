@@ -9,11 +9,13 @@
  请求统一管理方法
  */
 #import <Foundation/Foundation.h>
+#import  <XMNetworking.h>
 
-NS_ASSUME_NONNULL_BEGIN
 
 @interface NetWorkManager : NSObject
 
++(void)setup;
+
 @end
 
-NS_ASSUME_NONNULL_END
+
