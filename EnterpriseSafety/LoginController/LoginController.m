@@ -127,7 +127,7 @@
         make.width.equalTo(@(SCREEN_WIDTH-50));
         make.height.equalTo(@55);
         make.centerX.equalTo(self.view.mas_centerX);
-        make.top.equalTo(self.organItem.mas_bottom);
+        make.top.equalTo(self.accountItem.mas_bottom);
     }];
     [self.passwordItem addSubview:self.passwordIcon];
     [_passwordIcon mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -280,6 +280,7 @@
     if (_organItem == nil) {
         _organItem = [[UIView alloc]init];
         _organItem.backgroundColor=[UIColor whiteColor];
+        _organItem.hidden=YES;
     }
     return _organItem;
     
@@ -417,6 +418,8 @@
     if (self.accountStr.length!=0&&[self isPhoneNum:_accountStr]) {
         //todo
         [self getOrganInfo];
+    }else{
+        [self hideOrganLayout];
     }
 }
 
@@ -432,9 +435,9 @@
     } onSuccess:^(id  _Nullable responseObject) {
       NSArray * keys=  [responseObject allKeys];
         if ( [keys containsObject:@"message"]) {
-            NSLog(@"YES");
+             [self showOrganLayout];
         }else{
-            NSLog(@"NO");
+            [self hideOrganLayout];
         }
     
         
@@ -453,4 +456,28 @@
     return [regextestcm evaluateWithObject:phoneNum];
 
 }
+
+#pragma mark - reset ui
+
+-(void)showOrganLayout{
+    self.organItem.hidden=NO;
+    [_passwordItem mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.organItem.mas_bottom);
+        make.width.equalTo(@(SCREEN_WIDTH-50));
+            make.height.equalTo(@55);
+            make.centerX.equalTo(self.view.mas_centerX);
+     
+    }];
+}
+-(void) hideOrganLayout{
+    self.organItem.hidden=YES;
+    [_passwordItem mas_remakeConstraints:^(MASConstraintMaker *make) {
+           make.width.equalTo(@(SCREEN_WIDTH-50));
+            make.height.equalTo(@55);
+            make.centerX.equalTo(self.view.mas_centerX);
+            make.top.equalTo(self.accountItem.mas_bottom);
+    }];
+    
+}
+
 @end
