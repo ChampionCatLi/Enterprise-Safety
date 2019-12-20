@@ -13,4 +13,6 @@ pod 'XMNetworking', '~> 1.1.0'
 pod 'AFNetworking', '~> 3.0'
 #键盘监听
 pod 'IQKeyboardManager' 
+#dialog 
+pod 'WMZDialog'
 end

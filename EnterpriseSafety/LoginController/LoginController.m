@@ -8,8 +8,9 @@
 
 #import "LoginController.h"
 #import "TYAttributedLabel.h"
+#import <WMZDialog.h>
 
-@interface LoginController ()<TYAttributedLabelDelegate>
+@interface LoginController ()<TYAttributedLabelDelegate,UITextFieldDelegate>
 
 
 @property (nonatomic,strong) UIImageView * topIconImageView;
@@ -43,6 +44,13 @@
 
 @property(nonatomic,copy) NSString * accountStr;
 @property(nonatomic,copy) NSString * passwordStr;
+
+@property(nonatomic,strong)NSArray * organDataArr;
+@property(nonatomic,strong)NSMutableArray * organNameArr;
+/**
+ assign 基础数据类型
+ */
+@property(nonatomic,assign) NSInteger  selectIndex;
 /**
  协议
  */
@@ -62,7 +70,7 @@
     
 }
 
-#pragma mark -init view
+#pragma mark -init view -
 -(void) initView{
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor=[UIColor whiteColor];
@@ -110,7 +118,7 @@
         make.left.equalTo(self.organIcon.mas_right).offset(15);
         make.size.equalTo(self.accountField);
         make.centerY.equalTo(self.organItem.mas_centerY);
-    
+        
     }];
     
     [self.organItem addSubview:self.gayLineOrgan];
@@ -118,9 +126,9 @@
         make.size.mas_equalTo(self.gayLineAccount);
         make.centerX.equalTo(self.view.mas_centerX);
         make.bottom.equalTo(self.organItem.mas_bottom);
-
+        
     }];
-//
+    //
     [self.view addSubview:self.passwordItem];
     
     [_passwordItem mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -141,7 +149,7 @@
     [_passwordField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.passwordItem.mas_centerY);
         make.left.equalTo(self.passwordIcon.mas_right).offset(15);
-//        make.right.equalTo(@SCREEN_WIDTH).offset(-15);
+        //        make.right.equalTo(@SCREEN_WIDTH).offset(-15);
         make.size.equalTo(self.accountField);
         
     }];
@@ -169,7 +177,7 @@
     }];
     [self.view addSubview: self.agreementLinkText];
     [_agreementLinkText mas_makeConstraints:^(MASConstraintMaker *make) {
-   
+        
         make.height.equalTo(@20);
         make.width.equalTo(@205);
         make.centerX.equalTo(self.view.mas_centerX);
@@ -177,8 +185,8 @@
         
     }];
     
-
-
+    
+    
     
 }
 
@@ -204,12 +212,12 @@
         [attributedString addAttributeTextColor:[UIColor colorWithWhite:97/255.0 alpha:1] ];
         [attributedString addAttributeFont:[UIFont systemFontOfSize:12]];
         [_agreementLinkText appendTextAttributedString:attributedString];
-
+        
         [_agreementLinkText appendLinkWithText:@"用户协议" linkFont:[UIFont systemFontOfSize:12] linkColor:[UIColor blueColor] linkData:@"用户协议"];
         NSMutableAttributedString *attributedString2 = [[NSMutableAttributedString alloc]initWithString:@"和"];
         [attributedString2 addAttributeFont:[UIFont systemFontOfSize:12]];
         [attributedString2 addAttributeTextColor:[UIColor colorWithWhite:97/255.0 alpha:1] ];
-
+        
         [_agreementLinkText appendTextAttributedString:attributedString2];
         [_agreementLinkText appendLinkWithText:@"隐私协议" linkFont:[UIFont systemFontOfSize:12]   linkColor:[UIColor blueColor] linkData:@"隐私协议"];
         [_agreementLinkText sizeToFit];
@@ -236,13 +244,13 @@
 }
 
 
-#pragma mark - account
+#pragma mark - account -
 
 -(UIView *) accountItem {
     if (_accountItem==nil) {
         _accountItem =[[UIView alloc] initWithFrame:CGRectMake(25, self.topIconImageView.frame.origin.y+100, SCREEN_WIDTH-50, 50)];
         _accountItem.backgroundColor=[UIColor whiteColor];
-    
+        
     }
     return _accountItem;
 }
@@ -268,19 +276,22 @@
         _accountField.placeholder=@"请输入账号";
         _accountField.borderStyle=UITextBorderStyleNone;
         _accountField.tag=TAG_ACCOUNT;
-        [_accountField addTarget:self action:@selector(accountChangeText:) forControlEvents:UIControlEventEditingChanged];
+        [_accountField addTarget:self action:@selector(fieldChangeText:) forControlEvents:UIControlEventEditingChanged];
     }
     
     return _accountField;
 }
 
-#pragma mark - organ  layout
+#pragma mark - organ  layout -
 
 -(UIView  *)organItem{
     if (_organItem == nil) {
         _organItem = [[UIView alloc]init];
         _organItem.backgroundColor=[UIColor whiteColor];
         _organItem.hidden=YES;
+        _organItem.userInteractionEnabled=YES;
+        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(organItemOnclick)];
+        [_organItem addGestureRecognizer:tap];
     }
     return _organItem;
     
@@ -295,20 +306,20 @@
 }
 
 -(UITextField *) organField{
-    
-    
     if (_organField==nil) {
         _organField=[[UITextField alloc] init];
         _organField.placeholder=@"请选择机构";
         _organField.textAlignment=NSTextAlignmentLeft;
         _organField.enabled=false;
         _organField.borderStyle=UITextBorderStyleNone;
+        _organField.delegate=self;
+        [_organField addTarget:self action:@selector(fieldChangeText:) forControlEvents:UIControlEventEditingDidEnd];
     }
     return _organField;
 }
 
 
-#pragma mark - password layout
+#pragma mark - password layout -
 -(UIView *) passwordItem{
     
     
@@ -337,14 +348,14 @@
         _passwordField.borderStyle=UITextBorderStyleNone;
         _passwordField.clearButtonMode=UITextFieldViewModeAlways;
         _passwordField.secureTextEntry=YES;
-          [_passwordField addTarget:self action:@selector(accountChangeText:) forControlEvents:UIControlEventEditingChanged];
+        [_passwordField addTarget:self action:@selector(fieldChangeText:) forControlEvents:UIControlEventEditingChanged];
         _passwordField.tag=TAG_PASSWORD;
     }
     return _passwordField;
 }
 
 
-#pragma mark -bottom  layout
+#pragma mark -bottom  layout -
 -(UIButton *) loginButton{
     
     if (_loginButton==nil) {
@@ -363,13 +374,13 @@
 }
 
 
-#pragma mark - init line
+#pragma mark - init line -
 
 -(UIView *) gayLineAccount{
     if (_gayLineAccount==nil) {
         _gayLineAccount=[[UIView alloc] init];
         _gayLineAccount.backgroundColor=LCGayLineBDBDBD;
-
+        
     }
     return _gayLineAccount;
 }
@@ -377,7 +388,7 @@
     if (_gayLineOrgan==nil) {
         _gayLineOrgan=[[UIView alloc] init];
         _gayLineOrgan.backgroundColor=LCGayLineBDBDBD;
-
+        
     }
     return _gayLineOrgan;
 }
@@ -385,31 +396,31 @@
     if (_gayLinePassword==nil) {
         _gayLinePassword=[[UIView alloc] init];
         _gayLinePassword.backgroundColor=LCGayLineBDBDBD;
-
+        
     }
     return _gayLinePassword;
 }
 
-#pragma mark - onclick
+#pragma mark - onclick -
 
 -(void)attributedLabel:(TYAttributedLabel *)attributedLabel textStorageClicked:(id<TYTextStorageProtocol>)textStorage atPoint:(CGPoint)point
 {
-
+    
     
     if([textStorage isKindOfClass:[TYLinkTextStorage class]])
     {
-         NSString *linkStr = ((TYLinkTextStorage*)textStorage).linkData;
+        NSString *linkStr = ((TYLinkTextStorage*)textStorage).linkData;
         NSLog(@"hahahahh %@",linkStr);
         
     }}
 -(void) loginClick:(UIButton *)button{
-    NSLog(@"登录");
+    [self go2Login];
 }
 
-#pragma mark -listener  method
+#pragma mark -listener  method-
 
--(void)accountChangeText:(UITextField *)textField{
-
+-(void)fieldChangeText:(UITextField *)textField{
+    NSLog(@"fieldChangeText::::::::%@",textField.text);
     if (textField.tag==TAG_ACCOUNT) {
         _accountStr=textField.text;
     }else if(textField.tag==TAG_PASSWORD){
@@ -421,63 +432,123 @@
     }else{
         [self hideOrganLayout];
     }
+    
+    [self checkData];
 }
 
+-(void) organItemOnclick{
+    [self showDialog];
+}
 
-#pragma mark - network
+#pragma mark - network -
 
 -(void)getOrganInfo{
     [XMCenter  sendRequest:^(XMRequest * _Nonnull request) {
-//        request.api= [NSString stringWithFormat:GetAccountOrgan,self.accountStr];
-        request.api=[net_get_account_organ stringByAppendingString:self.accountStr];
+        request.api=[url_get_account_organ stringByAppendingString:self.accountStr];
         request.httpMethod=kXMHTTPMethodGET;
-        
     } onSuccess:^(id  _Nullable responseObject) {
-      NSArray * keys=  [responseObject allKeys];
+        NSArray * keys=  [responseObject allKeys];
         if ( [keys containsObject:@"message"]) {
-             [self showOrganLayout];
+            self.organDataArr=responseObject[@"message"];
+            if (self.organDataArr.count>1) {
+                [self showOrganLayout];
+                self.organNameArr= [[NSMutableArray alloc] init];
+                for (NSDictionary  * dic in self.organDataArr) {
+                    [self.organNameArr addObject:dic[@"name"]];
+                }
+                
+                
+            }else{
+                [self hideOrganLayout];
+            }
+     
         }else{
             [self hideOrganLayout];
         }
-    
-        
         
     } onFailure:^(NSError * _Nullable error) {
         NSLog(@"error");
     } ];
 }
 
-#pragma mark --- 判断手机号是否合法 ---
+-(void) go2Login{
+    [XMCenter sendRequest:^(XMRequest * _Nonnull request) {
+        request.api=url_do_login;
+           NSDictionary * organDic=self.organDataArr[self.selectIndex];
+        id tenantId=organDic[@"tenantId"];
+        id orgId =organDic[@"orgId"];
+        request.parameters=@{@"tid":tenantId,@"orgid":orgId,@"username":self.accountStr,@"password":self.passwordStr};
+    } onSuccess:^(id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
+    } onFailure:^(NSError * _Nullable error) {
+        NSLog(@"%@",error);
+    }];
+    
+}
+#pragma mark - 判断手机号是否合法 -
 - (BOOL)isPhoneNum:(NSString *)phoneNum
 {
     //正则表达式
     NSString *moble = @"^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\\d{8}$";
     NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", moble];
     return [regextestcm evaluateWithObject:phoneNum];
-
+    
 }
 
-#pragma mark - reset ui
+#pragma mark - reset ui -
 
 -(void)showOrganLayout{
     self.organItem.hidden=NO;
     [_passwordItem mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.organItem.mas_bottom);
         make.width.equalTo(@(SCREEN_WIDTH-50));
-            make.height.equalTo(@55);
-            make.centerX.equalTo(self.view.mas_centerX);
-     
+        make.height.equalTo(@55);
+        make.centerX.equalTo(self.view.mas_centerX);
+        
     }];
 }
 -(void) hideOrganLayout{
     self.organItem.hidden=YES;
+    self.organField.text=@"";
     [_passwordItem mas_remakeConstraints:^(MASConstraintMaker *make) {
-           make.width.equalTo(@(SCREEN_WIDTH-50));
-            make.height.equalTo(@55);
-            make.centerX.equalTo(self.view.mas_centerX);
-            make.top.equalTo(self.accountItem.mas_bottom);
+        make.width.equalTo(@(SCREEN_WIDTH-50));
+        make.height.equalTo(@55);
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.top.equalTo(self.accountItem.mas_bottom);
     }];
     
+}
+
+#pragma mark -other  method-
+
+-(void) showDialog{
+    Dialog().wTypeSet(DialogTypeSelect) .wEventFinishSet(^(id anyID, NSIndexPath *path, DialogType type) {
+        
+        [self setOrganIndex:path.item setOrganName:anyID];
+
+    }).wTitleSet(@"").wMessageSet(@"请选择一项")
+    .wDataSet(self.organNameArr).wMultipleSelectionSet(NO).wStart();
+}
+
+-(void) setOrganIndex:(NSInteger)index setOrganName:(NSString *)organNameStr{
+    self.organField.text=organNameStr;
+    self.selectIndex=index;
+    [self checkData];
+}
+
+-(void) checkData{
+    if(self.accountStr.length!=0&&self.passwordStr.length!=0&&self.organField.text.length!=0) {
+        if ([self isPhoneNum:self.accountStr]) {
+            self.loginButton.enabled=YES;
+            [_loginButton setBackgroundColor:LCButtonclickColor];
+        }else{
+               self.loginButton.enabled=NO;
+               [_loginButton setBackgroundColor:LCButtonUnclickColor];
+        }
+    }else{
+        self.loginButton.enabled=NO;
+       [_loginButton setBackgroundColor:LCButtonUnclickColor];
+    }
 }
 
 @end

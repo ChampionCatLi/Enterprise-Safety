@@ -22,8 +22,8 @@
     
     [XMCenter setResponseProcessBlock:^id(XMRequest * _Nonnull request, id  _Nullable responseObject, NSError * _Nullable __autoreleasing * _Nullable error) {
         if([responseObject isKindOfClass:[NSDictionary class]]&&[[responseObject allKeys]count]>0){}
-        NSString * message =[responseObject objectForKey:@"status" ];
-        if ([message isEqualToString:@"ok"]) {
+        NSString * status =[responseObject objectForKey:@"status" ];
+        if ([status isEqualToString:@"ok"]) {
             return responseObject;
         }
         

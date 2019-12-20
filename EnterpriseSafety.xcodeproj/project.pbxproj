@@ -27,6 +27,7 @@
 		E570F485238F9C2F004CAF0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E570F484238F9C2F004CAF0C /* Assets.xcassets */; };
 		E570F488238F9C2F004CAF0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E570F486238F9C2F004CAF0C /* LaunchScreen.storyboard */; };
 		E570F48B238F9C2F004CAF0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E570F48A238F9C2F004CAF0C /* main.m */; };
+		E5747AB923AC6DA00026CECC /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = E5747AB823AC6DA00026CECC /* Foundation+Log.m */; };
 		E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E596D1F523989E6700C72F17 /* GKCycleScrollView.m */; };
 		E596D1FA23989E6700C72F17 /* GKCycleScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E596D1F823989E6700C72F17 /* GKCycleScrollViewCell.m */; };
 		E5C3C157239DDB63009AB92F /* info@1.5x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C151239DDB62009AB92F /* info@1.5x.png */; };
@@ -193,6 +194,7 @@
 		E570F487238F9C2F004CAF0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E570F489238F9C2F004CAF0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E570F48A238F9C2F004CAF0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E5747AB823AC6DA00026CECC /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		E596D1F523989E6700C72F17 /* GKCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCycleScrollView.m; sourceTree = "<group>"; };
 		E596D1F623989E6700C72F17 /* GKCycleScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCycleScrollViewCell.h; sourceTree = "<group>"; };
 		E596D1F723989E6700C72F17 /* GKCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCycleScrollView.h; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 		E596D1FB2398A6E800C72F17 /* plus */ = {
 			isa = PBXGroup;
 			children = (
+				E5747AB823AC6DA00026CECC /* Foundation+Log.m */,
 				E596D1FC2398A73A00C72F17 /* PrefixHeader.pch */,
 				E5AD4812239A3CFB0074EBCD /* Header.h */,
 				E541370423A9F9C40025446E /* LCConst.h */,
@@ -908,6 +911,7 @@
 				E501783923A38402002AD49C /* LearnVideoViewController.m in Sources */,
 				E541370623A9F9C40025446E /* LCConst.m in Sources */,
 				E501782F23A38388002AD49C /* ExamViewController.m in Sources */,
+				E5747AB923AC6DA00026CECC /* Foundation+Log.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

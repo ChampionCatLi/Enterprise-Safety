@@ -3,3 +3,4 @@ ${PODS_ROOT}/CCVodSDK/include/DWResource.bundle
 ${PODS_ROOT}/CCVodSDK/include/vrlibraw.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager/IQKeyboardManager.bundle
 ${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle
+${PODS_ROOT}/WMZDialog/WMZDialog/WMZDialog/WMZDialog.bundle
