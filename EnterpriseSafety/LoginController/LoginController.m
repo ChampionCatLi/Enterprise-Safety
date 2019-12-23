@@ -9,6 +9,7 @@
 #import "LoginController.h"
 #import "TYAttributedLabel.h"
 #import <WMZDialog.h>
+#import "MainTabBar.h"
 
 @interface LoginController ()<TYAttributedLabelDelegate,UITextFieldDelegate>
 
@@ -456,12 +457,10 @@
                 for (NSDictionary  * dic in self.organDataArr) {
                     [self.organNameArr addObject:dic[@"name"]];
                 }
-                
-                
             }else{
                 [self hideOrganLayout];
             }
-     
+            
         }else{
             [self hideOrganLayout];
         }
@@ -474,81 +473,103 @@
 -(void) go2Login{
     [XMCenter sendRequest:^(XMRequest * _Nonnull request) {
         request.api=url_do_login;
-           NSDictionary * organDic=self.organDataArr[self.selectIndex];
+        NSDictionary * organDic=self.organDataArr[self.selectIndex];
         id tenantId=organDic[@"tenantId"];
         id orgId =organDic[@"orgId"];
         request.parameters=@{@"tid":tenantId,@"orgid":orgId,@"username":self.accountStr,@"password":self.passwordStr};
     } onSuccess:^(id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
-    } onFailure:^(NSError * _Nullable error) {
-        NSLog(@"%@",error);
-    }];
-    
-}
-#pragma mark - 判断手机号是否合法 -
-- (BOOL)isPhoneNum:(NSString *)phoneNum
-{
-    //正则表达式
-    NSString *moble = @"^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\\d{8}$";
-    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", moble];
-    return [regextestcm evaluateWithObject:phoneNum];
-    
-}
+        NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
 
-#pragma mark - reset ui -
-
--(void)showOrganLayout{
-    self.organItem.hidden=NO;
-    [_passwordItem mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.organItem.mas_bottom);
-        make.width.equalTo(@(SCREEN_WIDTH-50));
-        make.height.equalTo(@55);
-        make.centerX.equalTo(self.view.mas_centerX);
+        NSDictionary * messageDic =responseObject[@"message"];
+        [defaults setObject:responseObject[data_key_user_jse_id] forKey:data_key_user_jse_id];
+        [defaults setObject:messageDic[data_key_user_id] forKey:data_key_user_id];
+        [defaults setObject:messageDic[data_key_user_name] forKey:data_key_user_name];
+        [defaults setObject:messageDic[data_key_user_token] forKey:data_key_user_token];
+        [defaults setObject:messageDic[data_key_user_fee_modle] forKey:data_key_user_fee_modle];
         
-    }];
-}
--(void) hideOrganLayout{
-    self.organItem.hidden=YES;
-    self.organField.text=@"";
-    [_passwordItem mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@(SCREEN_WIDTH-50));
-        make.height.equalTo(@55);
-        make.centerX.equalTo(self.view.mas_centerX);
-        make.top.equalTo(self.accountItem.mas_bottom);
-    }];
-    
-}
-
-#pragma mark -other  method-
-
--(void) showDialog{
-    Dialog().wTypeSet(DialogTypeSelect) .wEventFinishSet(^(id anyID, NSIndexPath *path, DialogType type) {
+        [defaults synchronize];
+     
+//        NSUserDefaults * userdata=[NSUserDefaults standardUserDefaults];
+//        NSString * token =[userdata objectForKey:data_key_user_token];
+//        NSString * feeModel=[userdata objectForKey:data_key_user_fee_modle];
+//        NSLog(@"token::  %@ feeModel::: %@",token,feeModel);
+        [self go2MainActivity];
+        } onFailure:^(NSError * _Nullable error) {
+            NSLog(@"%@",error);
+        }];
         
-        [self setOrganIndex:path.item setOrganName:anyID];
-
-    }).wTitleSet(@"").wMessageSet(@"请选择一项")
-    .wDataSet(self.organNameArr).wMultipleSelectionSet(NO).wStart();
-}
-
--(void) setOrganIndex:(NSInteger)index setOrganName:(NSString *)organNameStr{
-    self.organField.text=organNameStr;
-    self.selectIndex=index;
-    [self checkData];
-}
-
--(void) checkData{
-    if(self.accountStr.length!=0&&self.passwordStr.length!=0&&self.organField.text.length!=0) {
-        if ([self isPhoneNum:self.accountStr]) {
-            self.loginButton.enabled=YES;
-            [_loginButton setBackgroundColor:LCButtonclickColor];
-        }else{
-               self.loginButton.enabled=NO;
-               [_loginButton setBackgroundColor:LCButtonUnclickColor];
-        }
-    }else{
-        self.loginButton.enabled=NO;
-       [_loginButton setBackgroundColor:LCButtonUnclickColor];
     }
-}
+#pragma mark - 判断手机号是否合法 -
+     - (BOOL)isPhoneNum:(NSString *)phoneNum
+    {
+        //正则表达式
+        NSString *moble = @"^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\\d{8}$";
+        NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", moble];
+        return [regextestcm evaluateWithObject:phoneNum];
+        
+    }
+     
+#pragma mark - reset ui -
+     
+     -(void)showOrganLayout{
+        self.organItem.hidden=NO;
+        [_passwordItem mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.organItem.mas_bottom);
+            make.width.equalTo(@(SCREEN_WIDTH-50));
+            make.height.equalTo(@55);
+            make.centerX.equalTo(self.view.mas_centerX);
+            
+        }];
+    }
+     -(void) hideOrganLayout{
+        self.organItem.hidden=YES;
+        self.organField.text=@"";
+        [_passwordItem mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(@(SCREEN_WIDTH-50));
+            make.height.equalTo(@55);
+            make.centerX.equalTo(self.view.mas_centerX);
+            make.top.equalTo(self.accountItem.mas_bottom);
+        }];
+        
+    }
+     
+#pragma mark -other  method-
+     
+     -(void) showDialog{
+        Dialog().wTypeSet(DialogTypeSelect) .wEventFinishSet(^(id anyID, NSIndexPath *path, DialogType type) {
+            
+            [self setOrganIndex:path.item setOrganName:anyID];
+            
+        }).wTitleSet(@"").wMessageSet(@"请选择一项")
+        .wDataSet(self.organNameArr).wMultipleSelectionSet(NO).wStart();
+    }
+     
+     -(void) setOrganIndex:(NSInteger)index setOrganName:(NSString *)organNameStr{
+        self.organField.text=organNameStr;
+        self.selectIndex=index;
+        [self checkData];
+    }
+     
+     -(void) checkData{
+        if(self.accountStr.length!=0&&self.passwordStr.length!=0&&self.organField.text.length!=0) {
+            if ([self isPhoneNum:self.accountStr]) {
+                self.loginButton.enabled=YES;
+                [_loginButton setBackgroundColor:LCButtonclickColor];
+            }else{
+                self.loginButton.enabled=NO;
+                [_loginButton setBackgroundColor:LCButtonUnclickColor];
+            }
+        }else{
+            self.loginButton.enabled=NO;
+            [_loginButton setBackgroundColor:LCButtonUnclickColor];
+        }
+    }
+     
 
-@end
+-(void) go2MainActivity{
+    MainTabBar * mainTabBar=[[MainTabBar alloc] init];
+    mainTabBar.modalPresentationStyle=UIModalPresentationFullScreen;
+    [self presentViewController:mainTabBar animated:NO completion:NULL];
+    
+}
+     @end

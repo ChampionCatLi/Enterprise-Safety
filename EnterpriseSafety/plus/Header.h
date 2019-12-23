@@ -54,10 +54,24 @@
 #define ITEM_HEIGHT 50
 #define MARGIN_LEFT_15 15
 
-#define mark -url
+#pragma mark -用户 url
 #define url_get_account_organ @"/m/p/a/check/"
 //用户 1.3 /m/login?tid={tenantId}&orgid={orgId}
 #define url_do_login @"/m/login"
+
+#pragma mark -学习 url
+// 获取 用户在学 学习计划
+#define url_get_learn_plane @"/m/home/my/clazz/list/actives"
+
+
+
+#pragma mark -data key
+
+#define data_key_user_token @"token"
+#define data_key_user_fee_modle @"feeMode"
+#define data_key_user_name @"name"
+#define data_key_user_jse_id @"jsessionid"
+#define data_key_user_id @"id"
 
 
 #endif /* Header_h */

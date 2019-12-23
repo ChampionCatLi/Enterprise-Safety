@@ -9,6 +9,7 @@
 #import "CourseViewController.h"
 #import "GKCycleScrollView.h"
 #import "GKCycleScrollViewCell.h"
+#import <XMNetworking.h>
 
 @interface CourseViewController ()<GKCycleScrollViewDelegate,GKCycleScrollViewDataSource>
 @property (nonatomic,strong) GKCycleScrollView * cycleScrollView;
@@ -35,6 +36,7 @@
     [super viewDidLoad];
     [self initData];
     [self initView];
+    [self getLearnPlane];
 }
 
 
@@ -107,5 +109,20 @@
     
     NSLog(@"label 被点击了 index:: %ld ",index-0x111);
 }
+
+#pragma mark -network
+
+
+-(void)  getLearnPlane{
+    
+    [XMCenter sendRequest:^(XMRequest * _Nonnull request) {
+        request.api=url_get_learn_plane;
+        request.httpMethod=kXMHTTPMethodGET;
+    } onSuccess:^(id  _Nullable responseObject) {
+        NSLog(@"#####FFsfs %@",responseObject);
+    }];
+    
+}
+
 
 @end

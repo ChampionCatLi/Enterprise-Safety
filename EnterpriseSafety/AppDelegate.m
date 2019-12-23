@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MainTabBar.h"
 #import "NetWorkManager.h"
+#import "LoginController.h"
 
 @interface AppDelegate ()
 
@@ -24,10 +25,13 @@
     [self.window setBackgroundColor:[UIColor whiteColor]];
     [self.window makeKeyAndVisible];
     [self initNetWork];
+//
+//    MainTabBar * mainTab =[[MainTabBar alloc] init];
+//    mainTab.selectedIndex=1;
+       LoginController * loginVC=[[LoginController alloc] init];
+    UINavigationController * nav =[[UINavigationController alloc] initWithRootViewController:loginVC];
     
-    MainTabBar * mainTab =[[MainTabBar alloc] init];
-    mainTab.selectedIndex=1;
-    _window.rootViewController=mainTab;
+    _window.rootViewController=nav;
     
 
     return YES;
