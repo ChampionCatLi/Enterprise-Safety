@@ -421,7 +421,6 @@
 #pragma mark -listener  method-
 
 -(void)fieldChangeText:(UITextField *)textField{
-    NSLog(@"fieldChangeText::::::::%@",textField.text);
     if (textField.tag==TAG_ACCOUNT) {
         _accountStr=textField.text;
     }else if(textField.tag==TAG_PASSWORD){
@@ -472,7 +471,7 @@
 
 -(void) go2Login{
     [XMCenter sendRequest:^(XMRequest * _Nonnull request) {
-        request.api=url_do_login;
+        request.api=url_do_login_by_password;
         NSDictionary * organDic=self.organDataArr[self.selectIndex];
         id tenantId=organDic[@"tenantId"];
         id orgId =organDic[@"orgId"];

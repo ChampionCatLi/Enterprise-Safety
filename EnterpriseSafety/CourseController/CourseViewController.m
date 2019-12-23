@@ -34,50 +34,51 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initData];
     [self initView];
-    [self getLearnPlane];
+    [self initData];
+   
 }
 
 
 
 
-#pragma init
-
-
-#pragma init
+#pragma -mark init self view
 -(void) initView{
     self.edgesForExtendedLayout = UIRectEdgeNone;//这句话就是从导航栏下面开始计算高度
-    NSLog(@"nav height %f",self.navigationController.view.frame.size.height);
-    [self.view addSubview: self.cycleScrollView];
-    self.view.backgroundColor=[UIColor colorWithRed:245/255.0  green:245/255.0  blue:245/255.0  alpha:1];
-    [self.cycleScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.top.equalTo(self.view.mas_top).offset(15);
-        make.height.mas_equalTo(200.0f);
-    }];
-    [self.cycleScrollView reloadData];
+    self.view.backgroundColor=LCBackGroundColor;
 }
 
+#pragma -mark 获取网络数据
 -(void) initData{
-    self.dataArr=@[@{@"title": @"我是标题我是标题1我是标题我是标题1我是标题我是标题1我是标题我是标题1",@"img_url":@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3724300455,3419815340&fm=26&gp=0.jpg"},@{@"title":@"我是标题我是标题",@"img_url":@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3657258270,1485602730&fm=26&gp=0.jpg"}
-    ];}
--(GKCycleScrollView *)cycleScrollView{
-    if (!_cycleScrollView) {
-        _cycleScrollView=[GKCycleScrollView new ];
-        _cycleScrollView.dataSource =self;
-        _cycleScrollView.delegate=self;
-        _cycleScrollView.isAutoScroll=NO;
-        _cycleScrollView.isInfiniteLoop=NO;
-        _cycleScrollView.isChangeAlpha=NO;
-        _cycleScrollView.leftRightMargin=30.0f;
-    }
-    return _cycleScrollView;
+    //获取在学习计划列表
+    [self getLearnPlane];
+       
+}
+
+
+
+
+
+#pragma mark -network
+
+
+-(void)  getLearnPlane{
+    
+    [XMCenter sendRequest:^(XMRequest * _Nonnull request) {
+        request.api=url_get_learn_plane;
+        request.httpMethod=kXMHTTPMethodGET;
+    } onSuccess:^(id  _Nullable responseObject) {
+        NSArray * keys=  [responseObject allKeys];
+        if ( [keys containsObject:@"message"]) {
+            self.dataArr=responseObject[@"message"];
+            [self addPlaneScrollView];
+        }
+        
+    }];
     
 }
 
-
-#pragma delegate
+#pragma mark -delegate
 
 -(GKCycleScrollViewCell *)cycleScrollView:(GKCycleScrollView *)cycleScrollView cellForViewAtIndex:(NSInteger)index{
     GKCycleScrollViewCell * cell =[cycleScrollView dequeueReusableCell];
@@ -85,11 +86,11 @@
         cell=[GKCycleScrollViewCell new];
         cell.layer.masksToBounds=NO;
     }
-    NSDictionary * dict =self.dataArr[index];
-    [cell.titleLabel setText:dict[@"title"]];
+    NSDictionary * planeDic =self.dataArr[index];
+    NSDictionary * ruleDic =planeDic[@"rule"];
+    NSString * name =ruleDic[@"name"];
+    [cell.titleLabel setText:name];
     return cell;
-    
-    
 }
 -(CGSize)sizeForCellInCycleScrollView:(GKCycleScrollView *)cycleScrollView{
     return CGSizeMake(300.0f, 200.0f);
@@ -110,19 +111,32 @@
     NSLog(@"label 被点击了 index:: %ld ",index-0x111);
 }
 
-#pragma mark -network
+#pragma mark - add view
 
-
--(void)  getLearnPlane{
-    
-    [XMCenter sendRequest:^(XMRequest * _Nonnull request) {
-        request.api=url_get_learn_plane;
-        request.httpMethod=kXMHTTPMethodGET;
-    } onSuccess:^(id  _Nullable responseObject) {
-        NSLog(@"#####FFsfs %@",responseObject);
+-(void) addPlaneScrollView{
+    [self.view addSubview: self.cycleScrollView];
+    [self.cycleScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.view.mas_top).offset(15);
+        make.height.mas_equalTo(200.0f);
     }];
-    
+    [self.cycleScrollView reloadData];
 }
 
+
+
+#pragma mark - init view
+-(GKCycleScrollView *)cycleScrollView{
+    if (!_cycleScrollView) {
+        _cycleScrollView=[GKCycleScrollView new ];
+        _cycleScrollView.dataSource =self;
+        _cycleScrollView.delegate=self;
+        _cycleScrollView.isAutoScroll=NO;
+        _cycleScrollView.isInfiniteLoop=NO;
+        _cycleScrollView.isChangeAlpha=NO;
+        _cycleScrollView.leftRightMargin=30.0f;
+    }
+    return _cycleScrollView;
+}
 
 @end

@@ -16,7 +16,7 @@
     [XMCenter setupConfig:^(XMConfig * _Nonnull config) {
         config.generalServer=SERVER_BASE_URL;
         config.callbackQueue=dispatch_get_main_queue();
-        config.consoleLog=YES;
+        config.consoleLog=NO;
         config.generalHeaders=@{@"Accept":@"application/json"};
     }];
     

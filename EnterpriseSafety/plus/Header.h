@@ -41,6 +41,7 @@
 #define LCGayLineBDBDBD [UIColor colorWithWhite:189/255.0 alpha:1]
 #define LCButtonUnclickColor [UIColor colorWithWhite:224/255.0 alpha:1]
 #define LCButtonclickColor [UIColor colorWithRed:33/255.0 green:150/255.0 blue:245/255.0 alpha:1]
+#define LCGay979797Color [UIColor colorWithWhite:97/ 255.0 alpha:1]
 
 #pragma mark -string
 
@@ -57,7 +58,9 @@
 #pragma mark -用户 url
 #define url_get_account_organ @"/m/p/a/check/"
 //用户 1.3 /m/login?tid={tenantId}&orgid={orgId}
-#define url_do_login @"/m/login"
+#define url_do_login_by_password @"/m/login"
+//1.2 token 登录
+#define url_do_login_by_token @"/m/login"
 
 #pragma mark -学习 url
 // 获取 用户在学 学习计划

@@ -20,7 +20,15 @@ typedef void (^cellTititleLabelClickBlock)(NSInteger index);
  */
 
 @property(nonatomic,strong) UILabel * titleLabel;
+/**
+ 是否通过状态
+ */
+@property(nonatomic,strong) UIImageView * statusImageView;
 
+/**
+ 学习时间
+ */
+@property(nonatomic,strong) UILabel * planeTime;
 
 /**
  cell点击回调
