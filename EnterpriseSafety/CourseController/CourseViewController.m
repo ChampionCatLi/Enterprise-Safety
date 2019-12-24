@@ -86,10 +86,7 @@
         cell=[GKCycleScrollViewCell new];
         cell.layer.masksToBounds=NO;
     }
-    NSDictionary * planeDic =self.dataArr[index];
-    NSDictionary * ruleDic =planeDic[@"rule"];
-    NSString * name =ruleDic[@"name"];
-    [cell.titleLabel setText:name];
+    [self putData2Cell:cell cellIndex:index];
     return cell;
 }
 -(CGSize)sizeForCellInCycleScrollView:(GKCycleScrollView *)cycleScrollView{
@@ -139,4 +136,24 @@
     return _cycleScrollView;
 }
 
+#pragma mark - 给 cell  添加数据
+
+
+-(void)putData2Cell:(GKCycleScrollViewCell * )cell cellIndex:(NSInteger) index{
+    NSDictionary * planeDic =self.dataArr[index];
+     NSDictionary * ruleDic =planeDic[@"rule"];
+     NSString * name =ruleDic[@"name"];
+    
+    NSDictionary * scDic=planeDic[@"sc"];
+      long  startDate;
+      long endDate ;
+      startDate =[[scDic objectForKey:@"startTime"] longValue]/1000;
+      endDate=[[scDic objectForKey:@"endTime"] longValue]/1000;
+    NSString * duration=[LCUtils appendLong2Str:startDate endTime:endDate];
+    
+    NSLog(@"------%@",duration);
+    cell.titleLabel.text=name;
+    cell.planeTime.text=duration;
+    
+}
 @end

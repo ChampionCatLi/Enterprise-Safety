@@ -42,6 +42,7 @@
 #define LCButtonUnclickColor [UIColor colorWithWhite:224/255.0 alpha:1]
 #define LCButtonclickColor [UIColor colorWithRed:33/255.0 green:150/255.0 blue:245/255.0 alpha:1]
 #define LCGay979797Color [UIColor colorWithWhite:97/ 255.0 alpha:1]
+#define LCBlueColor  [UIColor colorWithRed:33/255.0 green:150/255.0 blue:245/255.0 alpha:1]
 
 #pragma mark -string
 

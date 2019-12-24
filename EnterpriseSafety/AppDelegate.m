@@ -28,11 +28,8 @@
     [self initNetWork];
     
     SplashViewController * spVC=[[SplashViewController alloc] init];
-    
     _window.rootViewController=spVC;
     
-//    objectIsForcedForKey
-  
     return YES;
 }
 

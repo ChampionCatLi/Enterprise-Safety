@@ -17,7 +17,6 @@
 		E51280E723A33902006C3A4A /* camera_sample@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E51280E623A33902006C3A4A /* camera_sample@3x.png */; };
 		E54136FF23A9F0040025446E /* NetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E54136FE23A9F0040025446E /* NetWorkManager.m */; };
 		E541370323A9F7370025446E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E541370223A9F7370025446E /* BaseViewController.m */; };
-		E541370623A9F9C40025446E /* LCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = E541370523A9F9C40025446E /* LCConst.m */; };
 		E54CE31F2394A236002931E4 /* MyCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54CE31E2394A236002931E4 /* MyCenterViewController.m */; };
 		E54CE3222394A251002931E4 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54CE3212394A251002931E4 /* CourseViewController.m */; };
 		E54CE3262394C23C002931E4 /* cinema.png in Resources */ = {isa = PBXBuildFile; fileRef = E54CE3242394C23C002931E4 /* cinema.png */; };
@@ -158,6 +157,7 @@
 		E5C3C24D239DDBAC009AB92F /* failed@1.5x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C238239DDBAB009AB92F /* failed@1.5x.png */; };
 		E5C3C24E239DDBAC009AB92F /* clear@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C239239DDBAB009AB92F /* clear@3x.png */; };
 		E5C3C24F239DDBAC009AB92F /* arrow_l@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C23A239DDBAC009AB92F /* arrow_l@3x.png */; };
+		E5E06DE123B1DB50004FBF24 /* LCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E06DE023B1DB50004FBF24 /* LCUtils.m */; };
 		E5E7DD8423A4D3590084EF90 /* learn_history@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E7DD8323A4D3590084EF90 /* learn_history@3x.png */; };
 /* End PBXBuildFile section */
 
@@ -181,8 +181,6 @@
 		E54136FE23A9F0040025446E /* NetWorkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetWorkManager.m; sourceTree = "<group>"; };
 		E541370123A9F7370025446E /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		E541370223A9F7370025446E /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		E541370423A9F9C40025446E /* LCConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCConst.h; sourceTree = "<group>"; };
-		E541370523A9F9C40025446E /* LCConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCConst.m; sourceTree = "<group>"; };
 		E54CE31D2394A236002931E4 /* MyCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterViewController.h; sourceTree = "<group>"; };
 		E54CE31E2394A236002931E4 /* MyCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCenterViewController.m; sourceTree = "<group>"; };
 		E54CE3202394A251002931E4 /* CourseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
@@ -335,6 +333,8 @@
 		E5C3C238239DDBAB009AB92F /* failed@1.5x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failed@1.5x.png"; sourceTree = "<group>"; };
 		E5C3C239239DDBAB009AB92F /* clear@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear@3x.png"; sourceTree = "<group>"; };
 		E5C3C23A239DDBAC009AB92F /* arrow_l@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_l@3x.png"; sourceTree = "<group>"; };
+		E5E06DDF23B1DB50004FBF24 /* LCUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCUtils.h; sourceTree = "<group>"; };
+		E5E06DE023B1DB50004FBF24 /* LCUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCUtils.m; sourceTree = "<group>"; };
 		E5E7DD8323A4D3590084EF90 /* learn_history@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learn_history@3x.png"; sourceTree = "<group>"; };
 		EAAF088EA0AD5F4C9F746636 /* Pods-EnterpriseSafety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnterpriseSafety.debug.xcconfig"; path = "Target Support Files/Pods-EnterpriseSafety/Pods-EnterpriseSafety.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -686,8 +686,8 @@
 				E5747AB823AC6DA00026CECC /* Foundation+Log.m */,
 				E596D1FC2398A73A00C72F17 /* PrefixHeader.pch */,
 				E5AD4812239A3CFB0074EBCD /* Header.h */,
-				E541370423A9F9C40025446E /* LCConst.h */,
-				E541370523A9F9C40025446E /* LCConst.m */,
+				E5E06DDF23B1DB50004FBF24 /* LCUtils.h */,
+				E5E06DE023B1DB50004FBF24 /* LCUtils.m */,
 			);
 			path = plus;
 			sourceTree = "<group>";
@@ -946,11 +946,11 @@
 				E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */,
 				E555807323B0A73D00374DCC /* CircularPrograss.m in Sources */,
 				E54136FF23A9F0040025446E /* NetWorkManager.m in Sources */,
+				E5E06DE123B1DB50004FBF24 /* LCUtils.m in Sources */,
 				E501783D23A38DBE002AD49C /* MainTabBar.m in Sources */,
 				E54CE3222394A251002931E4 /* CourseViewController.m in Sources */,
 				E501783923A38402002AD49C /* LearnVideoViewController.m in Sources */,
 				E555807723B0CF9E00374DCC /* SplashViewController.m in Sources */,
-				E541370623A9F9C40025446E /* LCConst.m in Sources */,
 				E501782F23A38388002AD49C /* ExamViewController.m in Sources */,
 				E5747AB923AC6DA00026CECC /* Foundation+Log.m in Sources */,
 				E555807023B0A6F500374DCC /* LCCircular.m in Sources */,
