@@ -66,6 +66,8 @@
 #pragma mark -学习 url
 // 获取 用户在学 学习计划
 #define url_get_learn_plane @"/m/home/my/clazz/list/actives"
+//1.1 获取开放课程
+#define url_get_open_course @"/m/home/my/clazz/list/open/actives"
 
 
 
@@ -77,5 +79,9 @@
 #define data_key_user_jse_id @"jsessionid"
 #define data_key_user_id @"id"
 
+
+#pragma mark -const 常量
+ /*开课时间模式,1.固定时间开始 2.随时开始*/
+#define course_start_model_set_time 1
 
 #endif /* Header_h */

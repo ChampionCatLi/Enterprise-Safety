@@ -81,6 +81,17 @@
         make.height.equalTo(@20);
         make.left.equalTo(self.refreshImage.mas_right).offset(5);
     }];
+    
+    
+    [self addSubview:self.learnButton];
+    [_learnButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.mas_width).offset(-30);
+        make.height.equalTo(@40);
+        make.centerX.equalTo(self.mas_centerX);
+        make.top.equalTo(self.gayLineView.mas_bottom).offset(15);
+    }];
+    
+    
 }
 
 -(void)handleTitleLabelGesture:(UITapGestureRecognizer *)tap{
@@ -178,5 +189,18 @@
         _refreshTitle.adjustsFontSizeToFitWidth=YES;
     }
     return _refreshTitle;
+}
+
+-(UIButton*) learnButton{
+    if (_learnButton==nil) {
+        _learnButton=[[UIButton alloc] init];
+        [_learnButton setTitle:@"开始学习" forState:UIControlStateNormal];
+        [_learnButton setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
+        [_learnButton.layer setMasksToBounds:YES];
+        [_learnButton.layer  setCornerRadius:5];
+        _learnButton.backgroundColor=LCButtonclickColor;
+    }
+    return _learnButton;
+    
 }
 @end

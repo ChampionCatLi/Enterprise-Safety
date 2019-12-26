@@ -32,6 +32,8 @@
 		E5747AB923AC6DA00026CECC /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = E5747AB823AC6DA00026CECC /* Foundation+Log.m */; };
 		E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E596D1F523989E6700C72F17 /* GKCycleScrollView.m */; };
 		E596D1FA23989E6700C72F17 /* GKCycleScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E596D1F823989E6700C72F17 /* GKCycleScrollViewCell.m */; };
+		E5AA236423B44A4D003B89DF /* OpenCourseData.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AA236323B44A4D003B89DF /* OpenCourseData.m */; };
+		E5AA236723B4A039003B89DF /* OpenCourseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AA236623B4A039003B89DF /* OpenCourseTableViewCell.m */; };
 		E5C3C157239DDB63009AB92F /* info@1.5x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C151239DDB62009AB92F /* info@1.5x.png */; };
 		E5C3C158239DDB63009AB92F /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C152239DDB62009AB92F /* info@2x.png */; };
 		E5C3C159239DDB63009AB92F /* info@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C153239DDB62009AB92F /* info@3x.png */; };
@@ -207,6 +209,10 @@
 		E596D1F723989E6700C72F17 /* GKCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCycleScrollView.h; sourceTree = "<group>"; };
 		E596D1F823989E6700C72F17 /* GKCycleScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCycleScrollViewCell.m; sourceTree = "<group>"; };
 		E596D1FC2398A73A00C72F17 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E5AA236223B44A4D003B89DF /* OpenCourseData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCourseData.h; sourceTree = "<group>"; };
+		E5AA236323B44A4D003B89DF /* OpenCourseData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenCourseData.m; sourceTree = "<group>"; };
+		E5AA236523B4A039003B89DF /* OpenCourseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCourseTableViewCell.h; sourceTree = "<group>"; };
+		E5AA236623B4A039003B89DF /* OpenCourseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenCourseTableViewCell.m; sourceTree = "<group>"; };
 		E5AD4812239A3CFB0074EBCD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		E5C3C151239DDB62009AB92F /* info@1.5x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@1.5x.png"; sourceTree = "<group>"; };
 		E5C3C152239DDB62009AB92F /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
@@ -416,6 +422,8 @@
 		E501783A23A38D9A002AD49C /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				E54CE31C2394A1AC002931E4 /* MyCenterController */,
+				E54CE31B2394A188002931E4 /* CourseController */,
 				E501783B23A38DBE002AD49C /* MainTabBar.h */,
 				E501783C23A38DBE002AD49C /* MainTabBar.m */,
 			);
@@ -594,9 +602,19 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		E54F4AFD23B35F30003FA5C5 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				E5AA236523B4A039003B89DF /* OpenCourseTableViewCell.h */,
+				E5AA236623B4A039003B89DF /* OpenCourseTableViewCell.m */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
 		E555806C23B0A61500374DCC /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				E54F4AFD23B35F30003FA5C5 /* TableCell */,
 				E555806D23B0A65D00374DCC /* CircularProgressView */,
 				E596D1F423989E2800C72F17 /* MyScrollView */,
 			);
@@ -644,6 +662,7 @@
 		E570F477238F9C2B004CAF0C /* EnterpriseSafety */ = {
 			isa = PBXGroup;
 			children = (
+				E5AA236123B44A24003B89DF /* Model */,
 				E555807423B0CF5800374DCC /* SplashViewController */,
 				E555806C23B0A61500374DCC /* CustomView */,
 				E541370023A9F7130025446E /* Base */,
@@ -656,8 +675,6 @@
 				E501782223A375B3002AD49C /* LearnHistoryController */,
 				E596D1FB2398A6E800C72F17 /* plus */,
 				E54CE3232394C204002931E4 /* Images */,
-				E54CE31C2394A1AC002931E4 /* MyCenterController */,
-				E54CE31B2394A188002931E4 /* CourseController */,
 				E570F478238F9C2B004CAF0C /* AppDelegate.h */,
 				E570F479238F9C2B004CAF0C /* AppDelegate.m */,
 				E570F481238F9C2B004CAF0C /* Main.storyboard */,
@@ -690,6 +707,15 @@
 				E5E06DE023B1DB50004FBF24 /* LCUtils.m */,
 			);
 			path = plus;
+			sourceTree = "<group>";
+		};
+		E5AA236123B44A24003B89DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E5AA236223B44A4D003B89DF /* OpenCourseData.h */,
+				E5AA236323B44A4D003B89DF /* OpenCourseData.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -942,7 +968,9 @@
 				E501783523A383D9002AD49C /* LearnPlanDetailViewController.m in Sources */,
 				E541370323A9F7370025446E /* BaseViewController.m in Sources */,
 				E54CE31F2394A236002931E4 /* MyCenterViewController.m in Sources */,
+				E5AA236723B4A039003B89DF /* OpenCourseTableViewCell.m in Sources */,
 				E570F48B238F9C2F004CAF0C /* main.m in Sources */,
+				E5AA236423B44A4D003B89DF /* OpenCourseData.m in Sources */,
 				E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */,
 				E555807323B0A73D00374DCC /* CircularPrograss.m in Sources */,
 				E54136FF23A9F0040025446E /* NetWorkManager.m in Sources */,

@@ -29,6 +29,11 @@ typedef void (^cellTititleLabelClickBlock)(NSInteger index);
  学习时间
  */
 @property(nonatomic,strong) UILabel * planeTime;
+/**
+ 学习 button
+ */
+@property(nonatomic,strong) UIButton * learnButton;
+
 
 /**
  cell点击回调

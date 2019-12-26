@@ -10,12 +10,17 @@
 #import "GKCycleScrollView.h"
 #import "GKCycleScrollViewCell.h"
 #import <XMNetworking.h>
+#import "OpenCourseData.h"
+#import ""
 
 @interface CourseViewController ()<GKCycleScrollViewDelegate,GKCycleScrollViewDataSource>
 @property (nonatomic,strong) GKCycleScrollView * cycleScrollView;
 
-@property(nonatomic,strong) NSArray * dataArr;
+@property(nonatomic,strong) NSArray * planeDataArr;
 @property(nonatomic,strong)GKCycleScrollViewCell * cycleScrollViewCell;
+@property(nonatomic,strong) NSMutableArray * openCourseDataArr;
+@property(nonatomic,strong) UITableView  * openCourseTableview;
+
 
 @end
 
@@ -36,7 +41,7 @@
     [super viewDidLoad];
     [self initView];
     [self initData];
-   
+    
 }
 
 
@@ -52,7 +57,8 @@
 -(void) initData{
     //获取在学习计划列表
     [self getLearnPlane];
-       
+    [self getOpenCourse];
+    
 }
 
 
@@ -70,12 +76,31 @@
     } onSuccess:^(id  _Nullable responseObject) {
         NSArray * keys=  [responseObject allKeys];
         if ( [keys containsObject:@"message"]) {
-            self.dataArr=responseObject[@"message"];
+            self.planeDataArr=responseObject[@"message"];
             [self addPlaneScrollView];
         }
         
     }];
-    
+}
+
+-(void) getOpenCourse{
+    [XMCenter sendRequest:^(XMRequest * _Nonnull request) {
+        request.api=url_get_open_course;
+        request.httpMethod=kXMHTTPMethodGET;
+    } onSuccess:^(id  _Nullable responseObject) {
+        NSDictionary * messageData=responseObject[@"message"];
+        NSArray * clazzArr=messageData[@"clazzes"];
+        self.openCourseDataArr= [NSMutableArray  new];
+        for (int i= 0; i<clazzArr.count; i++) {
+            NSDictionary * clazzData=clazzArr[i];
+            NSInteger ruleId;
+            ruleId=[[clazzData objectForKey:@"ruleId"] intValue];
+            NSLog(@"****************%ld",ruleId);
+            OpenCourseData * openCourse=[[OpenCourseData alloc] initWithDict:clazzData rule:clazzData];
+            [self.openCourseDataArr addObject:openCourse];
+        }
+
+    }];
 }
 
 #pragma mark -delegate
@@ -93,7 +118,7 @@
     return CGSizeMake(300.0f, 200.0f);
 }
 -(NSInteger)numberOfCellsInCycleScrollView:(GKCycleScrollView *)cycleScrollView{
-    return self.dataArr.count;
+    return self.planeDataArr.count;
 }
 - (void)cycleScrollView:(GKCycleScrollView *)cycleScrollView didScrollCellToIndex:(NSInteger)index{
     
@@ -140,18 +165,16 @@
 
 
 -(void)putData2Cell:(GKCycleScrollViewCell * )cell cellIndex:(NSInteger) index{
-    NSDictionary * planeDic =self.dataArr[index];
-     NSDictionary * ruleDic =planeDic[@"rule"];
-     NSString * name =ruleDic[@"name"];
+    NSDictionary * planeDic =self.planeDataArr[index];
+    NSDictionary * ruleDic =planeDic[@"rule"];
+    NSString * name =ruleDic[@"name"];
     
     NSDictionary * scDic=planeDic[@"sc"];
-      long  startDate;
-      long endDate ;
-      startDate =[[scDic objectForKey:@"startTime"] longValue]/1000;
-      endDate=[[scDic objectForKey:@"endTime"] longValue]/1000;
+    long  startDate;
+    long endDate ;
+    startDate =[[scDic objectForKey:@"startTime"] longValue]/1000;
+    endDate=[[scDic objectForKey:@"endTime"] longValue]/1000;
     NSString * duration=[LCUtils appendLong2Str:startDate endTime:endDate];
-    
-    NSLog(@"------%@",duration);
     cell.titleLabel.text=name;
     cell.planeTime.text=duration;
     
