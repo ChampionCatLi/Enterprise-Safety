@@ -32,13 +32,13 @@
         self.startMode=[clazz[@"startMode"] intValue];
         self.ruleId=[clazz[@"ruleId"] intValue ];
         if (self.startMode==course_start_model_set_time) {
-            self.startDate=[clazz[@"startDate"] intValue];
-            self.endDate=[clazz[@"endDate"]  intValue];
+            self.startDate=[clazz[@"startDate"] longValue];
+            self.endDate=[clazz[@"endDate"]  longValue];
             self.showDuration=[LCUtils appendLong2Str:self.startDate endTime:self.endDate];
             
         }else{
             self.duration=[clazz[@"duration"] intValue];
-            self.showDuration=[NSString stringWithFormat:@"%ld%@",(long)self.duration,@"天"];
+            self.showDuration=[NSString stringWithFormat:@"%@%ld%@",@"学习时间: ",(long)self.duration,@"天"];
         }
         
     }

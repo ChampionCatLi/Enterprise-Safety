@@ -37,12 +37,18 @@
 #define LCRGBColor(r, g, b)     LCRGBAColor(r, g, b, 1.0)
 
 #define LCBackGroundColor  [UIColor colorWithWhite:245 / 255.0 alpha:1]
-#define LCGay616161 [UIColor colorWithWhite:97/255.0 alpha:1]
+#define LCGay979797 [UIColor colorWithWhite:97/255.0 alpha:1]
 #define LCGayLineBDBDBD [UIColor colorWithWhite:189/255.0 alpha:1]
 #define LCButtonUnclickColor [UIColor colorWithWhite:224/255.0 alpha:1]
 #define LCButtonclickColor [UIColor colorWithRed:33/255.0 green:150/255.0 blue:245/255.0 alpha:1]
 #define LCGay979797Color [UIColor colorWithWhite:97/ 255.0 alpha:1]
 #define LCBlueColor  [UIColor colorWithRed:33/255.0 green:150/255.0 blue:245/255.0 alpha:1]
+#define LCBlack333333 [UIColor colorWithWhite:33/255.0 alpha:1]
+
+#pragma mark -font 字号
+#define LCFont15 [UIFont systemFontOfSize:15]
+#define LCFont12 [UIFont systemFontOfSize:12]
+
 
 #pragma mark -string
 

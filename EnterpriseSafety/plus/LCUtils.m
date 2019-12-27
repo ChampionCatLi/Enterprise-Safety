@@ -14,7 +14,7 @@
 +(NSString *) long2Str:(long)longTime{
     
     
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:longTime];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:longTime/1000];
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:formatYYYYMMDD];
     NSString *dateStr = [formatter stringFromDate:date];

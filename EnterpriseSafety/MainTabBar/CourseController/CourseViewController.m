@@ -11,9 +11,9 @@
 #import "GKCycleScrollViewCell.h"
 #import <XMNetworking.h>
 #import "OpenCourseData.h"
-#import ""
+#import "OpenCourseTableViewCell.h"
 
-@interface CourseViewController ()<GKCycleScrollViewDelegate,GKCycleScrollViewDataSource>
+@interface CourseViewController ()<GKCycleScrollViewDelegate,GKCycleScrollViewDataSource,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) GKCycleScrollView * cycleScrollView;
 
 @property(nonatomic,strong) NSArray * planeDataArr;
@@ -95,11 +95,15 @@
             NSDictionary * clazzData=clazzArr[i];
             NSInteger ruleId;
             ruleId=[[clazzData objectForKey:@"ruleId"] intValue];
-            NSLog(@"****************%ld",ruleId);
             OpenCourseData * openCourse=[[OpenCourseData alloc] initWithDict:clazzData rule:clazzData];
+            if(i==1){
+                openCourse.desc=@"****************我是描述，我是描述";
+            }
             [self.openCourseDataArr addObject:openCourse];
         }
-
+        [self addOpenCourseTableView];
+        
+        
     }];
 }
 
@@ -125,12 +129,28 @@
     
 }
 
--(void)cycleScrollView:(GKCycleScrollView *)cycleScrollView didSelectCellAtIndex:(NSInteger)index{
-    
-}
+
 -(void)cycleScrollView:(GKCycleScrollView *)cycleScrollView didSelectCellGTitleLabelAtIndex:(NSInteger)index{
     
     NSLog(@"label 被点击了 index:: %ld ",index-0x111);
+}
+#pragma mark -open course tableview
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 2;
+    
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *ID=@"cell";
+    NSLog(@"hahahahahhahahah");
+    OpenCourseTableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell==nil) {
+        cell=[[OpenCourseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    }
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    [cell setOpenCourseData:self.openCourseDataArr[indexPath.row]];
+    
+    return cell;
 }
 
 #pragma mark - add view
@@ -143,6 +163,17 @@
         make.height.mas_equalTo(200.0f);
     }];
     [self.cycleScrollView reloadData];
+}
+-(void) addOpenCourseTableView {
+    
+    [self.view addSubview:self.openCourseTableview ];
+    [self.openCourseTableview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.view.mas_width);
+        make.top.equalTo(self.view.mas_top).offset(230);
+    }];
+    [self.openCourseTableview reloadData];
+    
+    
 }
 
 
@@ -160,6 +191,24 @@
     }
     return _cycleScrollView;
 }
+-(UITableView *) openCourseTableview{
+    if (_openCourseTableview==nil) {
+        _openCourseTableview=[[UITableView alloc] init];
+        _openCourseTableview.dataSource=self;
+        _openCourseTableview.delegate=self;
+        _openCourseTableview.backgroundColor=[UIColor whiteColor];
+        _openCourseTableview.rowHeight=UITableViewAutomaticDimension;
+        _openCourseTableview.estimatedRowHeight=80.0;
+        _openCourseTableview.scrollEnabled=NO;
+        [_openCourseTableview setTableFooterView:[[UIView alloc]initWithFrame:CGRectZero]];
+
+    }
+    return _openCourseTableview;
+    
+    
+}
+
+
 
 #pragma mark - 给 cell  添加数据
 

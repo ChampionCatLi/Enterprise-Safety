@@ -198,7 +198,7 @@
         _companyNameLabel=[[UILabel alloc] init];
         _companyNameLabel.text=@"© 北京通安信息技术有限公司版权所有";
         _companyNameLabel.font=[UIFont systemFontOfSize:11];
-        _companyNameLabel.textColor=LCGay616161;
+        _companyNameLabel.textColor=LCBlack333333;
     }
     
     return  _companyNameLabel;

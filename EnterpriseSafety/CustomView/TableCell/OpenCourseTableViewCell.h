@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OpenCourseTableViewCell : UITableViewCell
 
-+(void) setOpenCourseData : (OpenCourseData *) openCourseData;
+-(void) setOpenCourseData : (OpenCourseData *) openCourseData;
 
 @end
 

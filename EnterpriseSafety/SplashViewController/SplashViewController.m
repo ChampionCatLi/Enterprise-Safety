@@ -41,8 +41,6 @@
     NSUserDefaults * userData=[NSUserDefaults standardUserDefaults];
     _token=[userData stringForKey:data_key_user_token];
     _jseid=[userData stringForKey:data_key_user_jse_id];
-    NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
-    NSLog(@"token：：：：：： %@",[defaults stringForKey:data_key_user_token]);
     if (_token!=nil) {
         [self jundgeGo];
     }else{
