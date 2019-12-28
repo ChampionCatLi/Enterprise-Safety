@@ -35,13 +35,15 @@
 -(void) fillData:(OpenCourseData *) openCourseData{
     _courseNameLabel.text=openCourseData.name;
     _courseTimeLabel.text=openCourseData.showDuration;
+    
+    
+    
     if (openCourseData.desc==nil) {
         self.courseDescLabel.hidden=YES;
     }else{
          self.courseDescLabel.hidden=NO;
-        NSLog(@"这是描述这是描述：：：：：%@     %@"
-              ,openCourseData.desc,openCourseData.name);
-        self.courseDescLabel.text=openCourseData.desc;
+       _courseDescLabel.text=openCourseData.desc;
+
     }
     
     
@@ -55,23 +57,24 @@
 
     [_courseNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 
-        make.top.equalTo(self.contentView.mas_top);
-        make.left.equalTo(self.contentView.mas_left);
-        make.height.equalTo(@15);
+        make.top.equalTo(self.contentView.mas_top).offset(15);
+        make.left.equalTo(self.contentView.mas_left).offset(15);
+    
     }];
 
     [self.contentView addSubview:self.courseTimeLabel ];
     [_courseTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.courseNameLabel.mas_bottom).offset(15);
-        make.left.equalTo(self.contentView.mas_left);
+        make.left.equalTo(self.contentView.mas_left).offset(15);
     }];
 
     [self.contentView addSubview:self.courseDescLabel];
 
     [_courseDescLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.courseTimeLabel.mas_bottom);
-        make.left.equalTo(self.contentView.mas_left);
+        make.top.equalTo(self.courseTimeLabel.mas_bottom).offset(15);
+        make.left.equalTo(self.contentView.mas_left).offset(15);
         make.bottom.equalTo(self.contentView.mas_bottom).offset(-15);
+        make.right.equalTo(self.contentView.mas_right).offset(-15);
 
     }];
 
@@ -138,7 +141,7 @@
     return _courseNameLabel;
     
 }
--(UILabel *) courseDescabel{
+-(UILabel *) courseDescLabel{
     if(_courseDescLabel==nil){
         _courseDescLabel=[[UILabel alloc] init];
         _courseDescLabel.font=LCFont12;

@@ -15,4 +15,5 @@ pod 'AFNetworking', '~> 3.0'
 pod 'IQKeyboardManager' 
 #dialog 
 pod 'WMZDialog'
+pod  'UITableView+FDTemplateLayoutCell'
 end
