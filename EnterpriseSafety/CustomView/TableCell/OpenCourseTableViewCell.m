@@ -33,13 +33,16 @@
 
 #pragma mark - 填充data
 -(void) fillData:(OpenCourseData *) openCourseData{
+    NSLog(@"filldata::::%@",openCourseData.name);
     _courseNameLabel.text=openCourseData.name;
     _courseTimeLabel.text=openCourseData.showDuration;
+
     
-    
-    
-    if (openCourseData.desc==nil) {
+
+    if (openCourseData.desc.length == 0) {
         self.courseDescLabel.hidden=YES;
+  
+ 
     }else{
          self.courseDescLabel.hidden=NO;
        _courseDescLabel.text=openCourseData.desc;
@@ -77,6 +80,8 @@
         make.right.equalTo(self.contentView.mas_right).offset(-15);
 
     }];
+    
+
 
 
 

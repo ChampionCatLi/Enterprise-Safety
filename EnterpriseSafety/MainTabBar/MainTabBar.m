@@ -9,33 +9,37 @@
 #import "MainTabBar.h"
 #import "CourseViewController.h"
 #import "MyCenterViewController.h"
+#import "MyCoursePlaneViewController.h"
 @implementation MainTabBar
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 -(instancetype) init {
     self=[super init];
     if (self) {
         
         
-           CourseViewController * courseVC= [[CourseViewController alloc] init];
-           UINavigationController * courseNav =[[UINavigationController alloc] initWithRootViewController:courseVC];
+        //           CourseViewController * courseVC= [[CourseViewController alloc] init];
+        //           UINavigationController * courseNav =[[UINavigationController alloc] initWithRootViewController:courseVC];
+        //           courseNav.title=LCMainCourseTitle;
+        //
+        MyCoursePlaneViewController * courseVC= [[MyCoursePlaneViewController alloc] init];
+        UINavigationController * courseNav =[[UINavigationController alloc] initWithRootViewController:courseVC];
         courseNav.title=LCMainCourseTitle;
-         
-           MyCenterViewController * myVC=[[MyCenterViewController alloc] init];
-           UINavigationController * myNav=[[UINavigationController alloc] initWithRootViewController:myVC];
-           myNav.title=LCMainMyCenterTitle;
+        MyCenterViewController * myVC=[[MyCenterViewController alloc] init];
+        UINavigationController * myNav=[[UINavigationController alloc] initWithRootViewController:myVC];
+        myNav.title=LCMainMyCenterTitle;
         
         
         [self setViewControllers:@[courseNav,myNav]];
-
-//           tabBarController.tabBar.barTintColor=[UIColor whiteColor];
+        
+        //           tabBarController.tabBar.barTintColor=[UIColor whiteColor];
         
         
     }

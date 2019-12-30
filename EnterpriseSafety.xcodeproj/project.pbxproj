@@ -21,6 +21,9 @@
 		E54CE3222394A251002931E4 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54CE3212394A251002931E4 /* CourseViewController.m */; };
 		E54CE3262394C23C002931E4 /* cinema.png in Resources */ = {isa = PBXBuildFile; fileRef = E54CE3242394C23C002931E4 /* cinema.png */; };
 		E54CE3272394C23C002931E4 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = E54CE3252394C23C002931E4 /* movie.png */; };
+		E55188F623B9881D0041A1F4 /* MyCoursePlaneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55188F523B9881D0041A1F4 /* MyCoursePlaneViewController.m */; };
+		E55188FA23B993A80041A1F4 /* OpenPlaneTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55188F923B993A80041A1F4 /* OpenPlaneTableView.m */; };
+		E551890023B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E55188FF23B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.m */; };
 		E555807023B0A6F500374DCC /* LCCircular.m in Sources */ = {isa = PBXBuildFile; fileRef = E555806F23B0A6F500374DCC /* LCCircular.m */; };
 		E555807323B0A73D00374DCC /* CircularPrograss.m in Sources */ = {isa = PBXBuildFile; fileRef = E555807223B0A73D00374DCC /* CircularPrograss.m */; };
 		E555807723B0CF9E00374DCC /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E555807623B0CF9E00374DCC /* SplashViewController.m */; };
@@ -189,6 +192,12 @@
 		E54CE3212394A251002931E4 /* CourseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		E54CE3242394C23C002931E4 /* cinema.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cinema.png; sourceTree = "<group>"; };
 		E54CE3252394C23C002931E4 /* movie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie.png; sourceTree = "<group>"; };
+		E55188F423B9881D0041A1F4 /* MyCoursePlaneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCoursePlaneViewController.h; sourceTree = "<group>"; };
+		E55188F523B9881D0041A1F4 /* MyCoursePlaneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCoursePlaneViewController.m; sourceTree = "<group>"; };
+		E55188F823B993A80041A1F4 /* OpenPlaneTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenPlaneTableView.h; sourceTree = "<group>"; };
+		E55188F923B993A80041A1F4 /* OpenPlaneTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenPlaneTableView.m; sourceTree = "<group>"; };
+		E55188FE23B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCOpenCourseTableViewCell.h; sourceTree = "<group>"; };
+		E55188FF23B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCOpenCourseTableViewCell.m; sourceTree = "<group>"; };
 		E555806E23B0A6F500374DCC /* LCCircular.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCircular.h; sourceTree = "<group>"; };
 		E555806F23B0A6F500374DCC /* LCCircular.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCircular.m; sourceTree = "<group>"; };
 		E555807123B0A73D00374DCC /* CircularPrograss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircularPrograss.h; sourceTree = "<group>"; };
@@ -422,6 +431,7 @@
 		E501783A23A38D9A002AD49C /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				E55188F323B987CC0041A1F4 /* MyCoursePlaneViewController */,
 				E54CE31C2394A1AC002931E4 /* MyCenterController */,
 				E54CE31B2394A188002931E4 /* CourseController */,
 				E501783B23A38DBE002AD49C /* MainTabBar.h */,
@@ -607,13 +617,34 @@
 			children = (
 				E5AA236523B4A039003B89DF /* OpenCourseTableViewCell.h */,
 				E5AA236623B4A039003B89DF /* OpenCourseTableViewCell.m */,
+				E55188FE23B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.h */,
+				E55188FF23B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.m */,
 			);
 			path = TableCell;
+			sourceTree = "<group>";
+		};
+		E55188F323B987CC0041A1F4 /* MyCoursePlaneViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E55188F423B9881D0041A1F4 /* MyCoursePlaneViewController.h */,
+				E55188F523B9881D0041A1F4 /* MyCoursePlaneViewController.m */,
+			);
+			path = MyCoursePlaneViewController;
+			sourceTree = "<group>";
+		};
+		E55188F723B9936B0041A1F4 /* Tableview */ = {
+			isa = PBXGroup;
+			children = (
+				E55188F823B993A80041A1F4 /* OpenPlaneTableView.h */,
+				E55188F923B993A80041A1F4 /* OpenPlaneTableView.m */,
+			);
+			path = Tableview;
 			sourceTree = "<group>";
 		};
 		E555806C23B0A61500374DCC /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				E55188F723B9936B0041A1F4 /* Tableview */,
 				E54F4AFD23B35F30003FA5C5 /* TableCell */,
 				E555806D23B0A65D00374DCC /* CircularProgressView */,
 				E596D1F423989E2800C72F17 /* MyScrollView */,
@@ -976,11 +1007,14 @@
 				E54136FF23A9F0040025446E /* NetWorkManager.m in Sources */,
 				E5E06DE123B1DB50004FBF24 /* LCUtils.m in Sources */,
 				E501783D23A38DBE002AD49C /* MainTabBar.m in Sources */,
+				E55188FA23B993A80041A1F4 /* OpenPlaneTableView.m in Sources */,
 				E54CE3222394A251002931E4 /* CourseViewController.m in Sources */,
 				E501783923A38402002AD49C /* LearnVideoViewController.m in Sources */,
 				E555807723B0CF9E00374DCC /* SplashViewController.m in Sources */,
+				E551890023B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.m in Sources */,
 				E501782F23A38388002AD49C /* ExamViewController.m in Sources */,
 				E5747AB923AC6DA00026CECC /* Foundation+Log.m in Sources */,
+				E55188F623B9881D0041A1F4 /* MyCoursePlaneViewController.m in Sources */,
 				E555807023B0A6F500374DCC /* LCCircular.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

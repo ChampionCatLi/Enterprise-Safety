@@ -1,32 +1,35 @@
 //
-//  CourseViewController.m
+//  MyCoursePlaneViewController.m
 //  EnterpriseSafety
 //
-//  Created by 超 on 2019/12/2.
+//  Created by 超 on 2019/12/30.
 //  Copyright © 2019 chao. All rights reserved.
 //
 
-#import "CourseViewController.h"
+#import "MyCoursePlaneViewController.h"
 #import "GKCycleScrollView.h"
 #import "GKCycleScrollViewCell.h"
 #import <XMNetworking.h>
 #import "OpenCourseData.h"
 #import "OpenCourseTableViewCell.h"
+#import "OpenPlaneTableView.h"
 
-@interface CourseViewController ()<GKCycleScrollViewDelegate,GKCycleScrollViewDataSource,UITableViewDelegate,UITableViewDataSource>
+@interface MyCoursePlaneViewController ()<GKCycleScrollViewDelegate,GKCycleScrollViewDataSource,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) GKCycleScrollView * cycleScrollView;
 
 @property(nonatomic,strong) NSArray * planeDataArr;
-@property(nonatomic,strong)GKCycleScrollViewCell * cycleScrollViewCell;
+
 @property(nonatomic,strong) NSMutableArray * openCourseDataArr;
-@property(nonatomic,strong) UITableView  * openCourseTableview;
-@property(nonatomic,strong) UIScrollView * uiScrollVIew;
-@property(nonatomic,strong) UIView *contentView;
-@property (nonatomic,strong) UIView * headerView;
+@property(nonatomic,strong) OpenCourseTableViewCell  * openCourseTableview;
+@property(nonatomic,strong) UITableView * rootTableview;
+@property(nonatomic,strong) OpenPlaneTableView * openplaneTableView;
+@property(nonatomic,strong) UIView * openCourseTableViewHeaderView;
+@property(nonatomic,strong) GKCycleScrollViewCell * cycleScrollViewCell;
+@property(nonatomic,strong) UIView * footerView;
 
 @end
 
-@implementation CourseViewController
+@implementation MyCoursePlaneViewController
 
 
 
@@ -52,28 +55,31 @@
 #pragma -mark init self view
 -(void) initView{
     self.edgesForExtendedLayout = UIRectEdgeNone;//这句话就是从导航栏下面开始计算高度
+  
     self.view.backgroundColor=LCBackGroundColor;
+    [self.view addSubview:self.rootTableview];
+//       self.view=_rootTableview;
+//
+//    self.rootTableview = [[UITableView alloc] initWithFrame:CGRectMake(0, self.headerView.frame.origin.y + self.headerView.frame.size.height, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
 
-    [self.view addSubview:self.uiScrollVIew];
-    [_uiScrollVIew mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(self.view);
-    }];
+    [_rootTableview mas_makeConstraints:^(MASConstraintMaker *make) {
 
-    [self.uiScrollVIew addSubview:self.contentView];
-    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(self.view.mas_height);
-        make.width.equalTo(@SCREEN_WIDTH);
+        make.left.right.top.bottom.equalTo(self.view);
+
+
     }];
+//
+ 
 
 }
 
 #pragma -mark 获取网络数据
 -(void) initData{
-    //获取在学习计划列表
-
-  [self getLearnPlane];
-  [self getOpenCourse];
     
+    //获取在学习计划列表
+    [self getLearnPlane];
+    [self getOpenCourse];
+    self.rootTableview.contentSize=CGSizeMake(SCREEN_WIDTH, 200);
 }
 
 
@@ -94,7 +100,7 @@
             self.planeDataArr=responseObject[@"message"];
             [self addPlaneScrollView];
         }
-          
+        
     }];
 }
 
@@ -111,14 +117,13 @@
             NSInteger ruleId;
             ruleId=[[clazzData objectForKey:@"ruleId"] intValue];
             OpenCourseData * openCourse=[[OpenCourseData alloc] initWithDict:clazzData rule:clazzData];
-//            if(i==1){
-//                 openCourse.desc=@"过年了 过年了过年了 过年了过年了 过年了过年了 过年了过年了 过年了 过年了过年了 过年了过年了 过年了过年了 过年了 过年了过年了 过年了过年了 过年了过年了 过年了 过年了过年了 过年了过年了 过年了过年了 过年了 过年了过年了 过年了过年了 过年了";
-//            }
+            if(i==1){
+                 openCourse.desc=@"过年了 过年了过年了 过年了过年了 过年了过年了 过年了过年了 过年了 过年了过年了 过年了过年了 过年了过年了 过年了 过年了过年了 过年了过年了 过年了过年了 过年了 过年了过年了 过年了过年了 过年了过年了 过年了 过年了过年了 过年了过年了 过年了13432423425";
+            }
             [self.openCourseDataArr addObject:openCourse];
         }
-        [self addOpenCourseTableView];
-        
-        
+      
+        [self.rootTableview reloadData];
     }];
 }
 
@@ -132,7 +137,6 @@
     }
     [self putData2Cell:cell cellIndex:index];
     
-    
     return cell;
 }
 -(CGSize)sizeForCellInCycleScrollView:(GKCycleScrollView *)cycleScrollView{
@@ -143,9 +147,7 @@
 }
 - (void)cycleScrollView:(GKCycleScrollView *)cycleScrollView didScrollCellToIndex:(NSInteger)index{
     
-    
 }
-
 
 -(void)cycleScrollView:(GKCycleScrollView *)cycleScrollView didSelectCellGTitleLabelAtIndex:(NSInteger)index{
     
@@ -154,123 +156,123 @@
 #pragma mark -open course tableview
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 2;
-    
+    return 1;
+
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *ID=@"cell";
-    OpenCourseTableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell==nil) {
-        cell=[[OpenCourseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    UITableViewCell * cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    if (indexPath.row==0) {
+        [self.openplaneTableView setData:self.openCourseDataArr];
+        [cell.contentView addSubview:self.openplaneTableView];
+        _openplaneTableView.frame=CGRectMake(0, 0, tableView.bounds.size.width, _openplaneTableView.contentSize.height);
+        NSLog(@"openplaneTableView.contentSize.height:::: %f",_openplaneTableView.contentSize.height);
+        return  cell;
+    }else{
+       
     }
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    [cell setOpenCourseData:self.openCourseDataArr[indexPath.row]];
     
     return cell;
 }
 
+
 #pragma mark - add view
 
+-(UITableView *) rootTableview{
+    
+    
+    if (_rootTableview==nil) {
+        _rootTableview =[[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain   ];
+        _rootTableview.backgroundColor=LCBackGroundColor;
+        _rootTableview.delegate=self;
+        _rootTableview.dataSource=self;
+        _rootTableview.rowHeight=UITableViewAutomaticDimension;
+        _openplaneTableView.estimatedRowHeight=300.0;
+//       [_rootTableview setTableFooterView:[[UIView alloc]initWithFrame:CGRectZero]];
+        _rootTableview.separatorStyle=UITableViewCellSeparatorStyleNone;
+        _rootTableview.scrollEnabled=YES;
+//          _rootTableview.tableFooterView=self.footerView;
+    }
+    
+    return _rootTableview;
+}
+
+
+
 -(void) addPlaneScrollView{
-    [self.contentView addSubview: self.cycleScrollView];
-    [self.cycleScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.contentView);
-        make.top.equalTo(self.contentView.mas_top).offset(15);
-        make.height.mas_equalTo(200.0f);
-    }];
+    self.rootTableview.tableHeaderView=self.cycleScrollView;
     [self.cycleScrollView reloadData];
 }
--(void) addOpenCourseTableView {
-    
-    [self.contentView addSubview:self.openCourseTableview ];
-    [_openCourseTableview mas_makeConstraints:^(MASConstraintMaker *make) {
-       make.top.equalTo(self.cycleScrollView.mas_bottom).offset(15);
-//       make.bottom.equalTo(self.view.mas_bottom).offset(-20);
-        make.height.equalTo(@200);
-        make.width.equalTo(@SCREEN_WIDTH);
-    }];
-    [self.openCourseTableview reloadData];
-}
-
-
-
 
 
 #pragma mark - init view
 -(GKCycleScrollView *)cycleScrollView{
     if (!_cycleScrollView) {
-        _cycleScrollView=[GKCycleScrollView new ];
+        _cycleScrollView=[[GKCycleScrollView alloc ] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width,220)];
         _cycleScrollView.dataSource =self;
         _cycleScrollView.delegate=self;
         _cycleScrollView.isAutoScroll=NO;
         _cycleScrollView.isInfiniteLoop=NO;
         _cycleScrollView.isChangeAlpha=NO;
         _cycleScrollView.leftRightMargin=30.0f;
+    
+        
     }
     return _cycleScrollView;
 }
--(UITableView *) openCourseTableview{
-    if (_openCourseTableview==nil) {
-        _openCourseTableview=[[UITableView alloc]init];
-        _openCourseTableview.dataSource=self;
-        _openCourseTableview.delegate=self;
-        _openCourseTableview.backgroundColor=[UIColor greenColor];
-         _openCourseTableview.estimatedRowHeight=80.0;
-        _openCourseTableview.rowHeight=UITableViewAutomaticDimension;
-        _openCourseTableview.scrollEnabled=NO;
-        [_openCourseTableview setTableFooterView:[[UIView alloc]initWithFrame:CGRectZero]];
-        _openCourseTableview.tableHeaderView=self.headerView;
 
-    }
-    return _openCourseTableview;
-}
 
--(UIScrollView *) uiScrollVIew{
-    if (_uiScrollVIew==nil) {
-        _uiScrollVIew=[[UIScrollView alloc] init];
-        _uiScrollVIew.alwaysBounceVertical=YES;
-        _uiScrollVIew.contentSize=CGSizeMake(0, 0);
-    }
+
+-(OpenPlaneTableView *) openplaneTableView{
     
-    return _uiScrollVIew;
-}
-
--(UIView *) contentView{
-    if (_contentView==nil) {
-        _contentView =[[UIView alloc] init];
-        _contentView.backgroundColor=[UIColor redColor];
+    if (_openplaneTableView==nil) {
+        _openplaneTableView= [[OpenPlaneTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain ];
+        _openplaneTableView.rowHeight=UITableViewAutomaticDimension;
+        _openplaneTableView.estimatedRowHeight=100.0;
+        _openplaneTableView.backgroundColor=LCBackGroundColor;
+        _openplaneTableView.scrollEnabled=NO;
+        
+        _openplaneTableView.tableHeaderView=self.openCourseTableViewHeaderView;
+    
     }
-    return _contentView;
+    return _openplaneTableView;
 }
 
 
--(UIView *) headerView{
-    if (_headerView==nil) {
-        _headerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
-        _headerView.backgroundColor=[UIColor whiteColor];
+-(UIView *) openCourseTableViewHeaderView{
+    if (_openCourseTableViewHeaderView==nil) {
+        _openCourseTableViewHeaderView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+        _openCourseTableViewHeaderView.backgroundColor=[UIColor orangeColor];
         UILabel * headerTitle=[[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 40)];
         headerTitle.font=LCFont15;
         headerTitle.text=@"可选课程";
         headerTitle.adjustsFontSizeToFitWidth=YES;
-        [_headerView addSubview:headerTitle];
+        [_openCourseTableViewHeaderView addSubview:headerTitle];
         [headerTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(_headerView.mas_centerY);
-            make.left.equalTo(self.headerView.mas_left).offset(15);
+            make.centerY.equalTo(_openCourseTableViewHeaderView.mas_centerY);
+            make.left.equalTo(self.openCourseTableViewHeaderView.mas_left).offset(15);
         }];
-        
+
         UIView * gayLine=[[UIView alloc] init];
         gayLine.backgroundColor=LCGayLineBDBDBD;
-        [self.headerView addSubview:gayLine];
+        [self.openCourseTableViewHeaderView addSubview:gayLine];
         [gayLine mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(self.headerView.mas_width);
+            make.width.equalTo(self.openCourseTableViewHeaderView.mas_width);
             make.height.equalTo(@0.5);
-            make.bottom.equalTo(self.headerView.mas_bottom);
+            make.bottom.equalTo(self.openCourseTableViewHeaderView.mas_bottom);
         }];
-        
-        
-        
+
     }
-    return _headerView;
+    return _openCourseTableViewHeaderView;
+}
+
+-(UIView *) footerView{
+    if (_footerView==nil) {
+        _footerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+        _footerView.backgroundColor=[UIColor greenColor];
+    }
+    return _footerView;
+    
 }
 
 
