@@ -12,7 +12,7 @@
 @interface OpenPlaneTableView()
 
 @property(nonatomic,strong) UIView * headerView;
-//@property(nonatomic,strong) OpenCourseTableViewCell * openCpurseTableViewCell;
+@property(nonatomic,strong) UIView * footerView;
 @end
 
 @implementation OpenPlaneTableView
@@ -27,8 +27,8 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"%ld",_data.count);
-    return _data.count;
+    
+    return 3;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -44,36 +44,21 @@
 -(void)setData:(NSArray *)data{
     if (data.count>0) {
           _data=data;
+        self.footerView=self.footerView;
         [self reloadData];
     }
-   
-    
 }
--(UIView *) headerView{
-    if (_headerView==nil) {
-        _headerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
-        _headerView.backgroundColor=[UIColor orangeColor];
-//        UILabel * headerTitle=[[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 40)];
-//        headerTitle.font=LCFont15;
-//        headerTitle.text=@"可选课程";
-//        headerTitle.adjustsFontSizeToFitWidth=YES;
-//        [_headerView addSubview:headerTitle];
-//        [headerTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.centerY.equalTo(_headerView.mas_centerY);
-//            make.left.equalTo(self.headerView.mas_left).offset(15);
-//        }];
-//
-//        UIView * gayLine=[[UIView alloc] init];
-//        gayLine.backgroundColor=LCGayLineBDBDBD;
-//        [self.headerView addSubview:gayLine];
-//        [gayLine mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.width.equalTo(self.headerView.mas_width);
-//            make.height.equalTo(@0.5);
-//            make.bottom.equalTo(self.headerView.mas_bottom);
-//        }];
-//
+
+
+-(UIView *) footerView{
+    
+    if (_footerView==nil) {
+        _footerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 200)];
+        _footerView.backgroundColor=[UIColor greenColor];
     }
-    return _headerView;
+
+    return _footerView;
+    
 }
 
 @end

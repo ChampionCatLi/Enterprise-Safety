@@ -33,12 +33,8 @@
 
 #pragma mark - 填充data
 -(void) fillData:(OpenCourseData *) openCourseData{
-    NSLog(@"filldata::::%@",openCourseData.name);
     _courseNameLabel.text=openCourseData.name;
     _courseTimeLabel.text=openCourseData.showDuration;
-
-    
-
     if (openCourseData.desc.length == 0) {
         self.courseDescLabel.hidden=YES;
   
@@ -62,7 +58,7 @@
 
         make.top.equalTo(self.contentView.mas_top).offset(15);
         make.left.equalTo(self.contentView.mas_left).offset(15);
-    
+
     }];
 
     [self.contentView addSubview:self.courseTimeLabel ];
@@ -80,15 +76,11 @@
         make.right.equalTo(self.contentView.mas_right).offset(-15);
 
     }];
-    
-
-
-
 
 }
 
 
-//#pragma mark - 初始化 view
+#pragma mark - 初始化 view
 //-(void) initView{
 //
 //    [self.contentView addSubview:self.itemView];
@@ -97,7 +89,6 @@
 //        make.bottom.equalTo(self.contentView.mas_bottom).offset(-15);
 //        make.left.equalTo(self.contentView.mas_left).offset(15);
 //        make.right.equalTo(self.contentView.mas_right).offset(-15);
-//
 //
 //    }];
 //
@@ -123,8 +114,6 @@
 //        make.left.equalTo(self.itemView.mas_left);
 //
 //    }];
-//
-//
 //
 //}
 
@@ -152,6 +141,7 @@
         _courseDescLabel.font=LCFont12;
         _courseDescLabel.textColor=LCGay979797;
         _courseDescLabel.numberOfLines=0;
+
         _courseTimeLabel.adjustsFontSizeToFitWidth=YES;
         
     }

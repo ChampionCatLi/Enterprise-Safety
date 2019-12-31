@@ -26,6 +26,7 @@
 @property(nonatomic,strong) UIView * openCourseTableViewHeaderView;
 @property(nonatomic,strong) GKCycleScrollViewCell * cycleScrollViewCell;
 @property(nonatomic,strong) UIView * footerView;
+@property(nonatomic,assign) CGFloat  openCellHeight;
 
 @end
 
@@ -58,15 +59,10 @@
   
     self.view.backgroundColor=LCBackGroundColor;
     [self.view addSubview:self.rootTableview];
-//       self.view=_rootTableview;
-//
-//    self.rootTableview = [[UITableView alloc] initWithFrame:CGRectMake(0, self.headerView.frame.origin.y + self.headerView.frame.size.height, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
 
     [_rootTableview mas_makeConstraints:^(MASConstraintMaker *make) {
-
-        make.left.right.top.bottom.equalTo(self.view);
-
-
+        make.height.equalTo(self.view.mas_height);
+        make.width.equalTo(self.view.mas_width);
     }];
 //
  
@@ -79,7 +75,10 @@
     //获取在学习计划列表
     [self getLearnPlane];
     [self getOpenCourse];
-    self.rootTableview.contentSize=CGSizeMake(SCREEN_WIDTH, 200);
+    
+    [self getLoaclData];
+    NSLog(@"size:::%f",self.rootTableview.contentSize.height);
+
 }
 
 
@@ -88,6 +87,10 @@
 
 #pragma mark -network
 
+-(void) getLoaclData{
+    
+    
+}
 
 -(void)  getLearnPlane{
     
@@ -161,20 +164,31 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *ID=@"cell";
-    UITableViewCell * cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    
+    if (cell==nil) {
+        cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+     }
     if (indexPath.row==0) {
-        [self.openplaneTableView setData:self.openCourseDataArr];
-        [cell.contentView addSubview:self.openplaneTableView];
-        _openplaneTableView.frame=CGRectMake(0, 0, tableView.bounds.size.width, _openplaneTableView.contentSize.height);
-        NSLog(@"openplaneTableView.contentSize.height:::: %f",_openplaneTableView.contentSize.height);
-        return  cell;
-    }else{
-       
-    }
+         [self.openplaneTableView setData:self.openCourseDataArr];
+         [cell.contentView addSubview:self.openplaneTableView];
+        _openCellHeight= _openplaneTableView.contentSize.height;
+         _openplaneTableView.frame=CGRectMake(0, 0, tableView.bounds.size.width,_openCellHeight);
+         return  cell;
+     }
     
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row==0){
+        NSLog(@"_openCellHeight：：：：： %f",_openCellHeight);
+        return  _openCellHeight;
+    }else{
+        return 600;
+    }
+ 
+}
 
 #pragma mark - add view
 
@@ -187,11 +201,9 @@
         _rootTableview.delegate=self;
         _rootTableview.dataSource=self;
         _rootTableview.rowHeight=UITableViewAutomaticDimension;
-        _openplaneTableView.estimatedRowHeight=300.0;
-//       [_rootTableview setTableFooterView:[[UIView alloc]initWithFrame:CGRectZero]];
         _rootTableview.separatorStyle=UITableViewCellSeparatorStyleNone;
         _rootTableview.scrollEnabled=YES;
-//          _rootTableview.tableFooterView=self.footerView;
+        _rootTableview.showsVerticalScrollIndicator=YES;
     }
     
     return _rootTableview;
@@ -215,8 +227,6 @@
         _cycleScrollView.isInfiniteLoop=NO;
         _cycleScrollView.isChangeAlpha=NO;
         _cycleScrollView.leftRightMargin=30.0f;
-    
-        
     }
     return _cycleScrollView;
 }
@@ -228,11 +238,10 @@
     if (_openplaneTableView==nil) {
         _openplaneTableView= [[OpenPlaneTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain ];
         _openplaneTableView.rowHeight=UITableViewAutomaticDimension;
-        _openplaneTableView.estimatedRowHeight=100.0;
-        _openplaneTableView.backgroundColor=LCBackGroundColor;
+        _openplaneTableView.estimatedRowHeight=100;
+        _openplaneTableView.backgroundColor=[UIColor greenColor];
         _openplaneTableView.scrollEnabled=NO;
-        
-        _openplaneTableView.tableHeaderView=self.openCourseTableViewHeaderView;
+//        _openplaneTableView.tableHeaderView=self.openCourseTableViewHeaderView;
     
     }
     return _openplaneTableView;
