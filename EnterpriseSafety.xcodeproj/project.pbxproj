@@ -163,6 +163,8 @@
 		E5E06DE123B1DB50004FBF24 /* LCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E06DE023B1DB50004FBF24 /* LCUtils.m */; };
 		E5E7DD8423A4D3590084EF90 /* learn_history@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E7DD8323A4D3590084EF90 /* learn_history@3x.png */; };
 		E5EE3B2A23BED20400242C16 /* OpenCourseFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EE3B2923BED20400242C16 /* OpenCourseFrame.m */; };
+		E5EE3B2D23BF465D00242C16 /* OpenCourseTableVIewTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EE3B2C23BF465D00242C16 /* OpenCourseTableVIewTitleTableViewCell.m */; };
+		E5EE3B3023BF55D900242C16 /* LoadMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EE3B2F23BF55D900242C16 /* LoadMoreTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -348,6 +350,10 @@
 		E5E7DD8323A4D3590084EF90 /* learn_history@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learn_history@3x.png"; sourceTree = "<group>"; };
 		E5EE3B2823BED20400242C16 /* OpenCourseFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCourseFrame.h; sourceTree = "<group>"; };
 		E5EE3B2923BED20400242C16 /* OpenCourseFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenCourseFrame.m; sourceTree = "<group>"; };
+		E5EE3B2B23BF465D00242C16 /* OpenCourseTableViewTitleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCourseTableViewTitleTableViewCell.h; sourceTree = "<group>"; };
+		E5EE3B2C23BF465D00242C16 /* OpenCourseTableVIewTitleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenCourseTableVIewTitleTableViewCell.m; sourceTree = "<group>"; };
+		E5EE3B2E23BF55D900242C16 /* LoadMoreTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMoreTableViewCell.h; sourceTree = "<group>"; };
+		E5EE3B2F23BF55D900242C16 /* LoadMoreTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadMoreTableViewCell.m; sourceTree = "<group>"; };
 		EAAF088EA0AD5F4C9F746636 /* Pods-EnterpriseSafety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnterpriseSafety.debug.xcconfig"; path = "Target Support Files/Pods-EnterpriseSafety/Pods-EnterpriseSafety.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -614,6 +620,10 @@
 			children = (
 				E5AA236523B4A039003B89DF /* OpenCourseTableViewCell.h */,
 				E5AA236623B4A039003B89DF /* OpenCourseTableViewCell.m */,
+				E5EE3B2B23BF465D00242C16 /* OpenCourseTableViewTitleTableViewCell.h */,
+				E5EE3B2C23BF465D00242C16 /* OpenCourseTableVIewTitleTableViewCell.m */,
+				E5EE3B2E23BF55D900242C16 /* LoadMoreTableViewCell.h */,
+				E5EE3B2F23BF55D900242C16 /* LoadMoreTableViewCell.m */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -1000,6 +1010,7 @@
 				E501782523A3761E002AD49C /* LearnHistoryController.m in Sources */,
 				E5EE3B2A23BED20400242C16 /* OpenCourseFrame.m in Sources */,
 				E570F47A238F9C2B004CAF0C /* AppDelegate.m in Sources */,
+				E5EE3B2D23BF465D00242C16 /* OpenCourseTableVIewTitleTableViewCell.m in Sources */,
 				E501783523A383D9002AD49C /* LearnPlanDetailViewController.m in Sources */,
 				E541370323A9F7370025446E /* BaseViewController.m in Sources */,
 				E54CE31F2394A236002931E4 /* MyCenterViewController.m in Sources */,
@@ -1015,6 +1026,7 @@
 				E501783923A38402002AD49C /* LearnVideoViewController.m in Sources */,
 				E555807723B0CF9E00374DCC /* SplashViewController.m in Sources */,
 				E501782F23A38388002AD49C /* ExamViewController.m in Sources */,
+				E5EE3B3023BF55D900242C16 /* LoadMoreTableViewCell.m in Sources */,
 				E5747AB923AC6DA00026CECC /* Foundation+Log.m in Sources */,
 				E55188F623B9881D0041A1F4 /* MyCoursePlaneViewController.m in Sources */,
 				E555807023B0A6F500374DCC /* LCCircular.m in Sources */,

@@ -13,6 +13,8 @@
 #import "OpenCourseData.h"
 #import "OpenCourseTableViewCell.h"
 #import "OpenCourseFrame.h"
+#import "OpenCourseTableViewTitleTableViewCell.h"
+#import "LoadMoreTableViewCell.h"
 
 
 @interface MyCoursePlaneViewController ()<GKCycleScrollViewDelegate,GKCycleScrollViewDataSource,UITableViewDelegate,UITableViewDataSource>
@@ -25,6 +27,7 @@
 @property(nonatomic,strong) UIView * openCourseTableViewHeaderView;
 @property(nonatomic,strong) GKCycleScrollViewCell * cycleScrollViewCell;
 @property(nonatomic,strong) UIView * footerView;
+@property(nonatomic,assign) BOOL isShowAllData ;
 
 
 @end
@@ -54,6 +57,7 @@
 
 #pragma -mark init self view
 -(void) initView{
+    self.isShowAllData=NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;//这句话就是从导航栏下面开始计算高度
   
     self.view.backgroundColor=LCBackGroundColor;
@@ -118,7 +122,9 @@
             
             [self.openCourseFrameArr addObject:openFrame];
         }
-      
+        if (_openCourseFrameArr.count<=2) {
+            self.isShowAllData=YES;
+        }
         [self.rootTableview reloadData];
     }];
 }
@@ -151,27 +157,75 @@
 }
 #pragma mark -open course tableview
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+ 
     
-    return 2;
+    if(self.openCourseFrameArr.count>2){
+        if(_isShowAllData){
+            return self.openCourseFrameArr.count;
+        }else{
+            return 4;
+        }
+        
+    }
+  return self.openCourseFrameArr.count;
 
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *ID=@"cell";
-    OpenCourseTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    static NSString * ID;
     
-    if (cell==nil) {
-        cell = [[OpenCourseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-     }
-    cell.openCourseFrame=self.openCourseFrameArr[indexPath.row];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (indexPath.row==0) {
+        ID=@"titleCell";
+        OpenCourseTableViewTitleTableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:ID];
+        if (cell==nil) {
+            
+            cell=[[OpenCourseTableViewTitleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        }
+       cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else if(indexPath.row==3&&!_isShowAllData){
+        ID=@"footerCell";
+        LoadMoreTableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:ID];
+        if (cell==nil) {
+            
+            cell=[[LoadMoreTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell ;
+    }else{
+        ID=@"contentCell";
+        OpenCourseTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+        
+        if (cell==nil) {
+            cell = [[OpenCourseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+         }
+        cell.openCourseFrame=self.openCourseFrameArr[indexPath.row-1];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        return cell;
+    }
     
-    return cell;
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    NSLog(@"cellheight::%f",[self.openCourseFrameArr[indexPath.row] cellHeight]);
-    return [self.openCourseFrameArr[indexPath.row] cellHeight];
+    if (indexPath.row==0) {
+        return 45;
+    }else  if(indexPath.row==3&&!_isShowAllData){
+        return 45;
+    
+    }else{
+        return [self.openCourseFrameArr[indexPath.row-1] cellHeight];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(indexPath.row==3){
+        self.isShowAllData=YES;
+        [self.rootTableview reloadData];
+    }
+    
 }
 
 #pragma mark - add view
