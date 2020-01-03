@@ -22,8 +22,6 @@
 		E54CE3262394C23C002931E4 /* cinema.png in Resources */ = {isa = PBXBuildFile; fileRef = E54CE3242394C23C002931E4 /* cinema.png */; };
 		E54CE3272394C23C002931E4 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = E54CE3252394C23C002931E4 /* movie.png */; };
 		E55188F623B9881D0041A1F4 /* MyCoursePlaneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55188F523B9881D0041A1F4 /* MyCoursePlaneViewController.m */; };
-		E55188FA23B993A80041A1F4 /* OpenPlaneTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55188F923B993A80041A1F4 /* OpenPlaneTableView.m */; };
-		E551890023B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E55188FF23B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.m */; };
 		E555807023B0A6F500374DCC /* LCCircular.m in Sources */ = {isa = PBXBuildFile; fileRef = E555806F23B0A6F500374DCC /* LCCircular.m */; };
 		E555807323B0A73D00374DCC /* CircularPrograss.m in Sources */ = {isa = PBXBuildFile; fileRef = E555807223B0A73D00374DCC /* CircularPrograss.m */; };
 		E555807723B0CF9E00374DCC /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E555807623B0CF9E00374DCC /* SplashViewController.m */; };
@@ -164,6 +162,7 @@
 		E5C3C24F239DDBAC009AB92F /* arrow_l@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C23A239DDBAC009AB92F /* arrow_l@3x.png */; };
 		E5E06DE123B1DB50004FBF24 /* LCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E06DE023B1DB50004FBF24 /* LCUtils.m */; };
 		E5E7DD8423A4D3590084EF90 /* learn_history@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E7DD8323A4D3590084EF90 /* learn_history@3x.png */; };
+		E5EE3B2A23BED20400242C16 /* OpenCourseFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EE3B2923BED20400242C16 /* OpenCourseFrame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -194,10 +193,6 @@
 		E54CE3252394C23C002931E4 /* movie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie.png; sourceTree = "<group>"; };
 		E55188F423B9881D0041A1F4 /* MyCoursePlaneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCoursePlaneViewController.h; sourceTree = "<group>"; };
 		E55188F523B9881D0041A1F4 /* MyCoursePlaneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCoursePlaneViewController.m; sourceTree = "<group>"; };
-		E55188F823B993A80041A1F4 /* OpenPlaneTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenPlaneTableView.h; sourceTree = "<group>"; };
-		E55188F923B993A80041A1F4 /* OpenPlaneTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenPlaneTableView.m; sourceTree = "<group>"; };
-		E55188FE23B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCOpenCourseTableViewCell.h; sourceTree = "<group>"; };
-		E55188FF23B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCOpenCourseTableViewCell.m; sourceTree = "<group>"; };
 		E555806E23B0A6F500374DCC /* LCCircular.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCircular.h; sourceTree = "<group>"; };
 		E555806F23B0A6F500374DCC /* LCCircular.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCircular.m; sourceTree = "<group>"; };
 		E555807123B0A73D00374DCC /* CircularPrograss.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircularPrograss.h; sourceTree = "<group>"; };
@@ -351,6 +346,8 @@
 		E5E06DDF23B1DB50004FBF24 /* LCUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCUtils.h; sourceTree = "<group>"; };
 		E5E06DE023B1DB50004FBF24 /* LCUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCUtils.m; sourceTree = "<group>"; };
 		E5E7DD8323A4D3590084EF90 /* learn_history@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learn_history@3x.png"; sourceTree = "<group>"; };
+		E5EE3B2823BED20400242C16 /* OpenCourseFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCourseFrame.h; sourceTree = "<group>"; };
+		E5EE3B2923BED20400242C16 /* OpenCourseFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenCourseFrame.m; sourceTree = "<group>"; };
 		EAAF088EA0AD5F4C9F746636 /* Pods-EnterpriseSafety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnterpriseSafety.debug.xcconfig"; path = "Target Support Files/Pods-EnterpriseSafety/Pods-EnterpriseSafety.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -617,8 +614,6 @@
 			children = (
 				E5AA236523B4A039003B89DF /* OpenCourseTableViewCell.h */,
 				E5AA236623B4A039003B89DF /* OpenCourseTableViewCell.m */,
-				E55188FE23B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.h */,
-				E55188FF23B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.m */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -635,8 +630,6 @@
 		E55188F723B9936B0041A1F4 /* Tableview */ = {
 			isa = PBXGroup;
 			children = (
-				E55188F823B993A80041A1F4 /* OpenPlaneTableView.h */,
-				E55188F923B993A80041A1F4 /* OpenPlaneTableView.m */,
 			);
 			path = Tableview;
 			sourceTree = "<group>";
@@ -693,6 +686,7 @@
 		E570F477238F9C2B004CAF0C /* EnterpriseSafety */ = {
 			isa = PBXGroup;
 			children = (
+				E5EE3B2723BED1DA00242C16 /* Frame */,
 				E5AA236123B44A24003B89DF /* Model */,
 				E555807423B0CF5800374DCC /* SplashViewController */,
 				E555806C23B0A61500374DCC /* CustomView */,
@@ -747,6 +741,15 @@
 				E5AA236323B44A4D003B89DF /* OpenCourseData.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E5EE3B2723BED1DA00242C16 /* Frame */ = {
+			isa = PBXGroup;
+			children = (
+				E5EE3B2823BED20400242C16 /* OpenCourseFrame.h */,
+				E5EE3B2923BED20400242C16 /* OpenCourseFrame.m */,
+			);
+			path = Frame;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -995,6 +998,7 @@
 				E596D1FA23989E6700C72F17 /* GKCycleScrollViewCell.m in Sources */,
 				E501782923A382F5002AD49C /* LoginController.m in Sources */,
 				E501782523A3761E002AD49C /* LearnHistoryController.m in Sources */,
+				E5EE3B2A23BED20400242C16 /* OpenCourseFrame.m in Sources */,
 				E570F47A238F9C2B004CAF0C /* AppDelegate.m in Sources */,
 				E501783523A383D9002AD49C /* LearnPlanDetailViewController.m in Sources */,
 				E541370323A9F7370025446E /* BaseViewController.m in Sources */,
@@ -1007,11 +1011,9 @@
 				E54136FF23A9F0040025446E /* NetWorkManager.m in Sources */,
 				E5E06DE123B1DB50004FBF24 /* LCUtils.m in Sources */,
 				E501783D23A38DBE002AD49C /* MainTabBar.m in Sources */,
-				E55188FA23B993A80041A1F4 /* OpenPlaneTableView.m in Sources */,
 				E54CE3222394A251002931E4 /* CourseViewController.m in Sources */,
 				E501783923A38402002AD49C /* LearnVideoViewController.m in Sources */,
 				E555807723B0CF9E00374DCC /* SplashViewController.m in Sources */,
-				E551890023B9E5DC0041A1F4 /* LCOpenCourseTableViewCell.m in Sources */,
 				E501782F23A38388002AD49C /* ExamViewController.m in Sources */,
 				E5747AB923AC6DA00026CECC /* Foundation+Log.m in Sources */,
 				E55188F623B9881D0041A1F4 /* MyCoursePlaneViewController.m in Sources */,

@@ -61,6 +61,7 @@
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define ITEM_HEIGHT 50
 #define MARGIN_LEFT_15 15
+#define LCMAEGIN_15 15
 
 #pragma mark -用户 url
 #define url_get_account_organ @"/m/p/a/check/"

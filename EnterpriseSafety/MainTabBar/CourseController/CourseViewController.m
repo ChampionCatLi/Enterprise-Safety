@@ -164,7 +164,7 @@
         cell=[[OpenCourseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    [cell setOpenCourseData:self.openCourseDataArr[indexPath.row]];
+//    [cell setOpenCourseData:self.openCourseDataArr[indexPath.row]];
     
     return cell;
 }

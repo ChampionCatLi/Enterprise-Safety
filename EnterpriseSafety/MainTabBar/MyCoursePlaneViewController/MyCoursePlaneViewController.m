@@ -12,21 +12,20 @@
 #import <XMNetworking.h>
 #import "OpenCourseData.h"
 #import "OpenCourseTableViewCell.h"
-#import "OpenPlaneTableView.h"
+#import "OpenCourseFrame.h"
+
 
 @interface MyCoursePlaneViewController ()<GKCycleScrollViewDelegate,GKCycleScrollViewDataSource,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) GKCycleScrollView * cycleScrollView;
 
 @property(nonatomic,strong) NSArray * planeDataArr;
 
-@property(nonatomic,strong) NSMutableArray * openCourseDataArr;
-@property(nonatomic,strong) OpenCourseTableViewCell  * openCourseTableview;
+@property(nonatomic,strong) NSMutableArray * openCourseFrameArr;
 @property(nonatomic,strong) UITableView * rootTableview;
-@property(nonatomic,strong) OpenPlaneTableView * openplaneTableView;
 @property(nonatomic,strong) UIView * openCourseTableViewHeaderView;
 @property(nonatomic,strong) GKCycleScrollViewCell * cycleScrollViewCell;
 @property(nonatomic,strong) UIView * footerView;
-@property(nonatomic,assign) CGFloat  openCellHeight;
+
 
 @end
 
@@ -61,10 +60,8 @@
     [self.view addSubview:self.rootTableview];
 
     [_rootTableview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(self.view.mas_height);
-        make.width.equalTo(self.view.mas_width);
+        make.edges.equalTo(self.view);
     }];
-//
  
 
 }
@@ -75,9 +72,6 @@
     //获取在学习计划列表
     [self getLearnPlane];
     [self getOpenCourse];
-    
-    [self getLoaclData];
-    NSLog(@"size:::%f",self.rootTableview.contentSize.height);
 
 }
 
@@ -86,11 +80,6 @@
 
 
 #pragma mark -network
-
--(void) getLoaclData{
-    
-    
-}
 
 -(void)  getLearnPlane{
     
@@ -114,7 +103,7 @@
     } onSuccess:^(id  _Nullable responseObject) {
         NSDictionary * messageData=responseObject[@"message"];
         NSArray * clazzArr=messageData[@"clazzes"];
-        self.openCourseDataArr= [NSMutableArray  new];
+        self.openCourseFrameArr= [NSMutableArray  new];
         for (int i= 0; i<clazzArr.count; i++) {
             NSDictionary * clazzData=clazzArr[i];
             NSInteger ruleId;
@@ -123,7 +112,11 @@
             if(i==1){
                  openCourse.desc=@"过年了 过年了过年了 过年了过年了 过年了过年了 过年了过年了 过年了 过年了过年了 过年了过年了 过年了过年了 过年了 过年了过年了 过年了过年了 过年了过年了 过年了 过年了过年了 过年了过年了 过年了过年了 过年了 过年了过年了 过年了过年了 过年了13432423425";
             }
-            [self.openCourseDataArr addObject:openCourse];
+            
+            OpenCourseFrame * openFrame=[[OpenCourseFrame alloc] init];
+            openFrame.openCourseData=openCourse;
+            
+            [self.openCourseFrameArr addObject:openFrame];
         }
       
         [self.rootTableview reloadData];
@@ -159,49 +152,37 @@
 #pragma mark -open course tableview
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 1;
+    return 2;
 
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *ID=@"cell";
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    OpenCourseTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
     
     if (cell==nil) {
-        cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[OpenCourseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
      }
-    if (indexPath.row==0) {
-         [self.openplaneTableView setData:self.openCourseDataArr];
-         [cell.contentView addSubview:self.openplaneTableView];
-        _openCellHeight= _openplaneTableView.contentSize.height;
-         _openplaneTableView.frame=CGRectMake(0, 0, tableView.bounds.size.width,_openCellHeight);
-         return  cell;
-     }
+    cell.openCourseFrame=self.openCourseFrameArr[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row==0){
-        NSLog(@"_openCellHeight：：：：： %f",_openCellHeight);
-        return  _openCellHeight;
-    }else{
-        return 600;
-    }
- 
+
+    NSLog(@"cellheight::%f",[self.openCourseFrameArr[indexPath.row] cellHeight]);
+    return [self.openCourseFrameArr[indexPath.row] cellHeight];
 }
 
 #pragma mark - add view
 
 -(UITableView *) rootTableview{
     
-    
     if (_rootTableview==nil) {
         _rootTableview =[[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain   ];
         _rootTableview.backgroundColor=LCBackGroundColor;
         _rootTableview.delegate=self;
         _rootTableview.dataSource=self;
-        _rootTableview.rowHeight=UITableViewAutomaticDimension;
-        _rootTableview.separatorStyle=UITableViewCellSeparatorStyleNone;
         _rootTableview.scrollEnabled=YES;
         _rootTableview.showsVerticalScrollIndicator=YES;
     }
@@ -233,19 +214,6 @@
 
 
 
--(OpenPlaneTableView *) openplaneTableView{
-    
-    if (_openplaneTableView==nil) {
-        _openplaneTableView= [[OpenPlaneTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain ];
-        _openplaneTableView.rowHeight=UITableViewAutomaticDimension;
-        _openplaneTableView.estimatedRowHeight=100;
-        _openplaneTableView.backgroundColor=[UIColor greenColor];
-        _openplaneTableView.scrollEnabled=NO;
-//        _openplaneTableView.tableHeaderView=self.openCourseTableViewHeaderView;
-    
-    }
-    return _openplaneTableView;
-}
 
 
 -(UIView *) openCourseTableViewHeaderView{
@@ -275,14 +243,6 @@
     return _openCourseTableViewHeaderView;
 }
 
--(UIView *) footerView{
-    if (_footerView==nil) {
-        _footerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        _footerView.backgroundColor=[UIColor greenColor];
-    }
-    return _footerView;
-    
-}
 
 
 

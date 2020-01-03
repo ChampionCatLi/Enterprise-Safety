@@ -6,12 +6,12 @@
 //  Copyright © 2019 chao. All rights reserved.
 //
 #import "OpenCourseTableViewCell.h"
-
+#import "OpenCourseFrame.h"
+#import "OpenCourseData.h"
 
 
 
 @interface  OpenCourseTableViewCell()
-@property(nonatomic,strong) UIView * itemView;
 @property(nonatomic,strong) UILabel * courseNameLabel;
 @property(nonatomic,strong) UILabel * courseDescLabel;
 @property(nonatomic,strong) UILabel * courseTimeLabel;
@@ -20,110 +20,58 @@
 @end
 
 
-
-
 @implementation OpenCourseTableViewCell
 
-
-
--(void) setOpenCourseData:(OpenCourseData *)openCourseData{
-    [self initView];
-    [self fillData:openCourseData];
+-(id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self addSelfView];
+    }
+    return self;
+    
 }
-
-#pragma mark - 填充data
--(void) fillData:(OpenCourseData *) openCourseData{
-    _courseNameLabel.text=openCourseData.name;
-    _courseTimeLabel.text=openCourseData.showDuration;
-    if (openCourseData.desc.length == 0) {
-        self.courseDescLabel.hidden=YES;
+-(void)setOpenCourseFrame:(OpenCourseFrame *)openCourseFrame{
+    _openCourseFrame=openCourseFrame;
+    
+    [self settingData];
+    [self settingSubviewFrame];
+    
+}
+-(void) settingData{
+    
+    OpenCourseData * openCourseData=self.openCourseFrame.openCourseData;
+    self.courseNameLabel.text=openCourseData.name;
+    self.courseTimeLabel.text=openCourseData.showDuration;
   
- 
+    if (openCourseData.desc.length==0) {
+        self.courseDescLabel.hidden=YES;
     }else{
-         self.courseDescLabel.hidden=NO;
-       _courseDescLabel.text=openCourseData.desc;
-
+          self.courseDescLabel.text=openCourseData.desc;
+        self.courseDescLabel.hidden=NO;
     }
-    
-    
 }
+
+
+-(void) settingSubviewFrame{
+    self.courseNameLabel.frame=self.openCourseFrame.nameF;
+    self.courseDescLabel.frame=self.openCourseFrame.descF;
+    self.courseTimeLabel.frame=self.openCourseFrame.timeF;
+    self.selectButton.frame=self.openCourseFrame.selectButtonF;
+
+}
+
+
 #pragma mark - 初始化 view
--(void) initView{
-
-
-
+-(void) addSelfView{
     [self.contentView addSubview:self.courseNameLabel];
-
-    [_courseNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-
-        make.top.equalTo(self.contentView.mas_top).offset(15);
-        make.left.equalTo(self.contentView.mas_left).offset(15);
-
-    }];
-
     [self.contentView addSubview:self.courseTimeLabel ];
-    [_courseTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.courseNameLabel.mas_bottom).offset(15);
-        make.left.equalTo(self.contentView.mas_left).offset(15);
-    }];
-
     [self.contentView addSubview:self.courseDescLabel];
-
-    [_courseDescLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.courseTimeLabel.mas_bottom).offset(15);
-        make.left.equalTo(self.contentView.mas_left).offset(15);
-        make.bottom.equalTo(self.contentView.mas_bottom).offset(-15);
-        make.right.equalTo(self.contentView.mas_right).offset(-15);
-
-    }];
-
-}
-
-
-#pragma mark - 初始化 view
-//-(void) initView{
-//
-//    [self.contentView addSubview:self.itemView];
-//    [_itemView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.contentView.mas_top).offset(15);
-//        make.bottom.equalTo(self.contentView.mas_bottom).offset(-15);
-//        make.left.equalTo(self.contentView.mas_left).offset(15);
-//        make.right.equalTo(self.contentView.mas_right).offset(-15);
-//
-//    }];
-//
-//    [self.itemView addSubview:self.courseNameLabel];
-//
-//    [_courseNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.top.equalTo(self.itemView.mas_top);
-//        make.left.equalTo(self.itemView.mas_left);
-//        make.height.equalTo(@15);
-//    }];
-//
-//    [self.itemView addSubview:self.courseTimeLabel ];
-//    [_courseTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.courseNameLabel.mas_bottom).offset(15);
-//        make.left.equalTo(self.itemView.mas_left);
-//    }];
-//
-//    [self.itemView addSubview:self.courseDescLabel];
-//
-//    [_courseDescLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.courseTimeLabel.mas_bottom);
-//        make.left.equalTo(self.itemView.mas_left);
-//
-//    }];
-//
-//}
-
--(UIView *) itemView{
-    if (_itemView==nil) {
-        _itemView=[[UIView alloc] init];
-    }
-    return _itemView;
+    [self.contentView addSubview:self.selectButton];
     
 }
+
+
+
 -(UILabel *) courseNameLabel{
     if (_courseNameLabel==nil) {
         _courseNameLabel=[[UILabel alloc] init];
@@ -133,22 +81,19 @@
         _courseNameLabel.numberOfLines=1;
     }
     return _courseNameLabel;
-    
+
 }
 -(UILabel *) courseDescLabel{
     if(_courseDescLabel==nil){
         _courseDescLabel=[[UILabel alloc] init];
         _courseDescLabel.font=LCFont12;
+        _courseDescLabel.backgroundColor=[UIColor greenColor];
         _courseDescLabel.textColor=LCGay979797;
         _courseDescLabel.numberOfLines=0;
-
-        _courseTimeLabel.adjustsFontSizeToFitWidth=YES;
-        
     }
-    
     return _courseDescLabel;
-    
-    
+
+
 }
 -(UILabel *) courseTimeLabel{
     if (_courseTimeLabel==nil) {
@@ -164,6 +109,12 @@
 -(UIButton *) selectButton{
     if (_selectButton==nil) {
         _selectButton=[[UIButton alloc] init];
+        [_selectButton setTitle:@"我要选课" forState:UIControlStateNormal];
+        _selectButton.titleLabel.font=[UIFont systemFontOfSize:12];
+        _selectButton.backgroundColor=LCBlueColor;
+        [_selectButton.layer setMasksToBounds:YES];
+        [_selectButton.layer setCornerRadius:5];
+        [_selectButton setTitleColor:[UIColor whiteColor ]forState:UIControlStateNormal];
     }
     return _selectButton;
 }

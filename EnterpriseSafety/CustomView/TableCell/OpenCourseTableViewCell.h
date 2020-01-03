@@ -9,12 +9,11 @@
  主页 开放选课 cell
  */
 #import <UIKit/UIKit.h>
-#import "OpenCourseData.h"
+@class OpenCourseFrame;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OpenCourseTableViewCell : UITableViewCell
-
--(void) setOpenCourseData : (OpenCourseData *) openCourseData;
+@property(nonatomic,strong) OpenCourseFrame * openCourseFrame;
 
 @end
 
