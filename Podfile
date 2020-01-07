@@ -15,5 +15,6 @@ pod 'AFNetworking', '~> 3.0'
 pod 'IQKeyboardManager' 
 #dialog 
 pod 'WMZDialog'
-pod  'UITableView+FDTemplateLayoutCell'
+# 首页下边 pageview
+pod 'SGPagingView', '~> 1.6.7'
 end

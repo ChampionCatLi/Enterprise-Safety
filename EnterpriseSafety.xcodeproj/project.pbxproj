@@ -31,6 +31,9 @@
 		E570F488238F9C2F004CAF0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E570F486238F9C2F004CAF0C /* LaunchScreen.storyboard */; };
 		E570F48B238F9C2F004CAF0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E570F48A238F9C2F004CAF0C /* main.m */; };
 		E5747AB923AC6DA00026CECC /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = E5747AB823AC6DA00026CECC /* Foundation+Log.m */; };
+		E591232923C4246D00858D17 /* ArticleListData.m in Sources */ = {isa = PBXBuildFile; fileRef = E591232823C4246D00858D17 /* ArticleListData.m */; };
+		E591232C23C4261600858D17 /* ArticleDetailBean.m in Sources */ = {isa = PBXBuildFile; fileRef = E591232B23C4261600858D17 /* ArticleDetailBean.m */; };
+		E591232F23C4516600858D17 /* ArticlePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E591232E23C4516600858D17 /* ArticlePageViewController.m */; };
 		E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E596D1F523989E6700C72F17 /* GKCycleScrollView.m */; };
 		E596D1FA23989E6700C72F17 /* GKCycleScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E596D1F823989E6700C72F17 /* GKCycleScrollViewCell.m */; };
 		E5AA236423B44A4D003B89DF /* OpenCourseData.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AA236323B44A4D003B89DF /* OpenCourseData.m */; };
@@ -210,6 +213,12 @@
 		E570F489238F9C2F004CAF0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E570F48A238F9C2F004CAF0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5747AB823AC6DA00026CECC /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		E591232723C4246D00858D17 /* ArticleListData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleListData.h; sourceTree = "<group>"; };
+		E591232823C4246D00858D17 /* ArticleListData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleListData.m; sourceTree = "<group>"; };
+		E591232A23C4261600858D17 /* ArticleDetailBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleDetailBean.h; sourceTree = "<group>"; };
+		E591232B23C4261600858D17 /* ArticleDetailBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailBean.m; sourceTree = "<group>"; };
+		E591232D23C4516600858D17 /* ArticlePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticlePageViewController.h; sourceTree = "<group>"; };
+		E591232E23C4516600858D17 /* ArticlePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticlePageViewController.m; sourceTree = "<group>"; };
 		E596D1F523989E6700C72F17 /* GKCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCycleScrollView.m; sourceTree = "<group>"; };
 		E596D1F623989E6700C72F17 /* GKCycleScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCycleScrollViewCell.h; sourceTree = "<group>"; };
 		E596D1F723989E6700C72F17 /* GKCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCycleScrollView.h; sourceTree = "<group>"; };
@@ -633,6 +642,8 @@
 			children = (
 				E55188F423B9881D0041A1F4 /* MyCoursePlaneViewController.h */,
 				E55188F523B9881D0041A1F4 /* MyCoursePlaneViewController.m */,
+				E591232D23C4516600858D17 /* ArticlePageViewController.h */,
+				E591232E23C4516600858D17 /* ArticlePageViewController.m */,
 			);
 			path = MyCoursePlaneViewController;
 			sourceTree = "<group>";
@@ -749,6 +760,10 @@
 			children = (
 				E5AA236223B44A4D003B89DF /* OpenCourseData.h */,
 				E5AA236323B44A4D003B89DF /* OpenCourseData.m */,
+				E591232723C4246D00858D17 /* ArticleListData.h */,
+				E591232823C4246D00858D17 /* ArticleListData.m */,
+				E591232A23C4261600858D17 /* ArticleDetailBean.h */,
+				E591232B23C4261600858D17 /* ArticleDetailBean.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1009,6 +1024,7 @@
 				E501782923A382F5002AD49C /* LoginController.m in Sources */,
 				E501782523A3761E002AD49C /* LearnHistoryController.m in Sources */,
 				E5EE3B2A23BED20400242C16 /* OpenCourseFrame.m in Sources */,
+				E591232923C4246D00858D17 /* ArticleListData.m in Sources */,
 				E570F47A238F9C2B004CAF0C /* AppDelegate.m in Sources */,
 				E5EE3B2D23BF465D00242C16 /* OpenCourseTableVIewTitleTableViewCell.m in Sources */,
 				E501783523A383D9002AD49C /* LearnPlanDetailViewController.m in Sources */,
@@ -1018,6 +1034,7 @@
 				E570F48B238F9C2F004CAF0C /* main.m in Sources */,
 				E5AA236423B44A4D003B89DF /* OpenCourseData.m in Sources */,
 				E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */,
+				E591232C23C4261600858D17 /* ArticleDetailBean.m in Sources */,
 				E555807323B0A73D00374DCC /* CircularPrograss.m in Sources */,
 				E54136FF23A9F0040025446E /* NetWorkManager.m in Sources */,
 				E5E06DE123B1DB50004FBF24 /* LCUtils.m in Sources */,
@@ -1025,6 +1042,7 @@
 				E54CE3222394A251002931E4 /* CourseViewController.m in Sources */,
 				E501783923A38402002AD49C /* LearnVideoViewController.m in Sources */,
 				E555807723B0CF9E00374DCC /* SplashViewController.m in Sources */,
+				E591232F23C4516600858D17 /* ArticlePageViewController.m in Sources */,
 				E501782F23A38388002AD49C /* ExamViewController.m in Sources */,
 				E5EE3B3023BF55D900242C16 /* LoadMoreTableViewCell.m in Sources */,
 				E5747AB923AC6DA00026CECC /* Foundation+Log.m in Sources */,

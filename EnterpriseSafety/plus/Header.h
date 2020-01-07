@@ -75,7 +75,17 @@
 #define url_get_learn_plane @"/m/home/my/clazz/list/actives"
 //1.1 获取开放课程
 #define url_get_open_course @"/m/home/my/clazz/list/open/actives"
-
+//5 公众栏目
+// 5.1 栏目列表
+#define url_get_article_title @"/m/home/article/columns"
+// 5.2 栏目列表  /m/home/article/list/{columnId}/{offset}/{count}
+#define url_get_article_list @"/m/home/article/list"
+//5.3 文章详情 /m/home/article/get/{id}
+#define  url_get_article_detail @"/m/home/article/get"
+//5.4 提交阅读行为 /m/home/article/log/{id}?acts=xxx
+#define url_commit_read_log @"/m/home/article/log"
+//5.5 访问附件  /m/p/article/img/{tenantId}/{columnId}/{articleId}/{filename}
+#define url_visit_article_pic @"/m/p/article/img"
 
 
 #pragma mark -data key

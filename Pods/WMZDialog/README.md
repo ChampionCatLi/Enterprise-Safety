@@ -1,4 +1,4 @@
-# WMZDailog - 功能样式最多的最齐全的的弹窗控件 控件全部采用链式编程，所有属性均可定制（pod 更新至 1.0.4）
+# WMZDailog - 功能样式最多的最齐全的的弹窗控件 控件全部采用链式编程，所有属性均可定制（pod 更新至 1.0.6建议更新）
 
 题外
 ==============
@@ -7,10 +7,11 @@
 特性
 ==============
 - 链式语法 结构优雅
+- 支持任意位置视图的弹窗(包括滚动视图)
 - 支持单选/多选
 - 支持地区1/2/3级联动
 - 支持无限级联动
-- 支持时间选择
+- 支持时间选择(年月日时分秒自由组合+最大最小时间限制)
 - 支持支持多种动画
 - 支持所有字体颜色/字体大小的设置
 - 支持支付视图
@@ -76,7 +77,7 @@ typedef enum : NSUInteger{
 ![DialogTypeTime.gif](https://upload-images.jianshu.io/upload_images/9163368-7b0b668ed45f6372.gif?imageMogr2/auto-orient/strip)
 
 ### 下拉列表选择弹窗
-![DialogTypePop.gif](https://upload-images.jianshu.io/upload_images/9163368-9e7f9620e7e6a4a3.gif?imageMogr2/auto-orient/strip)
+![pop.gif](https://upload-images.jianshu.io/upload_images/9163368-dd7cc8e43b0a5569.gif?imageMogr2/auto-orient/strip)
 
 ### 带下载的弹窗
 ![DialogTypeDown.gif](https://upload-images.jianshu.io/upload_images/9163368-be659b25966e2929.gif?imageMogr2/auto-orient/strip)
@@ -88,7 +89,7 @@ typedef enum : NSUInteger{
 ![DialogTypeLocation.gif](https://upload-images.jianshu.io/upload_images/9163368-cd3a1c604259186a.gif?imageMogr2/auto-orient/strip)
 
 ### 日期选择弹窗
-![DialogTypeDatePicker.gif](https://upload-images.jianshu.io/upload_images/9163368-c947f2b9d7430fde.gif?imageMogr2/auto-orient/strip)
+![DialogTypeDatePicker.gif](https://upload-images.jianshu.io/upload_images/9163368-1371de72725b52da.gif?imageMogr2/auto-orient/strip)
 
 ### 顶部和底部弹窗
 ![DialogTypeTabbarMenu+DialogTypeNaviMenu.gif](https://upload-images.jianshu.io/upload_images/9163368-abb4ffbaa54f97d5.gif?imageMogr2/auto-orient/strip)
@@ -181,6 +182,13 @@ typedef enum : NSUInteger{
 | wDirection                | DiaDirection        |弹出视图的方向 default   directionDowm                  |
 | wNavigationItem                | BOOL        | 导航栏位置   default  NO                          |
 | wTapView                | UIView        | 触发点的视图 default  -       必传                 |
+| wTapRect                | CGRect        |  如果弹出视图的frame不准确 可以自行调节   |
+| wTapViewType                | DiaPopInView        | 所在父视图的类型    default normal                |
+| wTapViewTableViewFoot                | BOOL        |父视图的tableviewHead还是tableviewFoot default Head           |
+| wTableViewSectionHead                | NSInteger        | 在tableViewHead上的按钮所在的headViewSection的index default 0             |
+| wPopViewBorderWidth                | CGFloat        | 弹窗视图的borderWidth default 0             |
+| wPopViewBorderColor                | UIColor        | 弹窗视图的borderColor default 主题颜色        |
+| wPopViewRectCorner                | DialogRectCorner        | 弹窗视图的圆角 可单独设置或者全部设置  默认无 和UIRectCorner用法相同 多了一个none            |
 
 ### DialogTypeDown
 | DialogTypeDown参数               | 类型      | 作用   (默认值)                                 | 
@@ -338,7 +346,7 @@ typedef enum : NSUInteger{
 安装
 ==============
 
-### CocoaPods  已更新到1.0.3版本
+### CocoaPods  已更新到1.0.6版本
 1. 将 cocoapods 更新至最新版本. 
 2. 在 Podfile 中添加 `pod 'WMZDialog'`。  
 3. 执行 `pod install` 或 `pod update`。
@@ -380,3 +388,6 @@ LEETheme 使用 MIT 许可证，详情见 [LICENSE](LICENSE) 文件。
 - 20191113 cocopod 更新至 1.0.2 修复pod指定ios版本的问题
 - 20191124 cocopod 更新至 1.0.3 修复pod 版本过低导致出现weak的问题
 - 20191214 cocopod 更新至 1.0.4 修复ios9.0某个type闪退问题和增加normalType确定或取消文字过多自动换行
+- 20191216 cocopod 更新至 1.0.5 修复ios10崩溃问题
+- 20191223 优化pop弹窗类型 支持圆角的定制 支持tableview等滚动视图的弹出
+- 20191225 优化日期选择弹窗类型   1 新增最大和最小时间支持超出隐藏         2 新增日期选择格式化输出           3 修复弹窗嵌套的bug          4 cocopod更新至1.0.6(建议更新)

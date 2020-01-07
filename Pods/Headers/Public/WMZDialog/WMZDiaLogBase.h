@@ -1,1 +1,1 @@
-../../../WMZDialog/WMZDialog/WMZDialog/Base/WMZDiaLogBase.h
+../../../WMZDialog/WMZDialog/WMZDialog/Main/WMZDiaLogBase.h
