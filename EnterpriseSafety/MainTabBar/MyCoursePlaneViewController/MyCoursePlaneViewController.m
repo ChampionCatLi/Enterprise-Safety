@@ -205,7 +205,7 @@
         [self.articleTotalDetailListArr addObject:articleListData];
         [self getArticleList:articleID indexList:i];
     }
-
+    
 }
 
 #pragma mark -delegate
@@ -235,11 +235,9 @@
 }
 #pragma mark -open course tableview
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    
     if(self.openCourseFrameArr.count>2){
         if(_isShowAllData){
-            return self.openCourseFrameArr.count;
+            return self.openCourseFrameArr.count+1;
         }else{
             return 4;
         }
@@ -266,6 +264,7 @@
         if (cell==nil) {
             
             cell=[[LoadMoreTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+           cell.separatorInset=UIEdgeInsetsMake(0,SCREEN_WIDTH, 0, 0);
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell ;
@@ -344,31 +343,35 @@
 // 添加w文章活动页面
 -(void) initPageView{
     SGPageTitleViewConfigure * configure=[SGPageTitleViewConfigure pageTitleViewConfigure];
-      configure.titleFont=[UIFont systemFontOfSize:12];
-      configure.indicatorHeight=3;
-      configure.indicatorCornerRadius=5;
-      configure.indicatorToBottomDistance=5;
-      configure.indicatorColor=[UIColor blueColor];
-      configure.titleSelectedColor=[UIColor blueColor];
-      configure.titleSelectedFont=[UIFont systemFontOfSize:12];
-      configure.indicatorStyle=SGIndicatorStyleDefault;
-      configure.bottomSeparatorColor=[UIColor whiteColor];
+    configure.titleFont=[UIFont systemFontOfSize:13];
+    configure.titleColor=LCGay979797;
+    configure.indicatorHeight=3;
+    configure.indicatorCornerRadius=5;
+    configure.indicatorToBottomDistance=5;
+    configure.indicatorColor=LCBlueColor;
+    configure.titleSelectedColor=LCBlack333333;
+    configure.titleSelectedFont=[UIFont systemFontOfSize:13];
+    configure.indicatorStyle=SGIndicatorStyleFixed;
+    configure.indicatorFixedWidth=20.0f;
+    configure.bottomSeparatorColor=[UIColor whiteColor];
     
-    self.pageTitleView=[SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44) delegate:self titleNames:self.articleTitleArr configure:configure];
+    
+    self.pageTitleView=[SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 10, self.view.frame.size.width, 44) delegate:self titleNames:self.articleTitleArr configure:configure];
     _pageTitleView.selectedIndex=0;
     NSMutableArray * articleChildVCArr=[NSMutableArray new];
     for (int i=0; i<self.articleTitleArr.count; i++) {
         ArticlePageViewController * articleVC=[[ArticlePageViewController alloc] init];
-    
+        
         [articleChildVCArr addObject:articleVC];
     }
     
     _footerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 500)];
-    _footerView.backgroundColor=[UIColor whiteColor];
+    _footerView.backgroundColor=LCBackGroundColor;
     [self.footerView addSubview:self.pageTitleView];
     
-    self.pageContentScrollView=[[SGPageContentScrollView alloc] initWithFrame:CGRectMake(0, 44, self.view.frame.size.width, 500) parentVC:self childVCs:articleChildVCArr];
+    self.pageContentScrollView=[[SGPageContentScrollView alloc] initWithFrame:CGRectMake(0, 54, self.view.frame.size.width, 500) parentVC:self childVCs:articleChildVCArr];
     _pageContentScrollView.delegatePageContentScrollView=self;
+    self.pageContentScrollView.backgroundColor=[UIColor whiteColor];
     [self.footerView addSubview:self.pageContentScrollView];
     [self.rootTableview setTableFooterView:self.footerView];
     
@@ -448,7 +451,7 @@
     
     ArticleListData * articleListData =self.articleTotalDetailListArr[index];
     articleListData.articleDetailList=articleListArr;
-  
+    
     self.articleAddCout++;
     @synchronized (self.articleTotalDetailListArr) {
         if (_articleAddCout==self.articleTitleArr.count) {
