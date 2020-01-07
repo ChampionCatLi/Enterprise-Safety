@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ArticleDetaileTableViewCell : UITableViewCell
 
-@property(nonatomic,strong) ArticleDetailBean * articleDetailBean;
+
 @property(nonatomic,strong) ArticleBeanFrame * articleBeanFrame;
 @end
 

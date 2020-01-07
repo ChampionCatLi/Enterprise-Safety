@@ -38,6 +38,7 @@
 
 #define LCBackGroundColor  [UIColor colorWithWhite:245 / 255.0 alpha:1]
 #define LCGay979797 [UIColor colorWithWhite:97/255.0 alpha:1]
+#define LCGay9E9E9E [UIColor colorWithWhite:158/255.0 alpha:1]
 #define LCGayLineBDBDBD [UIColor colorWithWhite:189/255.0 alpha:1]
 #define LCButtonUnclickColor [UIColor colorWithWhite:224/255.0 alpha:1]
 #define LCButtonclickColor [UIColor colorWithRed:33/255.0 green:150/255.0 blue:245/255.0 alpha:1]

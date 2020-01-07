@@ -4,35 +4,27 @@
 //
 //  Created by 超 on 2020/1/7.
 //  Copyright © 2020 chao. All rights reserved.
-//
+
 
 #import "ArticlePageViewController.h"
 
-@interface ArticlePageViewController ()
-@property(nonatomic,strong) UILabel * contentLabel;
+@interface ArticlePageViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong) UITableView * articleListTableView;
 @end
 
 @implementation ArticlePageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    [self.view addSubview:self.contentLabel];
-    
-}
 
--(UILabel *) contentLabel{
-    
-    if (_contentLabel==nil) {
-        _contentLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 450)];
-        _contentLabel.text=@"我是内容";
-    }
-    
-    return _contentLabel;
 }
+//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{}
+//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{}
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{}
+
 @end
