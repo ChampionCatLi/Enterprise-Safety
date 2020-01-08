@@ -21,6 +21,7 @@
 #import <SGPageTitleView.h>
 #import <SGPageContentScrollView.h>
 #import "ArticlePageViewController.h"
+#import "ArticleBeanFrame.h"
 
 
 @interface MyCoursePlaneViewController ()<GKCycleScrollViewDelegate,GKCycleScrollViewDataSource,UITableViewDelegate,UITableViewDataSource,SGPageTitleViewDelegate,SGPageContentScrollViewDelegate>
@@ -178,14 +179,30 @@
     } onSuccess:^(id  _Nullable responseObject) {
         NSArray * tempArr;
         NSArray * keys=[responseObject allKeys];
+        NSMutableArray * articleFrameList=[NSMutableArray new];
         if ([keys containsObject:@"message"]) {
             tempArr=responseObject[@"message"];
+            for (int  i=0; i<tempArr.count; i++) {
+                NSDictionary * articleDic=tempArr[i];
+                ArticleDetailBean * articleDetailBean=[ArticleDetailBean new];
+           
+           
+                articleDetailBean.articleId=[articleDic[@"id"] intValue];
+                articleDetailBean.articleThumb=articleDic[@"thumb"];
+                articleDetailBean.articleTitle=articleDic[@"title"];
+                articleDetailBean.articleOrgId=[articleDic[@"orgId"] intValue];
+                articleDetailBean.articleCreatTime=[articleDic[@"createTime"] longValue];
+                
+                articleDetailBean.showDuration=[LCUtils articleLong2Str:articleDetailBean.articleCreatTime];
+                ArticleBeanFrame * articleBeanFrame=[ArticleBeanFrame new];
+                           articleBeanFrame.articleDetailBean=articleDetailBean;
+               [articleFrameList addObject:articleBeanFrame];
+            }
         }else{
-            tempArr=[NSArray new];
+            articleFrameList=[NSMutableArray new];
         }
         
-        
-        [self setDataAndSyn:tempArr indexList:index];
+        [self setDataAndSyn:articleFrameList indexList:index];
     }];
 }
 
@@ -328,6 +345,7 @@
         _rootTableview.delegate=self;
         _rootTableview.dataSource=self;
         _rootTableview.scrollEnabled=YES;
+        _rootTableview.bounces=NO;
         _rootTableview.showsVerticalScrollIndicator=YES;
     }
     
@@ -361,15 +379,14 @@
     NSMutableArray * articleChildVCArr=[NSMutableArray new];
     for (int i=0; i<self.articleTitleArr.count; i++) {
         ArticlePageViewController * articleVC=[[ArticlePageViewController alloc] init];
-        
+        articleVC.dataSource=[self.articleTotalDetailListArr[i] articleDetailList];
         [articleChildVCArr addObject:articleVC];
     }
-    
-    _footerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 500)];
+    _footerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,400)];
     _footerView.backgroundColor=LCBackGroundColor;
     [self.footerView addSubview:self.pageTitleView];
     
-    self.pageContentScrollView=[[SGPageContentScrollView alloc] initWithFrame:CGRectMake(0, 54, self.view.frame.size.width, 500) parentVC:self childVCs:articleChildVCArr];
+    self.pageContentScrollView=[[SGPageContentScrollView alloc] initWithFrame:CGRectMake(0, 54, self.view.frame.size.width, 400) parentVC:self childVCs:articleChildVCArr];
     _pageContentScrollView.delegatePageContentScrollView=self;
     self.pageContentScrollView.backgroundColor=[UIColor whiteColor];
     [self.footerView addSubview:self.pageContentScrollView];
@@ -447,7 +464,7 @@
 
 #pragma mark -- 其他一些方法
 //添加文章并同步文章列表请求是否都已经完毕
--(void) setDataAndSyn:(NSArray *) articleListArr indexList:(NSInteger) index{
+-(void) setDataAndSyn:(NSMutableArray *) articleListArr indexList:(NSInteger) index{
     
     ArticleListData * articleListData =self.articleTotalDetailListArr[index];
     articleListData.articleDetailList=articleListArr;

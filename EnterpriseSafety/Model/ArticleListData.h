@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ArticleListData : NSObject
-@property(nonatomic,strong) NSArray * articleDetailList;
+@property(nonatomic,strong) NSMutableArray * articleDetailList;
 @end
 
 NS_ASSUME_NONNULL_END

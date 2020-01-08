@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LCUtils : NSObject
 +(NSString *)long2Str:(long )time;
 
++(NSString *) articleLong2Str:(long)time;
+
 +(NSString *) appendLong2Str:(long)startTime  endTime:(long)endTime;
 @end
 NS_ASSUME_NONNULL_END

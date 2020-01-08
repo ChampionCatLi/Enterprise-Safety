@@ -9,6 +9,7 @@
 #import "ArticleDetaileTableViewCell.h"
 #import "ArticleDetailBean.h"
 #import "ArticleBeanFrame.h"
+#import "LoadMoreFooterView.h"
 @interface ArticleDetaileTableViewCell()
 
 @property(nonatomic,strong) UILabel * titleLabel;
@@ -22,8 +23,6 @@
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
         [self initView];
-        
-        
     }
     
     return  self;
@@ -32,19 +31,21 @@
 
 -(void) initView{
     [self.contentView addSubview:self.titleLabel];
-    [self.contentView addSubview: self.timeLabel];
+    [self.contentView addSubview:self.timeLabel];
     [self.contentView addSubview:self.picImageview];
     
 }
 
 -(void) setArticleBeanFrame:(ArticleBeanFrame *)articleBeanFrame{
     _articleBeanFrame=articleBeanFrame;
+    [self setViewFrame];
+    [self setViewData:articleBeanFrame.articleDetailBean];
     
 }
 -(void) setViewFrame{
     self.titleLabel.frame=_articleBeanFrame.titleF;
     self.timeLabel.frame=_articleBeanFrame.timeF;
-//    self.picImageview.frame=_articleBeanFrame.picF;
+    self.picImageview.frame=_articleBeanFrame.picF;
 
 }
 -(void) setViewData:(ArticleDetailBean *) articleDetailBean{
@@ -76,6 +77,7 @@
 -(UIImageView *) picImageview{
     if (_picImageview==nil) {
         _picImageview=[[UIImageView alloc] init];
+        _picImageview.backgroundColor=[UIColor orangeColor];
     }
     return _picImageview;
 }

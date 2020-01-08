@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,strong) NSString * articleTitle;
 @property(nonatomic,assign) NSInteger  articleId;
-@property(nonatomic,assign) long  creatTime;
+@property(nonatomic,assign) long  articleCreatTime;
 @property(nonatomic,strong) NSString * showDuration;
 @property(nonatomic,assign) NSInteger articleOrgId;
 //图片地址

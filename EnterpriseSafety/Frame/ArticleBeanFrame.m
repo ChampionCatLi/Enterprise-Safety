@@ -12,7 +12,8 @@
 
 -(void)setArticleDetailBean:(ArticleDetailBean *)articleDetailBean{
     _articleDetailBean=articleDetailBean;
-    CGFloat titleH=42.0;
+    
+    
     CGFloat titleW;
     CGFloat titleX=LCMAEGIN_15;
     CGFloat titleY=LCMAEGIN_15;
@@ -20,26 +21,41 @@
     CGFloat picH=60.0;
     CGFloat picX;
     CGFloat picY;
+    CGSize titleSize;
+    
     
     if (articleDetailBean.articleThumb.length==0) {
         titleW=SCREEN_WIDTH-LCMAEGIN_15*2;
-        _titleF=CGRectMake(titleX, titleY, titleW, titleH);
     }else{
         titleW=SCREEN_WIDTH -LCMAEGIN_15*3-picW;
-        picX=SCREEN_WIDTH -titleW-LCMAEGIN_15;
+        picX=titleW+LCMAEGIN_15+10;
         picY=LCMAEGIN_15;
         _picF=CGRectMake(picX, picY, picW, picH);
     }
+    CGSize sigleTitleSize= [@"example" sizeWithFont:LCFont12 constrainedToSize:CGSizeMake(titleW,MAXFLOAT)];
+    titleSize=  [_articleDetailBean.articleTitle sizeWithFont:LCFont12 constrainedToSize:CGSizeMake(titleW,MAXFLOAT)];
+    
+    _titleF=CGRectMake(titleX, titleY, titleW, titleSize.height);
     CGFloat timeX=LCMAEGIN_15;
-    CGFloat timeY=LCMAEGIN_15*2+titleH;
+    CGFloat timeY=LCMAEGIN_15+titleSize.height;
     CGFloat timeW=200;
     CGFloat timeH=30;
     
     _timeF=CGRectMake(timeX, timeY, timeW,timeH );
-
     
-    _cellHeight=timeY+LCMAEGIN_15;
+     _cellHeight=timeY+timeH;
+    //对于单行且含有图片高度的修正
+    if (articleDetailBean.articleThumb.length!=0){
+        
+        if (sigleTitleSize.height==titleSize.height) {
+            
+            _titleF=CGRectMake(titleX, titleY, titleW, sigleTitleSize.height*2);
+            _timeF=CGRectMake(timeX, timeY+sigleTitleSize.height, timeW,timeH );
+            _cellHeight=timeY+sigleTitleSize.height+timeH+LCMAEGIN_15;
+        }
+    }
     
+   
     
 }
 

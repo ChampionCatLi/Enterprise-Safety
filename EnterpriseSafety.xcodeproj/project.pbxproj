@@ -165,6 +165,8 @@
 		E5C3C24D239DDBAC009AB92F /* failed@1.5x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C238239DDBAB009AB92F /* failed@1.5x.png */; };
 		E5C3C24E239DDBAC009AB92F /* clear@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C239239DDBAB009AB92F /* clear@3x.png */; };
 		E5C3C24F239DDBAC009AB92F /* arrow_l@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C23A239DDBAC009AB92F /* arrow_l@3x.png */; };
+		E5CB19D823C5A5C900D021F2 /* LoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CB19D723C5A5C900D021F2 /* LoadMoreFooterView.m */; };
+		E5CB19DB23C5AE4900D021F2 /* EmptyContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CB19DA23C5AE4900D021F2 /* EmptyContentView.m */; };
 		E5E06DE123B1DB50004FBF24 /* LCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E06DE023B1DB50004FBF24 /* LCUtils.m */; };
 		E5E7DD8423A4D3590084EF90 /* learn_history@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5E7DD8323A4D3590084EF90 /* learn_history@3x.png */; };
 		E5EE3B2A23BED20400242C16 /* OpenCourseFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EE3B2923BED20400242C16 /* OpenCourseFrame.m */; };
@@ -360,6 +362,10 @@
 		E5C3C238239DDBAB009AB92F /* failed@1.5x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failed@1.5x.png"; sourceTree = "<group>"; };
 		E5C3C239239DDBAB009AB92F /* clear@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear@3x.png"; sourceTree = "<group>"; };
 		E5C3C23A239DDBAC009AB92F /* arrow_l@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_l@3x.png"; sourceTree = "<group>"; };
+		E5CB19D623C5A5C900D021F2 /* LoadMoreFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMoreFooterView.h; sourceTree = "<group>"; };
+		E5CB19D723C5A5C900D021F2 /* LoadMoreFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadMoreFooterView.m; sourceTree = "<group>"; };
+		E5CB19D923C5AE4900D021F2 /* EmptyContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyContentView.h; sourceTree = "<group>"; };
+		E5CB19DA23C5AE4900D021F2 /* EmptyContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyContentView.m; sourceTree = "<group>"; };
 		E5E06DDF23B1DB50004FBF24 /* LCUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCUtils.h; sourceTree = "<group>"; };
 		E5E06DE023B1DB50004FBF24 /* LCUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCUtils.m; sourceTree = "<group>"; };
 		E5E7DD8323A4D3590084EF90 /* learn_history@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learn_history@3x.png"; sourceTree = "<group>"; };
@@ -666,6 +672,7 @@
 		E555806C23B0A61500374DCC /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				E5CB19D523C5A59500D021F2 /* OtherView */,
 				E55188F723B9936B0041A1F4 /* Tableview */,
 				E54F4AFD23B35F30003FA5C5 /* TableCell */,
 				E555806D23B0A65D00374DCC /* CircularProgressView */,
@@ -774,6 +781,17 @@
 				E591232B23C4261600858D17 /* ArticleDetailBean.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E5CB19D523C5A59500D021F2 /* OtherView */ = {
+			isa = PBXGroup;
+			children = (
+				E5CB19D623C5A5C900D021F2 /* LoadMoreFooterView.h */,
+				E5CB19D723C5A5C900D021F2 /* LoadMoreFooterView.m */,
+				E5CB19D923C5AE4900D021F2 /* EmptyContentView.h */,
+				E5CB19DA23C5AE4900D021F2 /* EmptyContentView.m */,
+			);
+			path = OtherView;
 			sourceTree = "<group>";
 		};
 		E5EE3B2723BED1DA00242C16 /* Frame */ = {
@@ -1048,8 +1066,10 @@
 				E591233523C4787700858D17 /* ArticleDetaileTableViewCell.m in Sources */,
 				E591232C23C4261600858D17 /* ArticleDetailBean.m in Sources */,
 				E555807323B0A73D00374DCC /* CircularPrograss.m in Sources */,
+				E5CB19DB23C5AE4900D021F2 /* EmptyContentView.m in Sources */,
 				E54136FF23A9F0040025446E /* NetWorkManager.m in Sources */,
 				E5E06DE123B1DB50004FBF24 /* LCUtils.m in Sources */,
+				E5CB19D823C5A5C900D021F2 /* LoadMoreFooterView.m in Sources */,
 				E501783D23A38DBE002AD49C /* MainTabBar.m in Sources */,
 				E54CE3222394A251002931E4 /* CourseViewController.m in Sources */,
 				E501783923A38402002AD49C /* LearnVideoViewController.m in Sources */,
