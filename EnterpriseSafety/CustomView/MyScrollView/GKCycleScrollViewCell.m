@@ -94,16 +94,6 @@
     
 }
 
--(void)handleTitleLabelGesture:(UITapGestureRecognizer *)tap{
-    NSInteger labelTag=0x111+self.tag;
-    if (_didCellTitleLabelClick) {
-        _didCellTitleLabelClick(labelTag);
-    }
-    
-}
-- (void)handleTapGesture:(UITapGestureRecognizer *)tap {
-    !self.didCellClick ? : self.didCellClick(self.tag);
-}
 
 - (void)setupCellFrame:(CGRect)frame {
     self.titleLabel.frame=frame;
@@ -199,8 +189,29 @@
         [_learnButton.layer setMasksToBounds:YES];
         [_learnButton.layer  setCornerRadius:5];
         _learnButton.backgroundColor=LCButtonclickColor;
+        [_learnButton addTarget:self action:@selector(handleButtonClickAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _learnButton;
     
 }
+
+#pragma  mark -  onclick method
+-(void)handleTitleLabelGesture:(UITapGestureRecognizer *)tap{
+    NSInteger labelTag=0x111+self.tag;
+     NSLog(@"handleTitleLabelGesture:::self.tag：：：：:%ld",self.tag);
+    if (_didCellTitleLabelClick) {
+        _didCellTitleLabelClick(labelTag);
+    }
+    
+}
+- (void)handleTapGesture:(UITapGestureRecognizer *)tap {
+    !self.didCellClick ? : self.didCellClick(self.tag);
+}
+-(void) handleButtonClickAction{
+    if (_didCellButtonClick) {
+        _didCellButtonClick(self.tag);
+    }
+    
+}
+
 @end

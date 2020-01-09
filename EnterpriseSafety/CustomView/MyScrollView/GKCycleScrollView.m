@@ -523,8 +523,13 @@
             [weakSelf handleCellSelectWithIndex:index];
         };
         cell.didCellTitleLabelClick = ^(NSInteger index) {
+            NSLog(@"scrllview::::%ld",index);
             [weakSelf handleCellTitleLabelSelectWithIndex:index];
         };
+        cell.didCellButtonClick = ^(NSInteger index) {
+            [weakSelf handleSelectCellButtonOnclick:index];
+        };
+        
         switch (self.direction) {
             case GKCycleScrollViewScrollDirectionHorizontal:
                 cell.frame = CGRectMake(self.cellSize.width * index, 0, self.cellSize.width, self.cellSize.height);
@@ -563,6 +568,11 @@
 -(void)handleCellTitleLabelSelectWithIndex:(NSInteger) index{
     if ([self.delegate respondsToSelector:@selector(cycleScrollView:didSelectCellGTitleLabelAtIndex:)]) {
         [self.delegate cycleScrollView:self didSelectCellGTitleLabelAtIndex:index];
+    }
+}
+-(void)handleSelectCellButtonOnclick:(NSInteger)index{
+    if ([self.delegate respondsToSelector:@selector(cycleScrollView:didSelectCellButtonOnclick:)]) {
+        [self.delegate cycleScrollView:self didSelectCellButtonOnclick:index];
     }
 }
 

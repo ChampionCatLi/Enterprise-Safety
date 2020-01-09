@@ -76,6 +76,11 @@
 #define url_get_learn_plane @"/m/home/my/clazz/list/actives"
 //1.1 获取开放课程
 #define url_get_open_course @"/m/home/my/clazz/list/open/actives"
+//1.5 培训计划详情
+#define url_get_plane_detail @"/m/home/my/clazz/get"
+
+
+#pragma mark -公众栏目
 //5 公众栏目
 // 5.1 栏目列表
 #define url_get_article_title @"/m/home/article/columns"

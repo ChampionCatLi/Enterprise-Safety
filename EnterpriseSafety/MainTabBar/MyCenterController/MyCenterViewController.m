@@ -218,7 +218,6 @@
         navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:navigationController animated:NO completion:NULL];
     
-    
 }
 
 -(void) learnHistoryOnclick{

@@ -31,6 +31,7 @@
 		E570F488238F9C2F004CAF0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E570F486238F9C2F004CAF0C /* LaunchScreen.storyboard */; };
 		E570F48B238F9C2F004CAF0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E570F48A238F9C2F004CAF0C /* main.m */; };
 		E5747AB923AC6DA00026CECC /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = E5747AB823AC6DA00026CECC /* Foundation+Log.m */; };
+		E575284223C70B3A00789A44 /* LearnHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E575284123C70B3A00789A44 /* LearnHeaderView.m */; };
 		E591232923C4246D00858D17 /* ArticleListData.m in Sources */ = {isa = PBXBuildFile; fileRef = E591232823C4246D00858D17 /* ArticleListData.m */; };
 		E591232C23C4261600858D17 /* ArticleDetailBean.m in Sources */ = {isa = PBXBuildFile; fileRef = E591232B23C4261600858D17 /* ArticleDetailBean.m */; };
 		E591232F23C4516600858D17 /* ArticlePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E591232E23C4516600858D17 /* ArticlePageViewController.m */; };
@@ -217,6 +218,8 @@
 		E570F489238F9C2F004CAF0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E570F48A238F9C2F004CAF0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5747AB823AC6DA00026CECC /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		E575284023C70B3A00789A44 /* LearnHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnHeaderView.h; sourceTree = "<group>"; };
+		E575284123C70B3A00789A44 /* LearnHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnHeaderView.m; sourceTree = "<group>"; };
 		E591232723C4246D00858D17 /* ArticleListData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleListData.h; sourceTree = "<group>"; };
 		E591232823C4246D00858D17 /* ArticleListData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleListData.m; sourceTree = "<group>"; };
 		E591232A23C4261600858D17 /* ArticleDetailBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleDetailBean.h; sourceTree = "<group>"; };
@@ -430,6 +433,8 @@
 			children = (
 				E501783323A383D9002AD49C /* LearnPlanDetailViewController.h */,
 				E501783423A383D9002AD49C /* LearnPlanDetailViewController.m */,
+				E575284023C70B3A00789A44 /* LearnHeaderView.h */,
+				E575284123C70B3A00789A44 /* LearnHeaderView.m */,
 			);
 			path = LearnPlanDetailController;
 			sourceTree = "<group>";
@@ -1073,6 +1078,7 @@
 				E501783D23A38DBE002AD49C /* MainTabBar.m in Sources */,
 				E54CE3222394A251002931E4 /* CourseViewController.m in Sources */,
 				E501783923A38402002AD49C /* LearnVideoViewController.m in Sources */,
+				E575284223C70B3A00789A44 /* LearnHeaderView.m in Sources */,
 				E555807723B0CF9E00374DCC /* SplashViewController.m in Sources */,
 				E591232F23C4516600858D17 /* ArticlePageViewController.m in Sources */,
 				E501782F23A38388002AD49C /* ExamViewController.m in Sources */,

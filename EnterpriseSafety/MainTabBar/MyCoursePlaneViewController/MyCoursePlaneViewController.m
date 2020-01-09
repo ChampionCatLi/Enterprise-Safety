@@ -22,6 +22,7 @@
 #import <SGPageContentScrollView.h>
 #import "ArticlePageViewController.h"
 #import "ArticleBeanFrame.h"
+#import "LearnPlanDetailViewController.h"
 
 
 @interface MyCoursePlaneViewController ()<GKCycleScrollViewDelegate,GKCycleScrollViewDataSource,UITableViewDelegate,UITableViewDataSource,SGPageTitleViewDelegate,SGPageContentScrollViewDelegate>
@@ -75,7 +76,8 @@
 #pragma -mark init self view
 -(void) initView{
     self.isShowAllData=NO;
-    self.edgesForExtendedLayout = UIRectEdgeNone;//这句话就是从导航栏下面开始计算高度
+    //这句话就是从导航栏下面开始计算高度
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     self.view.backgroundColor=LCBackGroundColor;
     [self.view addSubview:self.rootTableview];
@@ -234,7 +236,6 @@
         cell.layer.masksToBounds=NO;
     }
     [self putData2Cell:cell cellIndex:index];
-    
     return cell;
 }
 -(CGSize)sizeForCellInCycleScrollView:(GKCycleScrollView *)cycleScrollView{
@@ -248,6 +249,22 @@
 }
 
 -(void)cycleScrollView:(GKCycleScrollView *)cycleScrollView didSelectCellGTitleLabelAtIndex:(NSInteger)index{
+    NSLog(@"我被点击：：：：%ld",index-0x111);
+}
+-(void)cycleScrollView:(GKCycleScrollView *)cycleScrollView didSelectCellButtonOnclick:(NSInteger)index{
+  NSDictionary * planeData=  self.planeDataArr[index];
+    NSDictionary * ruleData=planeData[@"rule"];
+    NSDictionary * clazzData= planeData[@"clazz"];
+    NSString * planeName=ruleData[@"name"];
+    NSString *   planeID=clazzData[@"id"] ;
+
+    LearnPlanDetailViewController * learnPlanDetailVC=[[LearnPlanDetailViewController alloc] init];
+    
+    [learnPlanDetailVC setPlaneName:planeName setPlaneID:planeID];
+    learnPlanDetailVC.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:learnPlanDetailVC animated:YES];
+    
+    
     
 }
 #pragma mark -open course tableview
@@ -330,7 +347,6 @@
 
 - (void)pageContentScrollView:(SGPageContentScrollView *)pageContentScrollView index:(NSInteger)index {
     /// 说明：在此获取标题or当前子控制器下标值
-    NSLog(@"index - - %ld", index);
 }
 
 #pragma mark - add view

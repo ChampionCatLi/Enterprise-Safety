@@ -12,7 +12,8 @@
 
 typedef void(^cellClickBlock)(NSInteger index);
 typedef void (^cellTititleLabelClickBlock)(NSInteger index);
-
+//button  点击回调
+typedef  void (^cellButtonCilckBlock)(NSInteger index);
 @interface GKCycleScrollViewCell : UIView<UIGestureRecognizerDelegate>
 
 /**
@@ -40,6 +41,7 @@ typedef void (^cellTititleLabelClickBlock)(NSInteger index);
  */
 @property (nonatomic, copy) cellClickBlock  didCellClick;
 @property (nonatomic,copy) cellTititleLabelClickBlock didCellTitleLabelClick;
+@property(nonatomic,copy) cellButtonCilckBlock didCellButtonClick;
 - (void)setupCellFrame:(CGRect)frame;
 
 @end
