@@ -16,5 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSString *) articleLong2Str:(long)time;
 
 +(NSString *) appendLong2Str:(long)startTime  endTime:(long)endTime;
++(NSString *) planeLong2str:(long)startTime endTime :(long) endTime;
 @end
 NS_ASSUME_NONNULL_END

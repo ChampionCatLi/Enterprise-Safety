@@ -10,6 +10,7 @@
 #define formatYYYYMMDD @"yyyy.MM.dd "
 #define formatYYYYMMDDHHMM @"yyyy-MM-dd HH:MM"
 #define formatMMDDHHMM @"MM-dd HH:MM"
+
 @implementation LCUtils
 
 
@@ -22,7 +23,7 @@
     return dateStr;
 }
 
-
+//文章时间格式化
 +(NSString *) articleLong2Str:(long)time{
 
   NSDate *targetDate = [NSDate dateWithTimeIntervalSince1970:time/1000];
@@ -37,6 +38,27 @@
        return [formatter stringFromDate:targetDate];
     
 }
+//学习计划时间格式化
+
++ (NSString *)planeLong2str:(long)startTime endTime:(long)endTime{
+    NSDateFormatter * formatter=[[NSDateFormatter alloc] init];
+    [formatter setDateFormat:formatYYYYMMDD];
+    NSDate * startData=[NSDate dateWithTimeIntervalSince1970:startTime/1000];
+    NSDate * endData =[NSDate dateWithTimeIntervalSince1970:endTime/1000];
+    
+    
+    
+    NSString * startTimeStr=[formatter stringFromDate:startData ];
+    NSString * endTimeStr = [formatter stringFromDate:endData];
+    NSString * tempTimeStr=@"学习时间: ";
+    tempTimeStr=[tempTimeStr stringByAppendingString:startTimeStr];
+    tempTimeStr=[tempTimeStr stringByAppendingString:@"- "];
+    tempTimeStr=[tempTimeStr stringByAppendingString:endTimeStr];
+    
+    return tempTimeStr;
+
+}
+
 
 +(NSString *)appendLong2Str:(long) startTime endTime:(long)endTime{
     

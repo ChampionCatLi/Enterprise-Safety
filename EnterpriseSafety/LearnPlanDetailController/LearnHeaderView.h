@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LearnHeaderView : UIView
+-(void) setPlaneName:(NSString *)planeName setPlaneDesc:(NSString *) planeDesc setPlaneTime:(NSString *) planeTime;
+@property(nonatomic,assign)CGFloat  headerHeight;
 
 @end
 

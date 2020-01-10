@@ -19,7 +19,7 @@
 @property(nonatomic,strong)UILabel * refreshLabel;
 
 
-@property(nonatomic,strong)UILabel * planeDesc;
+@property(nonatomic,strong)UILabel * planeDescLabel;
 
 @end
 
@@ -30,6 +30,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self addselfView];
+    
     }
     return self;
 }
@@ -40,6 +41,7 @@
         make.left.equalTo(self.mas_left).offset(15);
         make.right.equalTo(self.mas_right).offset(-46);
         make.height.equalTo(@20);
+        make.top.equalTo(self.mas_top).offset(15);
     }];
     
     [self addSubview:self.planeTime];
@@ -53,29 +55,45 @@
         make.right.equalTo(self.mas_right);
         make.size.equalTo(@46);
     }];
-    
-    
-    
-    [self addSubview:self.planeDesc];
-    
-    [_planeDesc mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.planeTime.mas_bottom).offset(12);
-        make.left.equalTo(self.mas_left).offset(15);
-        make.right.equalTo(self.mas_right).offset(15);
-    }];
-    
-    
-    
-    
+
 }
 
 
+
+#pragma mark -- 填充数据 ---
+
+-(void)setPlaneName:(NSString *)planeName setPlaneDesc:(NSString *)planeDesc setPlaneTime:(NSString *)planeTime{
+    self.planeTitle.text=planeName;
+    self.planeTime.text=planeTime;
+    if (planeDesc.length==0) {
+        self.headerHeight=72;
+        NSLog(@"headerHeight::::%f",self.headerHeight);
+    }else{
+        [self addSubview:self.planeDescLabel];
+        [_planeDescLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.planeTime.mas_bottom).offset(12);
+            make.left.equalTo(self.mas_left).offset(15);
+            make.right.equalTo(self.mas_right).offset(-15);
+        }];
+        self.planeDescLabel.text=planeDesc;
+        CGSize planeDescSize= [planeDesc sizeWithFont:LCFont12 constrainedToSize:CGSizeMake(self.frame.size.width-LCMAEGIN_15*2,MAXFLOAT)];
+        self.headerHeight=72+planeDescSize.height+LCMAEGIN_15;
+        NSLog(@"headerHeight:::::::%f",self.planeTime.frame.origin.y);
+    }
+
+    
+
+}
+
+
+
+#pragma  mark  -- 懒加载 view --
 -(UILabel *) planeTitle{
     if (_planeTitle==nil) {
         _planeTitle=[[UILabel alloc] init];
         _planeTitle.textColor=LCBlack333333;
         _planeTitle.font=LCFont15;
-        _planeTitle.text=@"标题标题~~~~";
+    
     }
     
     return _planeTitle;
@@ -126,18 +144,14 @@
     return _refreshLabel;
 }
 
-
--(UILabel *) planeDesc{
-    if (_planeDesc==nil) {
-        _planeDesc=[[UILabel alloc] init];
-        _planeDesc.textColor=LCGay979797;
-        _planeDesc.font=LCFont12;
-        _planeDesc.numberOfLines=0;
-        _planeDesc.text=@"过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦过年啦";
-        
+-(UILabel *) planeDescLabel{
+    if (_planeDescLabel==nil) {
+        _planeDescLabel=[[UILabel alloc] init];
+        _planeDescLabel.textColor=LCGay979797;
+        _planeDescLabel.font=LCFont12;
+        _planeDescLabel.numberOfLines=0;
     }
-    return _planeDesc;
-    
+    return _planeDescLabel;
 }
 
 
