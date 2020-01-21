@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign) CGRect articleImgF;
 @property(nonatomic,strong) ArticleBean * articleBean;
 
-@property(nonatomic,assign) CGFloat * cellHeightA;
+@property(nonatomic,assign) CGFloat cellHeight;
 @end
 
 NS_ASSUME_NONNULL_END

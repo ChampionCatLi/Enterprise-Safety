@@ -69,9 +69,10 @@
     }
     CGSize articleSize=[LCUtils get15LabelSize:articleBean.articleTitle viewWith:articleTitleW];
     self.articleTitleF=CGRectMake(articleTitleX, articleTitleY, articleTitleW, articleSize.height);
+    self.articleImgF=CGRectMake(articleImgX, articleImgY, articleImgW, articleImgH);
     
-    self.cellHeightA=CGRectGetMaxY(_articleTitleF);
     
+    self.cellHeight=CGRectGetMaxY(_articleImgF)+LCMAEGIN_15;
     
     
 }
