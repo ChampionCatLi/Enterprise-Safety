@@ -89,4 +89,14 @@
     return  nowCmps.year == targetCmps.year;
 }
 
++ (CGSize)get12LabelSize:(NSString *)contentText viewWith:(CGFloat)viewWith{
+    return  [self getLabelSize:contentText viewWith:viewWith fontSize:LCFont12];
+    
+}
++ (CGSize)get15LabelSize:(NSString *)contentText viewWith:(CGFloat)viewWith{
+        return  [self getLabelSize:contentText viewWith:viewWith fontSize:LCFont15];
+}
++ (CGSize)getLabelSize:(NSString *)contentText viewWith:(CGFloat)viewWith fontSize:(UIFont *)fontSize{
+    return  [contentText sizeWithFont:fontSize constrainedToSize:CGSizeMake(viewWith,MAXFLOAT)];
+}
 @end

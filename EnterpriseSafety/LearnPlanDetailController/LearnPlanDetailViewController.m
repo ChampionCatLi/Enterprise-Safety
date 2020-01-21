@@ -7,16 +7,19 @@
 //
 #import "LearnHeaderView.h"
 #import "LearnPlanDetailViewController.h"
+#import "LearnPlaneDetialBean.h"
+#import "LearnPlaneTableView.h"
+#import "LearnPlaneBeanFrame.h"
 
 
-@interface LearnPlanDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface LearnPlanDetailViewController ()
 
-@property(nonatomic,strong)NSString * planeName;
-@property(nonatomic,strong)NSString * planeID;
-
-@property(nonatomic,strong) UITableView * rootTableview;
-
+@property(nonatomic,strong) NSString * planeName;
+@property(nonatomic,strong) NSString * planeID;
 @property(nonatomic,strong) LearnHeaderView * headerView;
+@property(nonatomic,strong) LearnPlaneDetialBean * learnPlaneDetailBean;
+
+@property(nonatomic,strong) LearnPlaneTableView * learnPlaneTableView;
 
 @end
 
@@ -25,27 +28,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=_planeName;
-    
-    [self.view addSubview:self.rootTableview];
-    
-    [_rootTableview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-    
     [self initData];
-    
     
 }
 
 -(void) initData{
     
     [self getCoursePlaneDetail];
+    self.learnPlaneDetailBean=[[LearnPlaneDetialBean alloc] init];
     
-    
-    
+    [self.view addSubview:self.learnPlaneTableView];
     
 }
-
+-(void) setPlaneName:(NSString *)planeName setPlaneID:(NSString * )planeID
+{
+    
+    self.planeName=planeName;
+    self.planeID=planeID;
+    
+}
 
 #pragma mark - net work
 
@@ -61,8 +62,8 @@
         NSArray * keys=[responseObject allKeys];
         if ([keys containsObject:@"message"]) {
             
-            NSDictionary * messageNic=responseObject[@"message"];
-            [self parsePlaneDetail:messageNic];
+            NSDictionary * messageDic=responseObject[@"message"];
+            [self parsePlaneDetail:messageDic];
         }
     } onFailure:^(NSError * _Nullable error) {
         
@@ -71,65 +72,85 @@
 }
 
 
--(void) setPlaneName:(NSString *)planeName setPlaneID:(NSString * )planeID
-{
-    
-    self.planeName=planeName;
-    self.planeID=planeID;
+
+-(void)getArticleData:(NSDictionary * )messageDic{
+    NSString * url=[NSString stringWithFormat:@"%@/%@/%@/%@",url_get_read_article_data,self.planeID,@"1",@"10"];
+    [XMCenter sendRequest:^(XMRequest * _Nonnull request) {
+        request.api=url;
+        request.httpMethod=kXMHTTPMethodGET;
+    } onSuccess:^(id  _Nullable responseObject) {
+        NSString * status=responseObject[@"status"];
+        if ([status isEqualToString:@"ok"]) {
+            NSArray * keyArr=[responseObject allKeys];
+            if ([keyArr containsObject:@"message"]) {
+                
+                [self.learnPlaneDetailBean setMessageDic:messageDic setArticleDicArr: responseObject[@"message"]];
+                [self.learnPlaneTableView setLearnPlaneDetailBean:self.learnPlaneDetailBean];
+                [self.learnPlaneTableView reloadData];
+                
+                
+            }
+            
+        }
+        
+        
+        
+    }];
     
 }
 
-#pragma mark -init view
--(UITableView *) rootTableview{
-    if (_rootTableview==nil) {
-        _rootTableview=[[UITableView alloc] init];
-        _rootTableview.backgroundColor=LCBackGroundColor;
-        //        _rootTableview.delegate=self;
-        //        _rootTableview.dataSource=self;
+
+
+#pragma mark --init view --
+
+
+-(LearnPlaneTableView *) learnPlaneTableView{
+    if (_learnPlaneTableView==nil) {
+        _learnPlaneTableView=[[LearnPlaneTableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     }
-    
-    return _rootTableview;
+    return _learnPlaneTableView;
 }
-
 -(LearnHeaderView *) headerView{
     if(_headerView==nil){
         _headerView=[[LearnHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,0)];
         _headerView.backgroundColor=[UIColor whiteColor];
     }
-    
-    
-    
     return _headerView;
 }
 
 
-#pragma mark -delegate
 
-//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{}
-//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{}
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{}
 
-#pragma mark -parseData
--(void)parsePlaneDetail:(NSDictionary *) messageNic{
-    NSDictionary * classNic =messageNic[@"clazz"];
-    NSDictionary * ruleNic =messageNic[@"rule"];
-    NSDictionary * scNic =messageNic[@"sc"];
+#pragma mark -parseData-
+-(void)parsePlaneDetail:(NSDictionary *) messageDic{
     
+    NSDictionary * classNic =messageDic[@"clazz"];
+    NSDictionary * ruleNic =messageDic[@"rule"];
+    NSDictionary * scNic =messageDic[@"sc"];
     NSString * planeName=classNic[@"name"];
     NSString * planeDesc =ruleNic[@"desc"];
+    
+    NSInteger readNum= [ruleNic[@"readNum"] intValue];
+    
     long startTime = [scNic[@"startTime"] longValue];
     long endTime  =  [scNic[@"endTime"] longValue];
     if (planeName.length==0) {
         planeName=ruleNic[@"name"];
     }
     NSString * showTime=[LCUtils planeLong2str:startTime endTime:endTime];
-    [self.rootTableview setTableHeaderView:self.headerView];
     planeDesc=@"jjabjfkjbsfkjbskjfnskjnfskfnskjjabjfkjbsfkjbskjfnskjnfskfnskjjabjfkjbsfkjbskjfnskjnfskfnskjjabjfkjbsfkjbskjfnskjnfskfnskjjabjfkjbsfkjbskjfnskjnfskfnskjjabjfkjbsfkjbskjfnskjnfskfnsk";
     [self.headerView setPlaneName:planeName setPlaneDesc:planeDesc setPlaneTime:showTime];
-    
-
     self.headerView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.headerView.headerHeight);
-   
+    [self.learnPlaneTableView setTableHeaderView:self.headerView];
+    
+    if (readNum>0) {
+        [self getArticleData:messageDic];
+    }else{
+        [self.learnPlaneDetailBean setMessageDic:messageDic setArticleDicArr:nil];
+        [self.learnPlaneTableView setLearnPlaneDetailBean:self.learnPlaneDetailBean];
+        [self.learnPlaneTableView reloadData];
+    }
+
 }
 @end
 

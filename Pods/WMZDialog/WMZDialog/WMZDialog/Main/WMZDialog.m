@@ -90,6 +90,7 @@ WMZDialogSetFuncImplementation(WMZDialog, CGFloat,                      wPercent
 WMZDialogSetFuncImplementation(WMZDialog, CGFloat,                     wPercentOrginX)
 WMZDialogSetFuncImplementation(WMZDialog, CGSize,                          wImageSize)
 WMZDialogSetFuncImplementation(WMZDialog, NSInteger,                     wColumnCount)
+WMZDialogSetFuncImplementation(WMZDialog, NSString*,                wWriteDefaultText)
 WMZDialogSetFuncImplementation(WMZDialog, NSInteger,                        wRowCount)
 WMZDialogSetFuncImplementation(WMZDialog, NSString*,                       wImageName)
 WMZDialogSetFuncImplementation(WMZDialog, NSString*,           wReginerCollectionCell)
@@ -551,6 +552,7 @@ WMZDialogSetFuncImplementation(WMZDialog, DialogTableClickBlock,         wEventF
             }
             if (self.wType == DialogTypeCardPresent) {
                 self.tableView.wOpenScrollClose = self.wOpenScrollClose;
+                self.tableView.wCardPresent = (self.wType == DialogTypeCardPresent);
             }
         }
 

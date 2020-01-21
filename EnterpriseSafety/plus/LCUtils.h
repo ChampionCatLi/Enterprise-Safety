@@ -17,5 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(NSString *) appendLong2Str:(long)startTime  endTime:(long)endTime;
 +(NSString *) planeLong2str:(long)startTime endTime :(long) endTime;
+
++(CGSize) get12LabelSize:(NSString *)contentText viewWith:(CGFloat) viewWith;
++(CGSize) get15LabelSize:(NSString *)contentText viewWith:(CGFloat) viewWith;
++(CGSize) getLabelSize:(NSString *) contentText viewWith:(CGFloat) viewWith fontSize:(UIFont *) fontSize;
+
 @end
 NS_ASSUME_NONNULL_END

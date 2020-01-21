@@ -411,7 +411,6 @@
     if([textStorage isKindOfClass:[TYLinkTextStorage class]])
     {
         NSString *linkStr = ((TYLinkTextStorage*)textStorage).linkData;
-        NSLog(@"hahahahh %@",linkStr);
         
     }}
 -(void) loginClick:(UIButton *)button{
@@ -465,7 +464,6 @@
         }
         
     } onFailure:^(NSError * _Nullable error) {
-        NSLog(@"error");
     } ];
 }
 
@@ -494,7 +492,6 @@
 //        NSLog(@"token::  %@ feeModel::: %@",token,feeModel);
         [self go2MainActivity];
         } onFailure:^(NSError * _Nullable error) {
-            NSLog(@"%@",error);
         }];
         
     }

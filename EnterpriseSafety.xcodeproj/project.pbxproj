@@ -32,6 +32,10 @@
 		E570F48B238F9C2F004CAF0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E570F48A238F9C2F004CAF0C /* main.m */; };
 		E5747AB923AC6DA00026CECC /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = E5747AB823AC6DA00026CECC /* Foundation+Log.m */; };
 		E575284223C70B3A00789A44 /* LearnHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E575284123C70B3A00789A44 /* LearnHeaderView.m */; };
+		E582A08423D164C7004E5AD4 /* LearnPlaneTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E582A08323D164C7004E5AD4 /* LearnPlaneTableView.m */; };
+		E582A08723D18D4C004E5AD4 /* LearnPlaneDetialBean.m in Sources */ = {isa = PBXBuildFile; fileRef = E582A08623D18D4C004E5AD4 /* LearnPlaneDetialBean.m */; };
+		E586F38023D424A4003F7E04 /* LearnPlaneBeanFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = E586F37F23D424A4003F7E04 /* LearnPlaneBeanFrame.m */; };
+		E586F38323D433D4003F7E04 /* LearnPlaneDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E586F38223D433D4003F7E04 /* LearnPlaneDetailTableViewCell.m */; };
 		E591232923C4246D00858D17 /* ArticleListData.m in Sources */ = {isa = PBXBuildFile; fileRef = E591232823C4246D00858D17 /* ArticleListData.m */; };
 		E591232C23C4261600858D17 /* ArticleDetailBean.m in Sources */ = {isa = PBXBuildFile; fileRef = E591232B23C4261600858D17 /* ArticleDetailBean.m */; };
 		E591232F23C4516600858D17 /* ArticlePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E591232E23C4516600858D17 /* ArticlePageViewController.m */; };
@@ -220,6 +224,14 @@
 		E5747AB823AC6DA00026CECC /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		E575284023C70B3A00789A44 /* LearnHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnHeaderView.h; sourceTree = "<group>"; };
 		E575284123C70B3A00789A44 /* LearnHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnHeaderView.m; sourceTree = "<group>"; };
+		E582A08223D164C7004E5AD4 /* LearnPlaneTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnPlaneTableView.h; sourceTree = "<group>"; };
+		E582A08323D164C7004E5AD4 /* LearnPlaneTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnPlaneTableView.m; sourceTree = "<group>"; };
+		E582A08523D18D4C004E5AD4 /* LearnPlaneDetialBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnPlaneDetialBean.h; sourceTree = "<group>"; };
+		E582A08623D18D4C004E5AD4 /* LearnPlaneDetialBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnPlaneDetialBean.m; sourceTree = "<group>"; };
+		E586F37E23D424A4003F7E04 /* LearnPlaneBeanFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnPlaneBeanFrame.h; sourceTree = "<group>"; };
+		E586F37F23D424A4003F7E04 /* LearnPlaneBeanFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnPlaneBeanFrame.m; sourceTree = "<group>"; };
+		E586F38123D433D4003F7E04 /* LearnPlaneDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnPlaneDetailTableViewCell.h; sourceTree = "<group>"; };
+		E586F38223D433D4003F7E04 /* LearnPlaneDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnPlaneDetailTableViewCell.m; sourceTree = "<group>"; };
 		E591232723C4246D00858D17 /* ArticleListData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleListData.h; sourceTree = "<group>"; };
 		E591232823C4246D00858D17 /* ArticleListData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleListData.m; sourceTree = "<group>"; };
 		E591232A23C4261600858D17 /* ArticleDetailBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleDetailBean.h; sourceTree = "<group>"; };
@@ -435,6 +447,8 @@
 				E501783423A383D9002AD49C /* LearnPlanDetailViewController.m */,
 				E575284023C70B3A00789A44 /* LearnHeaderView.h */,
 				E575284123C70B3A00789A44 /* LearnHeaderView.m */,
+				E582A08223D164C7004E5AD4 /* LearnPlaneTableView.h */,
+				E582A08323D164C7004E5AD4 /* LearnPlaneTableView.m */,
 			);
 			path = LearnPlanDetailController;
 			sourceTree = "<group>";
@@ -652,6 +666,8 @@
 				E5EE3B2F23BF55D900242C16 /* LoadMoreTableViewCell.m */,
 				E591233323C4787700858D17 /* ArticleDetaileTableViewCell.h */,
 				E591233423C4787700858D17 /* ArticleDetaileTableViewCell.m */,
+				E586F38123D433D4003F7E04 /* LearnPlaneDetailTableViewCell.h */,
+				E586F38223D433D4003F7E04 /* LearnPlaneDetailTableViewCell.m */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -784,6 +800,8 @@
 				E591232823C4246D00858D17 /* ArticleListData.m */,
 				E591232A23C4261600858D17 /* ArticleDetailBean.h */,
 				E591232B23C4261600858D17 /* ArticleDetailBean.m */,
+				E582A08523D18D4C004E5AD4 /* LearnPlaneDetialBean.h */,
+				E582A08623D18D4C004E5AD4 /* LearnPlaneDetialBean.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -806,6 +824,8 @@
 				E5EE3B2923BED20400242C16 /* OpenCourseFrame.m */,
 				E591233023C46A0200858D17 /* ArticleBeanFrame.h */,
 				E591233123C46A0200858D17 /* ArticleBeanFrame.m */,
+				E586F37E23D424A4003F7E04 /* LearnPlaneBeanFrame.h */,
+				E586F37F23D424A4003F7E04 /* LearnPlaneBeanFrame.m */,
 			);
 			path = Frame;
 			sourceTree = "<group>";
@@ -1064,15 +1084,18 @@
 				E501783523A383D9002AD49C /* LearnPlanDetailViewController.m in Sources */,
 				E541370323A9F7370025446E /* BaseViewController.m in Sources */,
 				E54CE31F2394A236002931E4 /* MyCenterViewController.m in Sources */,
+				E586F38323D433D4003F7E04 /* LearnPlaneDetailTableViewCell.m in Sources */,
 				E5AA236723B4A039003B89DF /* OpenCourseTableViewCell.m in Sources */,
 				E570F48B238F9C2F004CAF0C /* main.m in Sources */,
 				E5AA236423B44A4D003B89DF /* OpenCourseData.m in Sources */,
 				E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */,
 				E591233523C4787700858D17 /* ArticleDetaileTableViewCell.m in Sources */,
 				E591232C23C4261600858D17 /* ArticleDetailBean.m in Sources */,
+				E582A08723D18D4C004E5AD4 /* LearnPlaneDetialBean.m in Sources */,
 				E555807323B0A73D00374DCC /* CircularPrograss.m in Sources */,
 				E5CB19DB23C5AE4900D021F2 /* EmptyContentView.m in Sources */,
 				E54136FF23A9F0040025446E /* NetWorkManager.m in Sources */,
+				E586F38023D424A4003F7E04 /* LearnPlaneBeanFrame.m in Sources */,
 				E5E06DE123B1DB50004FBF24 /* LCUtils.m in Sources */,
 				E5CB19D823C5A5C900D021F2 /* LoadMoreFooterView.m in Sources */,
 				E501783D23A38DBE002AD49C /* MainTabBar.m in Sources */,
@@ -1084,6 +1107,7 @@
 				E501782F23A38388002AD49C /* ExamViewController.m in Sources */,
 				E5EE3B3023BF55D900242C16 /* LoadMoreTableViewCell.m in Sources */,
 				E5747AB923AC6DA00026CECC /* Foundation+Log.m in Sources */,
+				E582A08423D164C7004E5AD4 /* LearnPlaneTableView.m in Sources */,
 				E55188F623B9881D0041A1F4 /* MyCoursePlaneViewController.m in Sources */,
 				E555807023B0A6F500374DCC /* LCCircular.m in Sources */,
 			);

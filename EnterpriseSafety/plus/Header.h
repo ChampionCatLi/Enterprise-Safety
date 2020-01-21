@@ -79,6 +79,11 @@
 //1.5 培训计划详情
 #define url_get_plane_detail @"/m/home/my/clazz/get"
 
+#pragma mark - 阅读列表
+//阅读
+//4.1 阅读列表
+//m/home/my/clazz/article/list/{clazzId}/{offset}/{count}
+#define url_get_read_article_data @"/m/home/my/clazz/article/list"
 
 #pragma mark -公众栏目
 //5 公众栏目

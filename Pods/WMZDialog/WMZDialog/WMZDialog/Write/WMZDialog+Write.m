@@ -17,16 +17,24 @@ static NSString *oneLineHeightKey = @"oneLineHeight"; //oneLineHeight的key
 @implementation WMZDialog (Write)
 - (UIView*)writeAction{
     
+    if (self.wWirteTextMaxLine<=0) {
+        self.wWirteTextMaxLine = 7;
+    }
     [self.mainView addSubview:self.titleLabel];
     self.titleLabel.frame = CGRectMake(self.wMainOffsetX, self.wTitle.length?self.wMainOffsetY:0, self.wWidth-self.wMainOffsetX*2, [WMZDialogTool heightForTextView:CGSizeMake(self.wWidth-self.wMainOffsetX*2, CGFLOAT_MAX) WithText:self.titleLabel.text WithFont:self.titleLabel.font.pointSize]);
     
     [self.mainView addSubview:self.textLabel];
     self.textLabel.frame =  CGRectMake(self.wMainOffsetX,CGRectGetMaxY(self.titleLabel.frame)+ ( self.wMessage.length?self.wMainOffsetY:0), self.wWidth-self.wMainOffsetX*2, [WMZDialogTool heightForTextView:CGSizeMake(self.wWidth-self.wMainOffsetX*2, CGFLOAT_MAX) WithText:self.textLabel.text WithFont:self.textLabel.font.pointSize]);
     
+    
     [self.mainView addSubview:self.writeView];
-    self.writeView.frame = CGRectMake(self.wMainOffsetX,CGRectGetMaxY(self.textLabel.frame)+self.wMainOffsetY, self.wWidth-self.wMainOffsetX*2, [WMZDialogTool heightForTextView:CGSizeMake(self.wWidth-self.wMainOffsetX*2, CGFLOAT_MAX) WithText:@"占位" WithFont:self.writeView.font.pointSize]+22.0);
+    self.writeView.frame = CGRectMake(self.wMainOffsetX,CGRectGetMaxY(self.textLabel.frame)+self.wMainOffsetY, self.wWidth-self.wMainOffsetX*2, [WMZDialogTool heightForTextView:CGSizeMake(self.wWidth-self.wMainOffsetX*2, CGFLOAT_MAX) WithText:self.wWriteDefaultText?:@"占位" WithFont:self.writeView.font.pointSize]+22.0);
+    if (self.wWriteDefaultText) {
+        self.writeView.text = self.wWriteDefaultText;
+    }
     
     self.oneLineHeight = @([self heightForTextView:CGSizeMake(self.writeView.contentSize.width , CGFLOAT_MAX) WithText:@"测试"]);
+    
     
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(3, 4, self.wWidth-self.wMainOffsetX*2-6, [WMZDialogTool heightForTextView:CGSizeMake(self.wWidth-self.wMainOffsetX*2, CGFLOAT_MAX) WithText:@"占位" WithFont:self.writeView.font.pointSize]+10)];
     label.enabled = NO;
@@ -35,18 +43,17 @@ static NSString *oneLineHeightKey = @"oneLineHeight"; //oneLineHeight的key
     label.font =  [UIFont systemFontOfSize:self.wMessageFont];
     label.textColor = [UIColor lightGrayColor];
     [self.writeView addSubview:label];
+    label.hidden = (self.wWriteDefaultText&&[self.wWriteDefaultText isKindOfClass:[NSString class]]&&self.wWriteDefaultText.length)?YES:NO;
 
     UIView *view =  [self addBottomView:CGRectGetMaxY(self.writeView.frame)+self.wMainOffsetY];
     [self.OKBtn removeTarget:self action:NSSelectorFromString(@"OKAction:") forControlEvents:UIControlEventTouchUpInside];
     [self.OKBtn addTarget:self action:@selector(writeOKAction:) forControlEvents:UIControlEventTouchUpInside];
     [self reSetMainViewFrame:CGRectMake(0, 0, self.wWidth, CGRectGetMaxY(view.frame))];
     
-    
-    
     return self.mainView;
 }
 
-- (void) textViewDidChange:(UITextView *)textView{
+- (void)textViewDidChange:(UITextView *)textView{
     UILabel *label = [textView viewWithTag:999];
     if ([textView.text length] == 0) {
         [label setHidden:NO];
@@ -65,6 +72,14 @@ static NSString *oneLineHeightKey = @"oneLineHeight"; //oneLineHeight的key
     //行数
     NSInteger line = 1;
     NSString *mainText = @"";
+    
+    if (self.wWirteTextMaxLine == 1) {
+        if ([text isEqualToString:@"\n"]) {
+            [textView resignFirstResponder];
+            return NO;
+        }
+    }
+    
     if ([text isEqual:@""]) {
         if (![textView.text isEqualToString:@""]) {
             mainText = [textView.text substringToIndex:[textView.text length] - 1];
@@ -84,11 +99,16 @@ static NSString *oneLineHeightKey = @"oneLineHeight"; //oneLineHeight的key
     CGSize constraint = CGSizeMake(textView.contentSize.width - fPadding, CGFLOAT_MAX);
     height = [WMZDialogTool heightForTextView:constraint WithText:mainText WithFont:self.writeView.font.pointSize]+22.0;
     
-    line = height/self.oneLineHeight.floatValue;
+    if (!mainText.length) {
+        height =  [WMZDialogTool heightForTextView:CGSizeMake(self.wWidth-self.wMainOffsetX*2, CGFLOAT_MAX) WithText:@"占位" WithFont:self.writeView.font.pointSize]+22.0;
+    }
+    
+    line = (height-22.0)/self.oneLineHeight.floatValue;
     //最大行数
     if (line>self.wWirteTextMaxLine) {
-        height = self.wWirteTextMaxLine*self.oneLineHeight.floatValue;
+        height = self.wWirteTextMaxLine*self.oneLineHeight.floatValue+22.0;
     }
+    
     frame.size.height = height;
     [UIView animateWithDuration:0.3 animations:^{
         textView.frame = frame;
@@ -99,6 +119,15 @@ static NSString *oneLineHeightKey = @"oneLineHeight"; //oneLineHeight的key
         self.mainView.frame = rect;
     } completion:nil];
     return YES;
+}
+
+//点击Return键键盘退出
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    if (textView == self.writeView) {
+        if (self.wWirteTextMaxLine == 1) {
+            [self writeOKAction:nil];
+        }
+    }
 }
 
 #pragma clang diagnostic push
@@ -138,6 +167,11 @@ static NSString *oneLineHeightKey = @"oneLineHeight"; //oneLineHeight的key
         writeView.layer.borderWidth = 1.0f;
         writeView.layer.cornerRadius = 5;
         writeView.keyboardType = self.wWirteKeyBoardType;
+        if (self.wWirteTextMaxLine == 1) {
+            writeView.returnKeyType = UIReturnKeyDone;
+        } else {
+            writeView.returnKeyType = UIReturnKeyDefault;
+        }
         writeView.layer.masksToBounds = YES;
         [writeView becomeFirstResponder];
         writeView.font = [UIFont systemFontOfSize:self.wMessageFont];

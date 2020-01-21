@@ -15,15 +15,15 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - CCVodSDK (4.2.7)
-  - IQKeyboardManager (6.5.4)
+  - IQKeyboardManager (6.5.5)
   - Masonry (1.1.0)
-  - SDWebImage (5.4.1):
-    - SDWebImage/Core (= 5.4.1)
-  - SDWebImage/Core (5.4.1)
+  - SDWebImage (5.5.1):
+    - SDWebImage/Core (= 5.5.1)
+  - SDWebImage/Core (5.5.1)
   - SGPagingView (1.6.7)
   - SVProgressHUD (2.2.5)
   - TYAttributedLabel (2.6.6)
-  - WMZDialog (1.0.6)
+  - WMZDialog (1.1.0)
   - XMNetworking (1.1.0):
     - AFNetworking (~> 3.0)
 
@@ -55,13 +55,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CCVodSDK: 2dfa2a3bcd385be859a18d764e71647b209c0d68
-  IQKeyboardManager: 72b359cd7e777e3a984cedbe05f8da45320cbb63
+  IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  SDWebImage: 29c340dbdcef342bb13125553f4e19ce056b07a7
+  SDWebImage: 1245d058b7b8f59adef7a6da6bbafd4f1ab67041
   SGPagingView: 21152cbb9e25a7259ea2415b028c22f55f362ea2
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TYAttributedLabel: cb8fc910d97eb5224936d4f692a78e042af691b2
-  WMZDialog: 21c6680291d286744791a61986486bb00284f34e
+  WMZDialog: 325b15889eb920277d5a85ecbe423cdc4976d5e8
   XMNetworking: 7160cc06f504f325eec515a1e687ee1aa89bc462
 
 PODFILE CHECKSUM: 4e1dd82f646a9c5102a77fec54f504e20b864c99
