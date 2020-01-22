@@ -110,7 +110,7 @@
     return self.learnPlaneDetailBean.totalDataArr.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 65;
+    return 75;
 }
 @end
 

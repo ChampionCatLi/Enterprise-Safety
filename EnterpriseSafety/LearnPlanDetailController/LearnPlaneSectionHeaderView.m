@@ -11,6 +11,7 @@
 @property(nonatomic,strong) UILabel * title;
 @property(nonatomic,strong) UILabel * tips;
 @property(nonatomic,strong) UILabel * progressTips;
+@property(nonatomic,strong) UIView * gaySpace;
 
 @end
 
@@ -19,7 +20,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     
     if (self=[super initWithFrame:frame]) {
-        self.backgroundColor=[UIColor yellowColor];
+        self.backgroundColor=[UIColor whiteColor];
         [self initView];
     }
     
@@ -28,6 +29,7 @@
 }
 
 -(void) initView{
+    [self addSubview:self.gaySpace];
     [self addSubview:self.title];
     [self addSubview:self.tips];
     [self addSubview:self.progressTips];
@@ -46,7 +48,7 @@
     
     if (_title==nil) {
         
-        _title=[[UILabel alloc] initWithFrame:CGRectMake(LCMAEGIN_15, LCMAEGIN_15, 60, 15)];
+        _title=[[UILabel alloc] initWithFrame:CGRectMake(LCMAEGIN_15,25, 60, 15)];
         _title.textColor=LCBlack333333;
         _title.font=LCFont15;
     }
@@ -56,7 +58,7 @@
 
 -(UILabel *) tips{
     if (_tips==nil) {
-        _tips=[[UILabel alloc] initWithFrame:CGRectMake(LCMAEGIN_15, 40, 150, 15)];
+        _tips=[[UILabel alloc] initWithFrame:CGRectMake(LCMAEGIN_15, 50, 150, 15)];
         _tips.font=LCFont12;
         _tips.textColor=LCGay979797;
     }
@@ -65,10 +67,19 @@
 
 -(UILabel *) progressTips{
     if (_progressTips==nil) {
-        _progressTips=[[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-75, 40, 100, 15)];
+        _progressTips=[[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-75, 50, 100, 15)];
         _progressTips.font=LCFont12;
         _progressTips.textColor=LCGay979797;
     }
     return _progressTips;
+}
+
+-(UIView *)gaySpace{
+    if (_gaySpace==nil) {
+        _gaySpace=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 10)];
+        _gaySpace.backgroundColor=LCBackGroundColor;
+    }
+    
+    return _gaySpace;
 }
 @end
