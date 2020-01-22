@@ -99,4 +99,14 @@
 + (CGSize)getLabelSize:(NSString *)contentText viewWith:(CGFloat)viewWith fontSize:(UIFont *)fontSize{
     return  [contentText sizeWithFont:fontSize constrainedToSize:CGSizeMake(viewWith,MAXFLOAT)];
 }
+
++(CGFloat) getSingleHeight:(CGFloat)viewWith fontsize:(UIFont *)fontSize{
+    return [self getLabelSize:@"example" viewWith:viewWith fontSize:fontSize].height;
+}
+
++(NSString *)getLearnProgresstTips:(int)learnProgress{
+    
+    return [NSString stringWithFormat:@"%@%d%@",@"进度：",learnProgress,@"%"];
+    
+}
 @end

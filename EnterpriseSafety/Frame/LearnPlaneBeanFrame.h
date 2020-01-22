@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,assign) CGRect articleTitleF;
 @property(nonatomic,assign) CGRect articleImgF;
+@property(nonatomic,assign) CGRect articleStatusF;
 @property(nonatomic,strong) ArticleBean * articleBean;
 
 @property(nonatomic,assign) CGFloat cellHeight;

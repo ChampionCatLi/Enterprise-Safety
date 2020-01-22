@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 +(CGSize) get12LabelSize:(NSString *)contentText viewWith:(CGFloat) viewWith;
 +(CGSize) get15LabelSize:(NSString *)contentText viewWith:(CGFloat) viewWith;
 +(CGSize) getLabelSize:(NSString *) contentText viewWith:(CGFloat) viewWith fontSize:(UIFont *) fontSize;
+//获取单行高度。
++(CGFloat)getSingleHeight:(CGFloat)viewWith fontsize:(UIFont *)fontSize;
 
+//获取学习计划 详情列表 进度 提示  progresstips
++(NSString *) getLearnProgresstTips:(int )learnProgress;
 @end
 NS_ASSUME_NONNULL_END

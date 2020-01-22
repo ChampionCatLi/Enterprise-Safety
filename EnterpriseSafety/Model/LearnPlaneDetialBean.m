@@ -23,37 +23,63 @@
     self.totalDataArr =[NSMutableArray new ];
     NSDictionary * clazzDic=messageDic[@"clazz"];
     self.clazzID=[clazzDic[@"id"] stringValue];
-    
     NSDictionary * ruleDic=messageDic[@"rule"];
-    [self parseRuleDic:ruleDic];
     NSDictionary * scDic=messageDic[@"sc"];
     NSString * name= ruleDic[@"name"];
+    [self parseRuleDic:ruleDic parseScDic:scDic];
 }
--(void) parseRuleDic:(NSDictionary *) ruleDic{
+-(void) parseRuleDic:(NSDictionary *) ruleDic parseScDic:(NSDictionary *)scDic{
+    _sectionTitleArr=[NSMutableArray new];
     //学习模式
     int learnMode=[ruleDic[@"learnMode"] intValue];
     //必修课件数
     int reqNum=[ruleDic[@"reqNum"] intValue];
     if (reqNum>0) {
         [self parseReqArrAndOptArr:self.messageDic[@"reqs"]] ;
+        SectionTitleBean * sectionBean=[[SectionTitleBean alloc] init];
+        sectionBean.titleStr=@"必修";
+        sectionBean.tipsStr=@"请学习并通过以下全部课件";
+        sectionBean.sectionType=LCPlaneCellReqCourse;
+        int reqLearnProgress=[scDic[@"reqProgress"] intValue];
+        sectionBean.progressTipsStr=[LCUtils getLearnProgresstTips:reqLearnProgress];
+        [self.sectionTitleArr addObject:sectionBean];
+
     }
     //选修课件数
     int optNum=[ruleDic[@"optNum"] intValue ];
     if (optNum>0) {
         [self parseReqArrAndOptArr:self.messageDic[@"opts"]];
+        SectionTitleBean * optSectionTitleBean=[[SectionTitleBean alloc] init];
+        [self.sectionTitleArr addObject:optSectionTitleBean];
+        optSectionTitleBean.sectionType=LCPlaneCellOptCourse;
+        optSectionTitleBean.titleStr=@"选修";
+        int optRequireNum=[ruleDic[@"optPassNum"] intValue];
+        optSectionTitleBean.tipsStr=[NSString stringWithFormat:@"%@%d%@",@"请学习并至少通过",optRequireNum,@"课件"];
+        int optLearnProgress=[scDic[@"optProgress"] intValue];
+        optSectionTitleBean.progressTipsStr=[LCUtils getLearnProgresstTips:optLearnProgress];
     }
- 
+    
     //阅读数
     if (_articleDicArr!=nil) {
         [self parseArticleData:_articleDicArr];
+        SectionTitleBean * readSectionTitleBean=[[SectionTitleBean alloc] init];
+        readSectionTitleBean.titleStr=@"阅读";
+        readSectionTitleBean.sectionType=LCPlaneCellArticle;
+        int learnReadProgress=[scDic[@"readProgress"] intValue];
+        
+        readSectionTitleBean.progressTipsStr=[LCUtils getLearnProgresstTips:learnReadProgress];
+        int readRequireNum=[ruleDic[@"readNum"] intValue];
+        readSectionTitleBean.tipsStr=[NSString stringWithFormat:@"%@%d%@",@"请学习并至少通过",readRequireNum,@"课件"];
+        [self.sectionTitleArr addObject:readSectionTitleBean];
+        
     }
     
     //考试数
     int quizNum =[ruleDic[@"quizNum"] intValue];
     if (quizNum>0) {
-        
+       
     }
-   
+    
     
 }
 
@@ -94,11 +120,16 @@
     
     for (int i = 0; i<2; i++) {
         NSDictionary * articleDic=dataArr[i];
+        LearnPlaneDetailArticleFrame *learnPlaneArticleF=[[LearnPlaneDetailArticleFrame alloc] init];
         ArticleBean * articleBean=[[ArticleBean alloc] init];
-        [articleArr addObject:articleBean];
+        
+        
         articleBean.articleID=articleDic[@"id"];
         articleBean.articleTitle=articleDic[@"title"];
         articleBean.articleImg=articleDic[@"thumb"];
+        articleBean.articleTitle=@"哈哈哈哈哈哈哈哈哈哈阿哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈阿哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈阿哈哈哈哈哈哈哈哈哈哈哈哈阿哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈阿哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈阿哈哈哈哈哈哈哈";
+        learnPlaneArticleF.articleBean=articleBean;
+        [articleArr addObject:learnPlaneArticleF];
     }
 }
 
@@ -111,6 +142,11 @@
 
 @end
 @implementation ArticleBean
+
+
+
+@end
+@implementation SectionTitleBean
 
 
 

@@ -56,6 +56,10 @@
 #define LCMainCourseTitle @"我的课程"
 #define LCMainMyCenterTitle @"个人中心"
 
+#define LCPlaneCellReqCourse @"reqCourseCell"
+#define LCPlaneCellOptCourse @"optCourseCell"
+#define LCPlaneCellArticle @"articleCell"
+#define LCPlaneCellExam @"examCell"
 
 #pragma mark - ui data
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)

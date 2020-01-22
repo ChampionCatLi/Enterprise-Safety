@@ -61,18 +61,40 @@
     CGFloat articleTitleX=LCMAEGIN_15;
     CGFloat articleTitleY=LCMAEGIN_15;
     CGFloat articleTitleW;
+    
+    CGFloat articleStatusH=20;
+    CGFloat articleStatusW=20;
+    CGFloat articleStatusX=LCMAEGIN_15;
+    CGFloat articleStatusY=LCMAEGIN_15;
+    
     if(articleBean.articleImg.length==0){
-        articleTitleW=SCREEN_WIDTH-LCMAEGIN_15;
+        articleTitleW=SCREEN_WIDTH-LCMAEGIN_15*2;
     }else{
         articleTitleW=SCREEN_WIDTH-articleImgW-LCMAEGIN_15;
         self.articleImgF=CGRectMake(articleImgX, articleImgY, articleImgW, articleImgH);
     }
+    if (articleBean.isPassed) {
+        articleStatusX+=LCMAEGIN_15;
+        self.articleStatusF=CGRectMake(articleStatusX, articleStatusY, articleStatusW, articleStatusH);
+        articleTitleW=articleTitleW-CGRectGetMaxX(self.articleStatusF);
+    }
+    
     CGSize articleSize=[LCUtils get15LabelSize:articleBean.articleTitle viewWith:articleTitleW];
-    self.articleTitleF=CGRectMake(articleTitleX, articleTitleY, articleTitleW, articleSize.height);
+    CGFloat articleSingleHeight=[LCUtils getSingleHeight:articleTitleW fontsize:LCFont15];
+    CGFloat articleTitleHeight;
+    if (articleSize.height>articleSingleHeight*2) {
+        articleTitleHeight=articleSingleHeight*2;
+    }else{
+        articleTitleHeight=articleSize.height;
+    }
+    self.articleTitleF=CGRectMake(articleTitleX, articleTitleY, articleTitleW, articleTitleHeight);
     self.articleImgF=CGRectMake(articleImgX, articleImgY, articleImgW, articleImgH);
     
-    
-    self.cellHeight=CGRectGetMaxY(_articleImgF)+LCMAEGIN_15;
+    if (articleBean.articleImg.length!=0) {
+        self.cellHeight=CGRectGetMaxY(_articleImgF)+LCMAEGIN_15;
+    }else{
+        self.cellHeight=CGRectGetMaxY(_articleTitleF)+LCMAEGIN_15;
+    }
     
     
 }

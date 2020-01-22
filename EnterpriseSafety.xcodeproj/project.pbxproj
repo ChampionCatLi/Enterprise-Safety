@@ -45,6 +45,7 @@
 		E596D1FA23989E6700C72F17 /* GKCycleScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E596D1F823989E6700C72F17 /* GKCycleScrollViewCell.m */; };
 		E5AA236423B44A4D003B89DF /* OpenCourseData.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AA236323B44A4D003B89DF /* OpenCourseData.m */; };
 		E5AA236723B4A039003B89DF /* OpenCourseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AA236623B4A039003B89DF /* OpenCourseTableViewCell.m */; };
+		E5BE56C323D7FADB00CD5A22 /* LearnPlaneSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BE56C223D7FADB00CD5A22 /* LearnPlaneSectionHeaderView.m */; };
 		E5C3C157239DDB63009AB92F /* info@1.5x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C151239DDB62009AB92F /* info@1.5x.png */; };
 		E5C3C158239DDB63009AB92F /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C152239DDB62009AB92F /* info@2x.png */; };
 		E5C3C159239DDB63009AB92F /* info@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C3C153239DDB62009AB92F /* info@3x.png */; };
@@ -252,6 +253,8 @@
 		E5AA236523B4A039003B89DF /* OpenCourseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCourseTableViewCell.h; sourceTree = "<group>"; };
 		E5AA236623B4A039003B89DF /* OpenCourseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenCourseTableViewCell.m; sourceTree = "<group>"; };
 		E5AD4812239A3CFB0074EBCD /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		E5BE56C123D7FADB00CD5A22 /* LearnPlaneSectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnPlaneSectionHeaderView.h; sourceTree = "<group>"; };
+		E5BE56C223D7FADB00CD5A22 /* LearnPlaneSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnPlaneSectionHeaderView.m; sourceTree = "<group>"; };
 		E5C3C151239DDB62009AB92F /* info@1.5x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@1.5x.png"; sourceTree = "<group>"; };
 		E5C3C152239DDB62009AB92F /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
 		E5C3C153239DDB62009AB92F /* info@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@3x.png"; sourceTree = "<group>"; };
@@ -449,6 +452,8 @@
 				E575284123C70B3A00789A44 /* LearnHeaderView.m */,
 				E582A08223D164C7004E5AD4 /* LearnPlaneTableView.h */,
 				E582A08323D164C7004E5AD4 /* LearnPlaneTableView.m */,
+				E5BE56C123D7FADB00CD5A22 /* LearnPlaneSectionHeaderView.h */,
+				E5BE56C223D7FADB00CD5A22 /* LearnPlaneSectionHeaderView.m */,
 			);
 			path = LearnPlanDetailController;
 			sourceTree = "<group>";
@@ -1090,6 +1095,7 @@
 				E5AA236423B44A4D003B89DF /* OpenCourseData.m in Sources */,
 				E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */,
 				E591233523C4787700858D17 /* ArticleDetaileTableViewCell.m in Sources */,
+				E5BE56C323D7FADB00CD5A22 /* LearnPlaneSectionHeaderView.m in Sources */,
 				E591232C23C4261600858D17 /* ArticleDetailBean.m in Sources */,
 				E582A08723D18D4C004E5AD4 /* LearnPlaneDetialBean.m in Sources */,
 				E555807323B0A73D00374DCC /* CircularPrograss.m in Sources */,

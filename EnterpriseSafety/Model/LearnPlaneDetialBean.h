@@ -16,8 +16,21 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong,nonatomic) NSDictionary * messageDic;
 @property(strong,nonatomic) NSMutableArray *totalDataArr;
 @property(strong,nonatomic) NSArray * articleDicArr;
+@property(strong,nonatomic) NSMutableArray * sectionTitleArr;
 
 -(void) setMessageDic:(NSDictionary * )messageDic setArticleDicArr:(nullable  NSArray * )  articleDicArr;
+
+@end
+
+/**
+ 标题封装类
+ */
+@interface SectionTitleBean : NSObject
+
+@property(nonatomic,strong) NSString * titleStr;
+@property(nonatomic,strong) NSString * tipsStr;
+@property(nonatomic,strong) NSString * progressTipsStr;
+@property(nonatomic,strong) NSString * sectionType;
 
 @end
 /**
@@ -37,12 +50,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong,nonatomic)NSString * articleTitle;
 @property(strong,nonatomic)NSString * articleImg;
 @property(strong,nonatomic)NSString * articleID;
+@property(assign,nonatomic)BOOL isPassed;
 @end
 
 @interface ExameBean : NSObject
-
-
-
 
 @end
 NS_ASSUME_NONNULL_END

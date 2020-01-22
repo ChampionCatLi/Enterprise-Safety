@@ -8,12 +8,21 @@
 
 #import <UIKit/UIKit.h>
 @class LearnPlaneDetialBeanCourseFrame;
+@class LearnPlaneDetailArticleFrame;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LearnPlaneDetailCourseTableViewCell : UITableViewCell
 
 @property(nonatomic,strong) LearnPlaneDetialBeanCourseFrame * learnPlaneDetialBeanCourseFrame;
+
+@end
+
+
+
+@interface LearnPlaneDetailArticleCell  :  UITableViewCell
+
+@property(nonatomic,strong) LearnPlaneDetailArticleFrame * learnPlaneDetailArticleFrame;
 
 @end
 
