@@ -5,7 +5,7 @@
 //  Created by 超 on 2020/1/3.
 //  Copyright © 2020 chao. All rights reserved.
 //
-#import "OpenCourseTableVIewTitleTableViewCell.h"
+#import "OpenCourseTableViewTitleTableViewCell.h"
 
 @interface  OpenCourseTableViewTitleTableViewCell()
 @property(nonatomic,strong) UILabel * titleLabel;

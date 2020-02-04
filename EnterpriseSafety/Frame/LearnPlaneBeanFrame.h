@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @class CourseBean;
 @class ArticleBean;
+@class ExameBean;
 @interface LearnPlaneBeanFrame : NSObject
 
 @end
@@ -30,6 +31,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign) CGRect articleImgF;
 @property(nonatomic,assign) CGRect articleStatusF;
 @property(nonatomic,strong) ArticleBean * articleBean;
+
+@property(nonatomic,assign) CGFloat cellHeight;
+@end
+
+@interface LearnPlaneDetailExamFrame : NSObject
+ 
+@property(nonatomic,assign) ExameBean * examBean;
+
+@property(nonatomic,assign) CGRect examTitleF;
+@property(nonatomic,assign) CGRect examTimeF;
+@property(nonatomic,assign) CGRect examScoreF;
+@property(nonatomic,assign) CGRect examChanceF;
+ 
 
 @property(nonatomic,assign) CGFloat cellHeight;
 @end

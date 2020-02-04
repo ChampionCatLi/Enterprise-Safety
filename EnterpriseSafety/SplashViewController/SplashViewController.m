@@ -10,6 +10,7 @@
 #import <XMRequest.h>
 #import "LoginController.h"
 #import "MainTabBar.h"
+#import "LearnVideoViewController.h"
 
 @interface SplashViewController ()
 @property(nonatomic,copy) NSString * token;
@@ -58,7 +59,7 @@
         [self go2MainTabBar];
         [self saveUserData:responseObject];
     }onFailure:^(NSError * _Nullable error) {
-        [self go2LoginVC];
+      [self go2LoginVC];
         NSLog(@"error::::%@",error);
     }];
 }
@@ -107,6 +108,12 @@
     [self presentViewController:mainTabBar animated:NO completion:nil];
 }
 
+//-(void)go2LearnVideoVC{
+//    LearnVideoViewController * learnVideoVC=[[LearnVideoViewController alloc] init];
+//    UINavigationController * nav =[[UINavigationController alloc] initWithRootViewController:learnVideoVC];
+//    nav.modalPresentationStyle=UIModalPresentationFullScreen;
+//    [self presentViewController:nav animated:NO completion:NULL];
+//}
 -(void)viewDidDisappear:(BOOL)animated{
     [_timer invalidate];
     _timer=nil;

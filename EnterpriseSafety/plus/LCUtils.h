@@ -14,8 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSString *)long2Str:(long )time;
 
 +(NSString *) articleLong2Str:(long)time;
-
+/**
+ 学习时间::
+ */
 +(NSString *) appendLong2Str:(long)startTime  endTime:(long)endTime;
+/**
+ 
+ */
 +(NSString *) planeLong2str:(long)startTime endTime :(long) endTime;
 
 +(CGSize) get12LabelSize:(NSString *)contentText viewWith:(CGFloat) viewWith;

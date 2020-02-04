@@ -8,13 +8,14 @@
 
 #import "NetWorkManager.h"
 #define SERVER_BASE_URL  @"http://192.168.3.253:8080"
+#define SERVER_TEMP_URL  @"http://47.93.185.149:8080"
 
 
 @implementation NetWorkManager
 
 +(void) setup{
     [XMCenter setupConfig:^(XMConfig * _Nonnull config) {
-        config.generalServer=SERVER_BASE_URL;
+        config.generalServer=SERVER_TEMP_URL;
         config.callbackQueue=dispatch_get_main_queue();
         config.consoleLog=NO;
         config.generalHeaders=@{@"Accept":@"application/json"};

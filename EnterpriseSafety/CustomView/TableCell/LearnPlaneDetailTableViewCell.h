@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @class LearnPlaneDetialBeanCourseFrame;
 @class LearnPlaneDetailArticleFrame;
+@class LearnPlaneDetailExamFrame;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LearnPlaneDetailArticleCell  :  UITableViewCell
 
 @property(nonatomic,strong) LearnPlaneDetailArticleFrame * learnPlaneDetailArticleFrame;
+
+@end
+
+@interface LearnPlaneDetailExamCell : UITableViewCell
+
+@property(nonatomic,strong) LearnPlaneDetailExamFrame * learnPlaneDetailExamFrame;
 
 @end
 

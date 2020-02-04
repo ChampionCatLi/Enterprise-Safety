@@ -95,6 +95,67 @@
     }else{
         self.cellHeight=CGRectGetMaxY(_articleTitleF)+LCMAEGIN_15;
     }
+}
+
+@end
+
+
+@implementation LearnPlaneDetailExamFrame
+
+-(void) setExamBean:(ExameBean *)examBean{
+    _examBean=examBean;
+
+    CGFloat examTitleX=LCMAEGIN_15;
+    CGFloat examTitleY=LCMAEGIN_15;
+    CGFloat examTitleH=20;
+    CGFloat examTitleW=SCREEN_WIDTH-LCMAEGIN_15*2;
+    
+    self.examTitleF=CGRectMake(examTitleX, examTitleY, examTitleW, examTitleH);
+    
+    CGFloat examTimeX=LCMAEGIN_15;
+    CGFloat examTimeY=CGRectGetMaxY(_examTimeF)+LCMAEGIN_15;
+    CGFloat examTimeH=15;
+    CGFloat examTineW=SCREEN_WIDTH-LCMAEGIN_15*2;
+    
+    self.examTimeF=CGRectMake(examTimeX, examTimeY, examTineW, examTimeH);
+    
+    
+    if(examBean.examScore.length!=0){
+        
+        CGFloat examScoreX= LCMAEGIN_15;
+        CGFloat examScoreY=CGRectGetMaxY(self.examTimeF)+LCMAEGIN_15;
+        CGFloat examScoreW= 80;
+        CGFloat examScoreH= 15;
+        self.examScoreF=CGRectMake(examScoreX, examScoreY, examScoreW, examScoreH);
+        
+        
+    }
+    if (examBean.examChance.length!=0) {
+        CGFloat examChanceX;
+        if (examBean.examScore.length==0) {
+            examChanceX=LCMAEGIN_15;
+        }else{
+            examChanceX=110;
+        }
+        CGFloat examChanceY=CGRectGetMaxY(self.examTimeF)+LCMAEGIN_15;
+        CGFloat examChanceW=200;
+        CGFloat examChanceH=15;
+        self.examChanceF=CGRectMake(examChanceX, examChanceY, examChanceW, examChanceH);
+        
+    }
+    if (examBean.examChance.length==0&&examBean.examScore.length==0) {
+        self.cellHeight=CGRectGetMaxY(self.examTimeF)+LCMAEGIN_15;
+        
+    }else{
+        if (examBean.examScore.length!=0) {
+            self.cellHeight=CGRectGetMaxY(self.examTimeF)+LCMAEGIN_15;
+        }else{
+            self.cellHeight=CGRectGetMaxY(self.examTimeF)+LCMAEGIN_15;
+        }
+        
+    }
+   
+    
     
     
 }

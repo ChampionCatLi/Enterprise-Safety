@@ -60,7 +60,7 @@
     }
     
     //阅读数
-    if (_articleDicArr!=nil) {
+    if (_articleDicArr.count!=0) {
         [self parseArticleData:_articleDicArr];
         SectionTitleBean * readSectionTitleBean=[[SectionTitleBean alloc] init];
         readSectionTitleBean.titleStr=@"阅读";
@@ -77,6 +77,12 @@
     //考试数
     int quizNum =[ruleDic[@"quizNum"] intValue];
     if (quizNum>0) {
+        [self parseExamData:self.messageDic[@"quizs"]];
+        SectionTitleBean * examSectionTitleBean=[[SectionTitleBean alloc] init];
+        examSectionTitleBean.titleStr=@"测评";
+        examSectionTitleBean.tipsStr=@"请参加一下测评并达到要求分数";
+        int examProgress=[scDic[@"quizProgress"] intValue];
+        examSectionTitleBean.progressTipsStr=[NSString stringWithFormat:@"进度：%d",examProgress];
        
     }
     
@@ -111,8 +117,6 @@
 }
 
 
-
-
 -(void) parseArticleData:(NSArray *) dataArr{
     //只显示1条，当超过1条显示加载更多 跳转至新页面
     NSMutableArray * articleArr=[NSMutableArray new];
@@ -133,6 +137,32 @@
     }
 }
 
+-(void) parseExamData:(NSArray *) dataArr{
+    NSMutableArray * examArr=[NSMutableArray new];
+    [self.totalDataArr addObject:examArr];
+    
+    for (int i = 0; i<dataArr.count; i++) {
+        NSDictionary * dataDic=dataArr[i];
+        NSDictionary * crpDic= dataDic[@"crp"];
+        NSDictionary * settingDic=dataDic[@"settings"];
+        ExameBean * examBean=[[ExameBean alloc] init];
+        examBean.examTitle=crpDic[@"name"];
+        examBean.passScore=[crpDic[@"passScore"] intValue];
+        examBean.examStartTime=[settingDic[@"startTime"] longValue];
+        examBean.examEndTime=[settingDic[@"endTime"] longValue];
+        examBean.examTime=[LCUtils ];
+        NSArray * allKeys=dataDic.allKeys;
+        if ([allKeys containsObject:@"log"]) {
+            //todo
+            
+            
+        }
+        [examArr addObject:examBean];
+        
+    }
+    
+}
+
 @end
 
 
@@ -149,6 +179,9 @@
 @implementation SectionTitleBean
 
 
+
+@end
+@implementation ExameBean
 
 @end
 

@@ -33,6 +33,7 @@
 
 
 -(void) initView{
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self.contentView addSubview:self.ivCourseLeftStatus];
     [self.contentView addSubview:self.ivCourseRightStatus];
     [self.contentView addSubview:self.labCourseTitle];
@@ -141,6 +142,100 @@
     }
     
     return _articleStatusPic;
+}
+
+@end
+#pragma  mark --测评cell--
+@interface LearnPlaneDetailExamCell()
+
+@property(strong,nonatomic) UILabel * examTitle;
+@property(strong,nonatomic) UILabel * examTime;
+@property(strong,nonatomic) UILabel * examChance;
+@property(strong,nonatomic) UILabel * examScore;
+@property(strong,nonatomic) UIImageView * examIcon;
+
+@end
+
+@implementation LearnPlaneDetailExamCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        
+        [self initView];
+    }
+    return self;
+    
+}
+
+
+-(void) initView{
+    
+    
+    [self.contentView addSubview:self.examTitle];
+    [self.contentView addSubview:self.examTime];
+    [self.contentView addSubview:self.examScore];
+    [self.contentView addSubview:self.examIcon];
+    [self.contentView addSubview:self.examChance];
+
+}
+
+- (void)setLearnPlaneDetailExamFrame:(LearnPlaneDetailExamFrame *)learnPlaneDetailExamFrame{
+    self.examTitle.frame=learnPlaneDetailExamFrame.examTitleF;
+    self.examTime.frame=learnPlaneDetailExamFrame.examTimeF;
+    self.examScore.frame=learnPlaneDetailExamFrame.examScoreF;
+    self.examChance.frame=learnPlaneDetailExamFrame.examChanceF;
+    
+}
+
+-(UILabel *) examTitle{
+    
+    if (_examTitle==nil) {
+        _examTitle=[[UILabel alloc] init];
+        _examTitle.font=LCFont15;
+        _examTitle.textColor=LCBlack333333;
+        _examTitle.numberOfLines=1;
+    }
+    
+    return _examTitle;
+}
+
+-(UILabel *) examTime{
+    
+    if (_examTime==nil) {
+        _examTime=[[UILabel alloc] init];
+        _examTime.font=LCFont12;
+        _examTime.textColor=LCGay9E9E9E;
+        
+    }
+    
+    return _examTime;
+}
+-(UILabel *) examScore{
+    if (_examScore==nil) {
+        _examScore=[[UILabel alloc] init];
+        _examScore.font=LCFont12;
+        _examScore.textColor=LCGay9E9E9E;
+    }
+    
+    return _examScore;
+}
+-(UILabel *) examChance{
+    if (_examChance==nil) {
+        _examChance=[[UILabel alloc] init];
+        _examChance.font =LCFont12;
+    }
+    return _examChance;
+}
+-(UIImageView *) examIcon{
+    if (_examIcon==nil) {
+        UIImage * image=[UIImage imageNamed:@"arrow_r.png"];
+        _examIcon=[[UIImageView alloc] initWithImage:image];
+        _examIcon.frame=CGRectMake(SCREEN_WIDTH-35, self.contentView.center.y, 20, 20);
+        
+    }
+    
+    return _examIcon;
 }
 
 @end

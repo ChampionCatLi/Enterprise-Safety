@@ -48,15 +48,15 @@
 
 @property(nonatomic,strong)NSArray * organDataArr;
 @property(nonatomic,strong)NSMutableArray * organNameArr;
-/**
- assign 基础数据类型
- */
-@property(nonatomic,assign) NSInteger  selectIndex;
+///**
+// assign 基础数据类型
+// */
+//@property(nonatomic,assign) NSInteger  selectIndex;
 /**
  协议
  */
 @property(nonatomic,strong) TYAttributedLabel * agreementLinkText;
-
+@property(nonatomic,strong)   NSDictionary * organDic;
 
 
 #define TAG_ACCOUNT 0x000000001
@@ -455,7 +455,8 @@
                 for (NSDictionary  * dic in self.organDataArr) {
                     [self.organNameArr addObject:dic[@"name"]];
                 }
-            }else{
+            }else if(self.organDataArr.count==1){
+                self.organDic=self.organDataArr[0];
                 [self hideOrganLayout];
             }
             
@@ -464,16 +465,23 @@
         }
         
     } onFailure:^(NSError * _Nullable error) {
+        NSLog(@"error:::::::-----------     %@",error);
     } ];
 }
 
 -(void) go2Login{
     [XMCenter sendRequest:^(XMRequest * _Nonnull request) {
         request.api=url_do_login_by_password;
-        NSDictionary * organDic=self.organDataArr[self.selectIndex];
-        id tenantId=organDic[@"tenantId"];
-        id orgId =organDic[@"orgId"];
-        request.parameters=@{@"tid":tenantId,@"orgid":orgId,@"username":self.accountStr,@"password":self.passwordStr};
+//        NSDictionary * organDic=self.organDataArr[self.selectIndex];
+        NSDictionary * paramDic;
+        if (self.organDic!=nil) {
+            id tenantId=self.organDic[@"tenantId"];
+            id orgId =self.organDic[@"orgId"];
+            paramDic=@{@"tid":tenantId,@"orgid":orgId,@"username":self.accountStr,@"password":self.passwordStr};
+        }else{
+            paramDic=@{@"username":self.accountStr,@"password":self.passwordStr};
+        }
+        request.parameters=paramDic;
     } onSuccess:^(id  _Nullable responseObject) {
         NSUserDefaults * defaults =[NSUserDefaults standardUserDefaults];
 
@@ -542,12 +550,12 @@
      
      -(void) setOrganIndex:(NSInteger)index setOrganName:(NSString *)organNameStr{
         self.organField.text=organNameStr;
-        self.selectIndex=index;
+         self.organDic=self.organDataArr[index];
         [self checkData];
     }
      
      -(void) checkData{
-        if(self.accountStr.length!=0&&self.passwordStr.length!=0&&self.organField.text.length!=0) {
+        if(self.accountStr.length!=0&&self.passwordStr.length!=0&&self.organDic!=nil) {
             if ([self isPhoneNum:self.accountStr]) {
                 self.loginButton.enabled=YES;
                 [_loginButton setBackgroundColor:LCButtonclickColor];
@@ -556,7 +564,7 @@
                 [_loginButton setBackgroundColor:LCButtonUnclickColor];
             }
         }else{
-            self.loginButton.enabled=NO;
+            self.loginButton.enabled= self.organDataArr==nil ;
             [_loginButton setBackgroundColor:LCButtonUnclickColor];
         }
     }

@@ -10,6 +10,7 @@
 #import "LearnPlaneDetialBean.h"
 #import "LearnPlaneDetailTableViewCell.h"
 #import "LearnPlaneSectionHeaderView.h"
+#import "LearnPlaneDetialBean.h"
 
 
 @interface LearnPlaneTableView()<UITableViewDelegate,UITableViewDataSource>
@@ -110,7 +111,15 @@
     return self.learnPlaneDetailBean.totalDataArr.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 75;
+    return 70;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+   SectionTitleBean * secationBean  =  self.sectionTitleArr[indexPath.section];
+    
+    
+    NSLog(@"点击:::title ::::%@",secationBean.titleStr);
+
 }
 @end
 
