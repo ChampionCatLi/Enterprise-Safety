@@ -60,11 +60,14 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  测评
  */
-@interface ExameBean : NSObject
+@interface ExamBean : NSObject
 @property(strong,nonatomic) NSString * examTitle;
 @property(strong,nonatomic) NSString * examTime;
 @property(strong,nonatomic) NSString * examScore;
 @property(strong,nonatomic) NSString * examChance;
+@property(strong,nonatomic) NSString * examDuration;
+
+//@property(assign,nonatomic) int examDuracation;
 @property(assign,nonatomic) BOOL  isPassed;
 @property(assign,nonatomic) long examStartTime;
 @property(assign,nonatomic) long examEndTime;

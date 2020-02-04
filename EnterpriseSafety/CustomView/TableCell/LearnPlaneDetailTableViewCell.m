@@ -153,7 +153,8 @@
 @property(strong,nonatomic) UILabel * examChance;
 @property(strong,nonatomic) UILabel * examScore;
 @property(strong,nonatomic) UIImageView * examIcon;
-
+@property(strong,nonatomic) UILabel * examDuration;
+ 
 @end
 
 @implementation LearnPlaneDetailExamCell
@@ -161,7 +162,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
+    
         [self initView];
     }
     return self;
@@ -177,14 +178,26 @@
     [self.contentView addSubview:self.examScore];
     [self.contentView addSubview:self.examIcon];
     [self.contentView addSubview:self.examChance];
+    [self.contentView addSubview:self.examDuration];
 
 }
 
 - (void)setLearnPlaneDetailExamFrame:(LearnPlaneDetailExamFrame *)learnPlaneDetailExamFrame{
+    _learnPlaneDetailExamFrame=learnPlaneDetailExamFrame;
     self.examTitle.frame=learnPlaneDetailExamFrame.examTitleF;
     self.examTime.frame=learnPlaneDetailExamFrame.examTimeF;
     self.examScore.frame=learnPlaneDetailExamFrame.examScoreF;
     self.examChance.frame=learnPlaneDetailExamFrame.examChanceF;
+    self.examDuration.frame=learnPlaneDetailExamFrame.examDurationF;
+    [self setViewData:learnPlaneDetailExamFrame.examBean];
+    
+}
+-(void) setViewData:(ExamBean *) examBean{
+    self.examTitle.text=examBean.examTitle;
+    self.examTime.text=examBean.examTime;
+    self.examScore.text=examBean.examScore;
+    self.examDuration.text=examBean.examDuration;
+    self.examChance.text=examBean.examChance;
     
 }
 
@@ -224,6 +237,7 @@
     if (_examChance==nil) {
         _examChance=[[UILabel alloc] init];
         _examChance.font =LCFont12;
+        _examChance.textColor=LCGay9E9E9E;
     }
     return _examChance;
 }
@@ -236,6 +250,15 @@
     }
     
     return _examIcon;
+}
+-(UILabel *) examDuration{
+    if (_examDuration==nil) {
+        _examDuration=[[UILabel alloc] init];
+        _examDuration.font=LCFont12;
+        _examDuration.textColor=LCGay9E9E9E;
+    }
+    
+    return _examDuration;
 }
 
 @end

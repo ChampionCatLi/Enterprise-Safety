@@ -15,13 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(NSString *) articleLong2Str:(long)time;
 /**
- 学习时间::
  */
 +(NSString *) appendLong2Str:(long)startTime  endTime:(long)endTime;
 /**
- 
+ 学习时间：：：
  */
 +(NSString *) planeLong2str:(long)startTime endTime :(long) endTime;
+/**
+ 将long 类型转换为 字符串并拼接
+ */
++(NSString *) long2TimeStr:(long)startTime endTime :(long)endTime midStr:(NSString *) mindStr;
 
 +(CGSize) get12LabelSize:(NSString *)contentText viewWith:(CGFloat) viewWith;
 +(CGSize) get15LabelSize:(NSString *)contentText viewWith:(CGFloat) viewWith;

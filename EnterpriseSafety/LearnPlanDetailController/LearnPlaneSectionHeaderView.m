@@ -58,7 +58,7 @@
 
 -(UILabel *) tips{
     if (_tips==nil) {
-        _tips=[[UILabel alloc] initWithFrame:CGRectMake(LCMAEGIN_15, 50, 150, 15)];
+        _tips=[[UILabel alloc] initWithFrame:CGRectMake(LCMAEGIN_15, 50, 180, 15)];
         _tips.font=LCFont12;
         _tips.textColor=LCGay979797;
     }
@@ -67,7 +67,7 @@
 
 -(UILabel *) progressTips{
     if (_progressTips==nil) {
-        _progressTips=[[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-75, 50, 100, 15)];
+        _progressTips=[[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-75, 50, 120, 15)];
         _progressTips.font=LCFont12;
         _progressTips.textColor=LCGay979797;
     }

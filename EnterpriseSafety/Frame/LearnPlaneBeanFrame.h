@@ -11,41 +11,42 @@
 NS_ASSUME_NONNULL_BEGIN
 @class CourseBean;
 @class ArticleBean;
-@class ExameBean;
-@interface LearnPlaneBeanFrame : NSObject
+@class ExamBean;
 
+
+@interface LearnPlaneBeanFrame : NSObject
+@property(nonatomic,assign) CGFloat cellHeight;
 @end
 
-@interface LearnPlaneDetialBeanCourseFrame : NSObject
+@interface LearnPlaneDetialBeanCourseFrame : LearnPlaneBeanFrame
 @property(nonatomic, assign) CGRect courseTitleF;
 @property(nonatomic,assign) CGRect courseLeftStatusF;
 @property(nonatomic,assign) CGRect courseRightStatusF;
-@property(nonatomic,assign) CGFloat cellHeight;
+
 
 @property(strong,nonatomic) CourseBean * courseBean;
 @end
 
-@interface LearnPlaneDetailArticleFrame :  NSObject
+@interface LearnPlaneDetailArticleFrame :  LearnPlaneBeanFrame
 
 @property(nonatomic,assign) CGRect articleTitleF;
 @property(nonatomic,assign) CGRect articleImgF;
 @property(nonatomic,assign) CGRect articleStatusF;
 @property(nonatomic,strong) ArticleBean * articleBean;
 
-@property(nonatomic,assign) CGFloat cellHeight;
 @end
 
-@interface LearnPlaneDetailExamFrame : NSObject
+@interface LearnPlaneDetailExamFrame : LearnPlaneBeanFrame
  
-@property(nonatomic,assign) ExameBean * examBean;
+@property(nonatomic,strong) ExamBean * examBean;
 
 @property(nonatomic,assign) CGRect examTitleF;
 @property(nonatomic,assign) CGRect examTimeF;
 @property(nonatomic,assign) CGRect examScoreF;
 @property(nonatomic,assign) CGRect examChanceF;
+@property(nonatomic,assign) CGRect examDurationF;
  
 
-@property(nonatomic,assign) CGFloat cellHeight;
 @end
 
 NS_ASSUME_NONNULL_END

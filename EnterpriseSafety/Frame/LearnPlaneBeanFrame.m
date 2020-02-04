@@ -102,7 +102,7 @@
 
 @implementation LearnPlaneDetailExamFrame
 
--(void) setExamBean:(ExameBean *)examBean{
+-(void) setExamBean:(ExamBean *)examBean{
     _examBean=examBean;
 
     CGFloat examTitleX=LCMAEGIN_15;
@@ -113,11 +113,18 @@
     self.examTitleF=CGRectMake(examTitleX, examTitleY, examTitleW, examTitleH);
     
     CGFloat examTimeX=LCMAEGIN_15;
-    CGFloat examTimeY=CGRectGetMaxY(_examTimeF)+LCMAEGIN_15;
+    CGFloat examTimeY=CGRectGetMaxY(_examTitleF)+LCMAEGIN_15;
     CGFloat examTimeH=15;
     CGFloat examTineW=SCREEN_WIDTH-LCMAEGIN_15*2;
     
     self.examTimeF=CGRectMake(examTimeX, examTimeY, examTineW, examTimeH);
+    
+    CGFloat examDurationX=200;
+    CGFloat examDurationY=examTimeY;
+    CGFloat examDurationW=80;
+    CGFloat examDurationH=15;
+    
+    self.examDurationF=CGRectMake(examDurationX, examDurationY, examDurationW, examDurationH);
     
     
     if(examBean.examScore.length!=0){
@@ -127,8 +134,6 @@
         CGFloat examScoreW= 80;
         CGFloat examScoreH= 15;
         self.examScoreF=CGRectMake(examScoreX, examScoreY, examScoreW, examScoreH);
-        
-        
     }
     if (examBean.examChance.length!=0) {
         CGFloat examChanceX;
@@ -141,20 +146,20 @@
         CGFloat examChanceW=200;
         CGFloat examChanceH=15;
         self.examChanceF=CGRectMake(examChanceX, examChanceY, examChanceW, examChanceH);
-        
     }
+    
+    
+    
     if (examBean.examChance.length==0&&examBean.examScore.length==0) {
         self.cellHeight=CGRectGetMaxY(self.examTimeF)+LCMAEGIN_15;
-        
     }else{
         if (examBean.examScore.length!=0) {
-            self.cellHeight=CGRectGetMaxY(self.examTimeF)+LCMAEGIN_15;
+            self.cellHeight=CGRectGetMaxY(self.examScoreF)+LCMAEGIN_15;
         }else{
-            self.cellHeight=CGRectGetMaxY(self.examTimeF)+LCMAEGIN_15;
+            self.cellHeight=CGRectGetMaxY(self.examChanceF)+LCMAEGIN_15;
         }
-        
     }
-   
+    
     
     
     

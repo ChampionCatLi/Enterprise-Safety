@@ -116,4 +116,13 @@
  /*开课时间模式,1.固定时间开始 2.随时开始*/
 #define course_start_model_set_time 1
 
+
+// 开课时间 1 固定时间 2随时开始
+#define START_TYPE_SET_TIME 1
+#define START_TYPE_ANY_TIME 2
+//考核方式  /*考核方式 1:不考核,2:常规考核,3:签退签到课堂日志*/
+#define TRACK_TYPE_NO 1
+#define TRACK_TYPE_COMMON 2
+#define TRACK_TYPE_SIGN 3
+
 #endif /* Header_h */

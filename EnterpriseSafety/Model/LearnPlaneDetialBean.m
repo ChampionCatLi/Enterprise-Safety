@@ -11,7 +11,12 @@
 @interface LearnPlaneDetialBean()
 
 @property(nonatomic,strong) NSString * clazzID;
-
+//学习模式 /*必修的学习模式,1,顺序学习 2,随时学习*/
+@property(nonatomic,assign) int learnType;
+//考核模式 /*考核方式 1:不考核,2:常规考核,3:签退签到课堂日志*/
+@property(nonatomic,assign) int trackType;
+//开始模式 /*开课时间模式,1.固定时间开始 2.随时开始*/
+@property(nonatomic,assign) int  startType;
 
 @end
 
@@ -22,16 +27,18 @@
     _articleDicArr=articleDicArr;
     self.totalDataArr =[NSMutableArray new ];
     NSDictionary * clazzDic=messageDic[@"clazz"];
+    _startType=[clazzDic[@"startMode"] intValue];
     self.clazzID=[clazzDic[@"id"] stringValue];
     NSDictionary * ruleDic=messageDic[@"rule"];
     NSDictionary * scDic=messageDic[@"sc"];
-    NSString * name= ruleDic[@"name"];
     [self parseRuleDic:ruleDic parseScDic:scDic];
 }
 -(void) parseRuleDic:(NSDictionary *) ruleDic parseScDic:(NSDictionary *)scDic{
     _sectionTitleArr=[NSMutableArray new];
     //学习模式
-    int learnMode=[ruleDic[@"learnMode"] intValue];
+    _learnType=[ruleDic[@"learnMode"] intValue];
+    //考核模式
+    _trackType=[ruleDic[@"trackType"] intValue];
     //必修课件数
     int reqNum=[ruleDic[@"reqNum"] intValue];
     if (reqNum>0) {
@@ -80,10 +87,12 @@
         [self parseExamData:self.messageDic[@"quizs"]];
         SectionTitleBean * examSectionTitleBean=[[SectionTitleBean alloc] init];
         examSectionTitleBean.titleStr=@"测评";
-        examSectionTitleBean.tipsStr=@"请参加一下测评并达到要求分数";
+        examSectionTitleBean.tipsStr=@"请参加以下测评并达到要求分数";
+        examSectionTitleBean.sectionType=LCPlaneCellExam;
         int examProgress=[scDic[@"quizProgress"] intValue];
-        examSectionTitleBean.progressTipsStr=[NSString stringWithFormat:@"进度：%d",examProgress];
-       
+        examSectionTitleBean.progressTipsStr=[LCUtils getLearnProgresstTips:examProgress];
+ 
+        [self.sectionTitleArr addObject:examSectionTitleBean];
     }
     
     
@@ -145,19 +154,61 @@
         NSDictionary * dataDic=dataArr[i];
         NSDictionary * crpDic= dataDic[@"crp"];
         NSDictionary * settingDic=dataDic[@"settings"];
-        ExameBean * examBean=[[ExameBean alloc] init];
+        LearnPlaneDetailExamFrame * learnPlaneDetailF=[[LearnPlaneDetailExamFrame alloc] init];
+        ExamBean * examBean=[[ExamBean alloc] init];
         examBean.examTitle=crpDic[@"name"];
         examBean.passScore=[crpDic[@"passScore"] intValue];
         examBean.examStartTime=[settingDic[@"startTime"] longValue];
         examBean.examEndTime=[settingDic[@"endTime"] longValue];
-        examBean.examTime=[LCUtils ];
+        int canTryChance=[crpDic[@"tryCount"] intValue];
+       
+        if(_startType==START_TYPE_SET_TIME){
+         examBean.examTime=[LCUtils long2TimeStr:examBean.examStartTime endTime:examBean.examEndTime midStr:@"-"];
+        }else{
+         examBean.examTime= [LCUtils long2Str:examBean.examEndTime];
+        }
+         int duracation=[crpDic[@"duration"] intValue];
+        if (duracation<9999) {
+            examBean.examDuration=[NSString stringWithFormat:@"时间：%d分钟",duracation];
+        }
+
         NSArray * allKeys=dataDic.allKeys;
+        int  getScore=0;
+        int  lastChance=0;
+
         if ([allKeys containsObject:@"log"]) {
             //todo
-            
-            
+            NSDictionary * logDic= dataDic[@"log"];
+            NSArray * allKeys=logDic.allKeys;
+            if ([allKeys containsObject:@"score"]) {
+              getScore=[logDic[@"score"] intValue];
+            }
+            if ([allKeys containsObject:@"tryCount"]) {
+                int  realTryChance=[logDic[@"tryCount"] intValue];
+                lastChance=canTryChance-realTryChance;
+            }
         }
-        [examArr addObject:examBean];
+        if(examBean.passScore==0){
+           examBean.examScore=@"要求分数：不限";
+        }else{
+            if (getScore!=0) {
+                examBean.examScore=[NSString  stringWithFormat:@"得分/要求分数: %d/%d",getScore,examBean.passScore ];
+            }
+        }
+        if(_trackType==TRACK_TYPE_NO||_trackType==TRACK_TYPE_SIGN){
+            if (examBean.passScore==0) {
+                examBean.examScore=@"";
+            }else{
+                examBean.examScore=[NSString stringWithFormat:@"要求得分: %d",examBean.passScore];
+            }
+        }
+        
+        if (canTryChance<9999) {
+            examBean.examChance=[NSString stringWithFormat:@"剩余次数: %d",lastChance];
+        }
+        
+        learnPlaneDetailF.examBean=examBean;
+        [examArr addObject:learnPlaneDetailF];
         
     }
     
@@ -181,7 +232,7 @@
 
 
 @end
-@implementation ExameBean
+@implementation ExamBean
 
 @end
 

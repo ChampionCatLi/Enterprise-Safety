@@ -58,7 +58,12 @@
     return tempTimeStr;
 
 }
++(NSString *)long2TimeStr:(long)startTime endTime:(long)endTime midStr:(NSString *)mindStr{
+    NSString * startTimeStr =[self long2Str:startTime];
+    NSString * endTimeStr =[self long2Str:endTime];
+    return [NSString stringWithFormat:@"%@ %@ %@",startTimeStr,mindStr,endTimeStr ];
 
+}
 
 +(NSString *)appendLong2Str:(long) startTime endTime:(long)endTime{
     

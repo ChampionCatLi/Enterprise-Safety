@@ -41,20 +41,12 @@
 }
 
 //
-//-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{}
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    //    NSString * title=_sectionTitleArr[section];
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
-    //    if ([title isEqualToString:LCPlaneCellReqCourse]) {
-    //
-    //    }else  if([title isEqualToString:LCPlaneCellOptCourse]){
-    //
-    //    }else if([title isEqualToString:LCPlaneCellArticle]){
-    //
-    //    }else
-    //    if ([title isEqualToString:LCPlaneCellExam]) {
-    //
-    //    }
+    
+    return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0 )];
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     LearnPlaneSectionHeaderView * learnSectionHeaderView=[[LearnPlaneSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
     SectionTitleBean * sectionTitleBean=_sectionTitleArr[section];
     
@@ -87,6 +79,16 @@
         LearnPlaneDetailArticleFrame * learnArticleFrame=data[indexPath.row];
         cell.learnPlaneDetailArticleFrame=learnArticleFrame;
         return cell;
+    }else if([ID isEqualToString:LCPlaneCellExam]){
+        LearnPlaneDetailExamCell * cell =[tableView dequeueReusableCellWithIdentifier:ID];
+        if (cell==nil) {
+            cell=[[LearnPlaneDetailExamCell alloc] init];
+            
+        }
+        LearnPlaneDetailExamFrame * learnExamF=data[indexPath.row];
+        cell.learnPlaneDetailExamFrame=learnExamF;
+        return cell;
+        
     }
     return nil;
     
@@ -99,10 +101,9 @@
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     NSArray * data=self.learnPlaneDetailBean.totalDataArr[indexPath.section];
-    LearnPlaneDetialBeanCourseFrame * learnCourseFrame=data[indexPath.row];
-    return  learnCourseFrame.cellHeight;
+    LearnPlaneBeanFrame * learnPlaneBeanF=  data[indexPath.row];
+    return  learnPlaneBeanF.cellHeight;
     
 }
 
@@ -113,13 +114,41 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 70;
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 1;
+}
+/**
+ 点击逻辑
+ */
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   SectionTitleBean * secationBean  =  self.sectionTitleArr[indexPath.section];
-    
-    
-    NSLog(@"点击:::title ::::%@",secationBean.titleStr);
+    SectionTitleBean * secationBean  =  self.sectionTitleArr[indexPath.section];
+    NSArray * data =self.learnPlaneDetailBean.totalDataArr[indexPath.section];
+    NSString * type=secationBean.sectionType;
+    if([type isEqualToString:LCPlaneCellReqCourse]||[type isEqualToString:LCPlaneCellOptCourse]){
+        LearnPlaneDetialBeanCourseFrame * courseFrame=data[indexPath.row];
+        CourseBean * courseBean=courseFrame.courseBean;
+        [self go2LearnVideoActivity:courseBean];
+        
+    }else if([type isEqualToString:LCPlaneCellArticle]){
+        
+    }else if ([type isEqualToString:LCPlaneCellExam]){
+    }
+}
 
+
+#pragma mark --跳转逻辑
+// 前往视频学习页面
+-(void) go2LearnVideoActivity :(CourseBean *) courseBean{
+    
+}
+//前往测试
+-(void) go2ExamActivity{
+    
+}
+// 前往阅读
+-(void) go2ArticleActivity{
+    
 }
 @end
 
