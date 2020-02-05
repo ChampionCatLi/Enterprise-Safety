@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(strong,nonatomic) NSDictionary * messageDic;
 @property(strong,nonatomic) NSArray * articleDicArr;
-
+@property(nonatomic,strong) NSString * clazzID;
 
 -(void) setMessageDic:(NSDictionary * )messageDic setArticleDicArr:(nullable  NSArray * )  articleDicArr;
 
@@ -43,10 +43,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface CourseBean: NSObject
 @property(strong,nonatomic)NSString * courseName;
-@property(nonatomic,assign)NSInteger courseID;
+@property(nonatomic,assign) int courseID;
 @property(nonatomic,assign) BOOL isStartLearn;
 @property(nonatomic,assign) BOOL  isPassed;
+@property(nonatomic,assign) int    trackType;
 
+//左侧 状态图片 当为正常学习模式 按学习进度实时显示，其余不显示
+@property(nonatomic,strong) NSString * courseLeftStatusIcon;
+//右侧 状态图片
+@property(nonatomic,strong) NSString * courseRightStatusIcon;
 @end
 /**
  阅读

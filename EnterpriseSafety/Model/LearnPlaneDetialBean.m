@@ -10,7 +10,7 @@
 #import <XMNetworking.h>
 @interface LearnPlaneDetialBean()
 
-@property(nonatomic,strong) NSString * clazzID;
+
 //学习模式 /*必修的学习模式,1,顺序学习 2,随时学习*/
 @property(nonatomic,assign) int learnType;
 //考核模式 /*考核方式 1:不考核,2:常规考核,3:签退签到课堂日志*/
@@ -108,20 +108,28 @@
     for (int i=0; i<dataArr.count; i++) {
         NSDictionary * data=dataArr[i];
         LearnPlaneDetialBeanCourseFrame * learnCourseF=[[LearnPlaneDetialBeanCourseFrame alloc] init];
-        
         CourseBean * courseBean=[[CourseBean alloc] init];
+        
+        courseBean.trackType=_trackType;
         learnCourseF.courseBean=courseBean;
         //课件 dic
         NSDictionary * courseDic=data[@"courseware"];
         courseBean.courseName=courseDic[@"name"];
         [courseArr addObject:learnCourseF];
         NSArray *allKeys  =data.allKeys;
+        NSDictionary * logDic;
         if([allKeys containsObject:@"log"]){
             courseBean.isStartLearn=YES;
-            NSDictionary * logDic=data[@"log"];
+            logDic=data[@"log"];
             courseBean.isPassed=[logDic[@"passed"] boolValue];
+            courseBean.courseLeftStatusIcon=courseBean.isPassed?@"check.png":@"half.png";
+        }else{
+            courseBean.courseLeftStatusIcon=@"empty.png";
             
         }
+        
+        
+        
     }
 }
 

@@ -19,12 +19,17 @@
 - (void)setCourseBean:(CourseBean *)courseBean{
     _courseBean=courseBean;
     
-    CGFloat courseLeftStatusX=LCMAEGIN_15;
-    CGFloat courseLeftStatusY=LCMAEGIN_15;
-    CGFloat courseLeftStatusW=20;
-    CGFloat courseLeftStatusH=20;
-    
-    self.courseLeftStatusF=CGRectMake(courseLeftStatusX, courseLeftStatusY, courseLeftStatusW, courseLeftStatusH);
+    CGFloat courseTitleX=LCMAEGIN_15;
+    CGFloat courseTitleW=SCREEN_WIDTH-20-LCMAEGIN_15;
+    if (courseBean.trackType==TRACK_TYPE_COMMON) {
+        CGFloat courseLeftStatusX=LCMAEGIN_15;
+        CGFloat courseLeftStatusY=LCMAEGIN_15;
+        CGFloat courseLeftStatusW=20;
+        CGFloat courseLeftStatusH=20;
+        self.courseLeftStatusF=CGRectMake(courseLeftStatusX, courseLeftStatusY, courseLeftStatusW, courseLeftStatusH);
+        courseTitleX=LCMAEGIN_15*2+20;
+        courseTitleW-=courseLeftStatusW;
+    }
     
     CGFloat courseRightStatusW=20;
     CGFloat courseRightStatusH=20;
@@ -32,15 +37,13 @@
     CGFloat courseRightStatusY=LCMAEGIN_15;
     self.courseRightStatusF=CGRectMake(courseRightStatusX, courseRightStatusY, courseRightStatusW, courseRightStatusH);
     
-    
-    
-    CGFloat courseTitleX=courseLeftStatusX+courseLeftStatusW+LCMAEGIN_15;
+  
     CGFloat courseTitleY=LCMAEGIN_15;
-    CGFloat courseTitleW=SCREEN_WIDTH-courseLeftStatusW-courseRightStatusW-LCMAEGIN_15;
-    CGFloat courseTitleH=25;
+
+    CGFloat courseTitleH=20;
     self.courseTitleF=CGRectMake(courseTitleX, courseTitleY, courseTitleW, courseTitleH);
     
-    self.cellHeight=LCMAEGIN_15+CGRectGetMaxY(_courseLeftStatusF);
+    self.cellHeight=LCMAEGIN_15+CGRectGetMaxY(_courseTitleF);
     
 }
 
@@ -131,7 +134,7 @@
         
         CGFloat examScoreX= LCMAEGIN_15;
         CGFloat examScoreY=CGRectGetMaxY(self.examTimeF)+LCMAEGIN_15;
-        CGFloat examScoreW= 80;
+        CGFloat examScoreW= 120;
         CGFloat examScoreH= 15;
         self.examScoreF=CGRectMake(examScoreX, examScoreY, examScoreW, examScoreH);
     }
@@ -140,7 +143,7 @@
         if (examBean.examScore.length==0) {
             examChanceX=LCMAEGIN_15;
         }else{
-            examChanceX=110;
+            examChanceX=135;
         }
         CGFloat examChanceY=CGRectGetMaxY(self.examTimeF)+LCMAEGIN_15;
         CGFloat examChanceW=200;
@@ -160,8 +163,12 @@
         }
     }
     
-    
-    
+    CGFloat examIconH=20;
+    CGFloat examIconW=20;
+    CGFloat examIconY=self.cellHeight*0.5-10;
+    CGFloat examIconX=SCREEN_WIDTH-35;
+    self.examIconF=CGRectMake(examIconX, examIconY, examIconW, examIconH);
+
     
 }
 

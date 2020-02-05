@@ -45,6 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign) CGRect examScoreF;
 @property(nonatomic,assign) CGRect examChanceF;
 @property(nonatomic,assign) CGRect examDurationF;
+
+@property(nonatomic,assign) CGRect examIconF;
  
 
 @end

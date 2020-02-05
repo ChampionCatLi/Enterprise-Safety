@@ -10,9 +10,10 @@
 #import "LearnPlaneDetialBean.h"
 #import "LearnPlaneTableView.h"
 #import "LearnPlaneBeanFrame.h"
+#import "LearnVideoViewController.h"
 
 
-@interface LearnPlanDetailViewController ()
+@interface LearnPlanDetailViewController ()<LearnPlaneTableViewDelegate>
 
 @property(nonatomic,strong) NSString * planeName;
 @property(nonatomic,strong) NSString * planeID;
@@ -107,6 +108,7 @@
 -(LearnPlaneTableView *) learnPlaneTableView{
     if (_learnPlaneTableView==nil) {
         _learnPlaneTableView=[[LearnPlaneTableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
+        _learnPlaneTableView.myDeletage=self;
     }
     return _learnPlaneTableView;
 }
@@ -152,5 +154,17 @@
     }
 
 }
+
+
+
+#pragma mark --delegate
+
+
+-(void)gotoLearnVideoClazzId:(NSString *)clazzId courseID:(int)courseID lastLearnVideoId:(int)videoID{
+    LearnVideoViewController * learnVideoVC=[[LearnVideoViewController alloc] init];
+    [self.navigationController pushViewController:learnVideoVC animated:YES];
+
+}
+
 @end
 

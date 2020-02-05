@@ -223,8 +223,8 @@
 -(void) learnHistoryOnclick{
     
     LearnHistoryController * learnHistoryController =[[LearnHistoryController alloc] init];
-       learnHistoryController.hidesBottomBarWhenPushed=YES;
-       [self.navigationController pushViewController:learnHistoryController animated:YES];
+    learnHistoryController.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:learnHistoryController animated:YES];
 }
 
 

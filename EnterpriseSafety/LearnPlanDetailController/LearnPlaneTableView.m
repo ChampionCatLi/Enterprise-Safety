@@ -13,6 +13,7 @@
 #import "LearnPlaneDetialBean.h"
 
 
+
 @interface LearnPlaneTableView()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) NSArray * sectionTitleArr;
@@ -140,7 +141,9 @@
 #pragma mark --跳转逻辑
 // 前往视频学习页面
 -(void) go2LearnVideoActivity :(CourseBean *) courseBean{
-    
+    if (self.myDeletage!=nil) {
+        [self.myDeletage gotoLearnVideoClazzId:_learnPlaneDetailBean.clazzID courseID:courseBean.courseID lastLearnVideoId:1];
+    }
 }
 //前往测试
 -(void) go2ExamActivity{

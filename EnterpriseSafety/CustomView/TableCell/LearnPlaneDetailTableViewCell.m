@@ -47,7 +47,10 @@
     self.labCourseTitle.frame=learnPlaneDetialBeanCourseFrame.courseTitleF;
     self.ivCourseLeftStatus.frame=learnPlaneDetialBeanCourseFrame.courseLeftStatusF;
     self.ivCourseRightStatus.frame=learnPlaneDetialBeanCourseFrame.courseRightStatusF;
+    
     self.labCourseTitle.text= learnPlaneDetialBeanCourseFrame.courseBean.courseName;
+    UIImage * iconLeftStatus=[UIImage imageNamed:learnPlaneDetialBeanCourseFrame.courseBean.courseLeftStatusIcon];
+    self.ivCourseLeftStatus.image=iconLeftStatus;
 
 }
 
@@ -189,6 +192,7 @@
     self.examScore.frame=learnPlaneDetailExamFrame.examScoreF;
     self.examChance.frame=learnPlaneDetailExamFrame.examChanceF;
     self.examDuration.frame=learnPlaneDetailExamFrame.examDurationF;
+    self.examIcon.frame=learnPlaneDetailExamFrame.examIconF;
     [self setViewData:learnPlaneDetailExamFrame.examBean];
     
 }
@@ -245,7 +249,6 @@
     if (_examIcon==nil) {
         UIImage * image=[UIImage imageNamed:@"arrow_r.png"];
         _examIcon=[[UIImageView alloc] initWithImage:image];
-        _examIcon.frame=CGRectMake(SCREEN_WIDTH-35, self.contentView.center.y, 20, 20);
         
     }
     

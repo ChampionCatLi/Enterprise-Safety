@@ -20,7 +20,7 @@
     [super viewDidLoad];
     //这句话就是从导航栏下面开始计算高度
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.view.backgroundColor=[UIColor whiteColor];
+    self.view.backgroundColor=LCBackGroundColor;
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     [self initKeyboardListener];

@@ -523,7 +523,6 @@
             [weakSelf handleCellSelectWithIndex:index];
         };
         cell.didCellTitleLabelClick = ^(NSInteger index) {
-            NSLog(@"scrllview::::%ld",index);
             [weakSelf handleCellTitleLabelSelectWithIndex:index];
         };
         cell.didCellButtonClick = ^(NSInteger index) {
