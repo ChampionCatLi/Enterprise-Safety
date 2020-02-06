@@ -8,7 +8,7 @@
 
 #import "NetWorkManager.h"
 #define SERVER_BASE_URL  @"http://192.168.3.253:8080"
-#define SERVER_TEMP_URL  @"http://47.93.185.149:8080"
+#define SERVER_TEMP_URL  @"http://59.110.139.185"
 
 
 @implementation NetWorkManager

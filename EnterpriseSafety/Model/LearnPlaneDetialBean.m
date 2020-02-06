@@ -109,7 +109,7 @@
         NSDictionary * data=dataArr[i];
         LearnPlaneDetialBeanCourseFrame * learnCourseF=[[LearnPlaneDetialBeanCourseFrame alloc] init];
         CourseBean * courseBean=[[CourseBean alloc] init];
-        
+        courseBean.courseID=data[@"cri"];
         courseBean.trackType=_trackType;
         learnCourseF.courseBean=courseBean;
         //课件 dic

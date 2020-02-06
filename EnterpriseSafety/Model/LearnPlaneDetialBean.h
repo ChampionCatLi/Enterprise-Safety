@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface CourseBean: NSObject
 @property(strong,nonatomic)NSString * courseName;
-@property(nonatomic,assign) int courseID;
+@property(nonatomic,strong) NSString *  courseID;
 @property(nonatomic,assign) BOOL isStartLearn;
 @property(nonatomic,assign) BOOL  isPassed;
 @property(nonatomic,assign) int    trackType;

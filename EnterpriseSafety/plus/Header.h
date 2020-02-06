@@ -83,6 +83,12 @@
 //1.5 培训计划详情
 #define url_get_plane_detail @"/m/home/my/clazz/get"
 
+
+#pragma mark -课件
+
+///m/home/my/clazz/courseware/outline/{cri}/{clazzId}
+//2.1 获取 教学大纲和学习记录
+#define url_get_learn_video_detail @"/m/home/my/clazz/courseware/outline"
 #pragma mark - 阅读列表
 //阅读
 //4.1 阅读列表

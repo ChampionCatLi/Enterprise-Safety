@@ -140,9 +140,9 @@
 
 #pragma mark --跳转逻辑
 // 前往视频学习页面
--(void) go2LearnVideoActivity :(CourseBean *) courseBean{
+-(void) go2LearnVideoActivity :(CourseBean *) clickCourseBean{
     if (self.myDeletage!=nil) {
-        [self.myDeletage gotoLearnVideoClazzId:_learnPlaneDetailBean.clazzID courseID:courseBean.courseID lastLearnVideoId:1];
+        [self.myDeletage clickItemCourse:clickCourseBean];
     }
 }
 //前往测试

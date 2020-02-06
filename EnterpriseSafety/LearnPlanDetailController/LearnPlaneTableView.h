@@ -14,6 +14,7 @@
 
 @class LearnPlaneDetialBean;
 @class LearnPlaneTableView;
+@class CourseBean;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 
 
--(void) gotoLearnVideoClazzId:(NSString * ) clazzId courseID:(int) courseID lastLearnVideoId:(int) videoID;
+-(void) clickItemCourse:(CourseBean *) clickCourseBean;
 @end
 
 

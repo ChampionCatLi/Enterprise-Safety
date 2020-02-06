@@ -159,12 +159,14 @@
 
 #pragma mark --delegate
 
-
--(void)gotoLearnVideoClazzId:(NSString *)clazzId courseID:(int)courseID lastLearnVideoId:(int)videoID{
+-(void)clickItemCourse:(CourseBean *)clickCourseBean{
     LearnVideoViewController * learnVideoVC=[[LearnVideoViewController alloc] init];
+    learnVideoVC.clazzId=self.learnPlaneDetailBean.clazzID;
+    learnVideoVC.courseName=clickCourseBean.courseName;
+    learnVideoVC.courseId=clickCourseBean.courseID;
     [self.navigationController pushViewController:learnVideoVC animated:YES];
-
 }
+
 
 @end
 

@@ -257,9 +257,8 @@
     NSDictionary * clazzData= planeData[@"clazz"];
     NSString * planeName=ruleData[@"name"];
     NSString *   planeID=clazzData[@"id"] ;
-
+    //  跳转 学习计划详情页面
     LearnPlanDetailViewController * learnPlanDetailVC=[[LearnPlanDetailViewController alloc] init];
-    
     [learnPlanDetailVC setPlaneName:planeName setPlaneID:planeID];
     learnPlanDetailVC.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:learnPlanDetailVC animated:YES];
