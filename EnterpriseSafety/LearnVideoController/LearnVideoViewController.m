@@ -10,6 +10,9 @@
 #import <SGPagingView.h>
 #import <SGPageTitleView.h>
 #import <SGPageContentScrollView.h>
+#import "VideoListViewController.h"
+#import "VideoDetailViewController.h"
+#import "CommentViewController.h"
 
 @interface LearnVideoViewController ()<SGPageTitleViewDelegate,SGPageContentScrollViewDelegate>
 
@@ -90,15 +93,23 @@
         
     }
     
-    
-    
-    
     return _pageTitleView;
 }
 
  
 -(SGPageContentScrollView *) pageContentView{
-    
+    if (_pageContentView==nil) {
+        NSMutableArray * vcData=[NSMutableArray new];
+        VideoListViewController * videoListVC=[[VideoListViewController alloc] init];
+        VideoDetailViewController * videoDetailVC=[[VideoDetailViewController alloc] init];
+        CommentViewController * commentVC=[[CommentViewController alloc] init];
+        [vcData addObject:videoListVC];
+        [vcData addObject:videoDetailVC];
+        [vcData addObject:commentVC];
+        
+        
+        _pageContentView=[[SGPageContentScrollView alloc] initWithFrame:CGRectMake(0, 275, SCREEN_WIDTH, SCREEN_HEIGHT-275) parentVC:self childVCs:vcData];
+    }
     
     
     return _pageContentView;

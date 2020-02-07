@@ -43,6 +43,9 @@
 		E591233523C4787700858D17 /* ArticleDetaileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E591233423C4787700858D17 /* ArticleDetaileTableViewCell.m */; };
 		E596D1F923989E6700C72F17 /* GKCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E596D1F523989E6700C72F17 /* GKCycleScrollView.m */; };
 		E596D1FA23989E6700C72F17 /* GKCycleScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E596D1F823989E6700C72F17 /* GKCycleScrollViewCell.m */; };
+		E59880B023EBB175000D2627 /* VideoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59880AF23EBB175000D2627 /* VideoListViewController.m */; };
+		E59880B323EBB189000D2627 /* VideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59880B223EBB189000D2627 /* VideoDetailViewController.m */; };
+		E59880B623EBB1B2000D2627 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59880B523EBB1B2000D2627 /* CommentViewController.m */; };
 		E5AA236423B44A4D003B89DF /* OpenCourseData.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AA236323B44A4D003B89DF /* OpenCourseData.m */; };
 		E5AA236723B4A039003B89DF /* OpenCourseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AA236623B4A039003B89DF /* OpenCourseTableViewCell.m */; };
 		E5BE56C323D7FADB00CD5A22 /* LearnPlaneSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BE56C223D7FADB00CD5A22 /* LearnPlaneSectionHeaderView.m */; };
@@ -248,6 +251,12 @@
 		E596D1F723989E6700C72F17 /* GKCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCycleScrollView.h; sourceTree = "<group>"; };
 		E596D1F823989E6700C72F17 /* GKCycleScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCycleScrollViewCell.m; sourceTree = "<group>"; };
 		E596D1FC2398A73A00C72F17 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E59880AE23EBB175000D2627 /* VideoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListViewController.h; sourceTree = "<group>"; };
+		E59880AF23EBB175000D2627 /* VideoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoListViewController.m; sourceTree = "<group>"; };
+		E59880B123EBB189000D2627 /* VideoDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoDetailViewController.h; sourceTree = "<group>"; };
+		E59880B223EBB189000D2627 /* VideoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoDetailViewController.m; sourceTree = "<group>"; };
+		E59880B423EBB1B2000D2627 /* CommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		E59880B523EBB1B2000D2627 /* CommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		E5AA236223B44A4D003B89DF /* OpenCourseData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCourseData.h; sourceTree = "<group>"; };
 		E5AA236323B44A4D003B89DF /* OpenCourseData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenCourseData.m; sourceTree = "<group>"; };
 		E5AA236523B4A039003B89DF /* OpenCourseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCourseTableViewCell.h; sourceTree = "<group>"; };
@@ -470,6 +479,7 @@
 		E501783623A383E1002AD49C /* LearnVideoController */ = {
 			isa = PBXGroup;
 			children = (
+				E59880AD23EBAFA3000D2627 /* BottomViewController */,
 				E501783723A38402002AD49C /* LearnVideoViewController.h */,
 				E501783823A38402002AD49C /* LearnVideoViewController.m */,
 			);
@@ -796,6 +806,19 @@
 			path = plus;
 			sourceTree = "<group>";
 		};
+		E59880AD23EBAFA3000D2627 /* BottomViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E59880AE23EBB175000D2627 /* VideoListViewController.h */,
+				E59880AF23EBB175000D2627 /* VideoListViewController.m */,
+				E59880B123EBB189000D2627 /* VideoDetailViewController.h */,
+				E59880B223EBB189000D2627 /* VideoDetailViewController.m */,
+				E59880B423EBB1B2000D2627 /* CommentViewController.h */,
+				E59880B523EBB1B2000D2627 /* CommentViewController.m */,
+			);
+			path = BottomViewController;
+			sourceTree = "<group>";
+		};
 		E5AA236123B44A24003B89DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1097,10 +1120,12 @@
 				E591233523C4787700858D17 /* ArticleDetaileTableViewCell.m in Sources */,
 				E5BE56C323D7FADB00CD5A22 /* LearnPlaneSectionHeaderView.m in Sources */,
 				E591232C23C4261600858D17 /* ArticleDetailBean.m in Sources */,
+				E59880B623EBB1B2000D2627 /* CommentViewController.m in Sources */,
 				E582A08723D18D4C004E5AD4 /* LearnPlaneDetialBean.m in Sources */,
 				E555807323B0A73D00374DCC /* CircularPrograss.m in Sources */,
 				E5CB19DB23C5AE4900D021F2 /* EmptyContentView.m in Sources */,
 				E54136FF23A9F0040025446E /* NetWorkManager.m in Sources */,
+				E59880B323EBB189000D2627 /* VideoDetailViewController.m in Sources */,
 				E586F38023D424A4003F7E04 /* LearnPlaneBeanFrame.m in Sources */,
 				E5E06DE123B1DB50004FBF24 /* LCUtils.m in Sources */,
 				E5CB19D823C5A5C900D021F2 /* LoadMoreFooterView.m in Sources */,
@@ -1109,6 +1134,7 @@
 				E501783923A38402002AD49C /* LearnVideoViewController.m in Sources */,
 				E575284223C70B3A00789A44 /* LearnHeaderView.m in Sources */,
 				E555807723B0CF9E00374DCC /* SplashViewController.m in Sources */,
+				E59880B023EBB175000D2627 /* VideoListViewController.m in Sources */,
 				E591232F23C4516600858D17 /* ArticlePageViewController.m in Sources */,
 				E501782F23A38388002AD49C /* ExamViewController.m in Sources */,
 				E5EE3B3023BF55D900242C16 /* LoadMoreTableViewCell.m in Sources */,
