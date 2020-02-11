@@ -48,7 +48,7 @@
     return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0 )];
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    LearnPlaneSectionHeaderView * learnSectionHeaderView=[[LearnPlaneSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
+    LearnPlaneSectionHeaderView * learnSectionHeaderView=[[LearnPlaneSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 70)];
     SectionTitleBean * sectionTitleBean=_sectionTitleArr[section];
     
     [learnSectionHeaderView setTitle:sectionTitleBean.titleStr setTips:sectionTitleBean.tipsStr setProgressTips:sectionTitleBean.progressTipsStr];
@@ -114,10 +114,11 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 70;
+
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
-    return 1;
+    return 0;
 }
 /**
  点击逻辑

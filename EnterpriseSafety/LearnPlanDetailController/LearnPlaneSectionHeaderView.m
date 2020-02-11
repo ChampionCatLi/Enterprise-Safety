@@ -13,6 +13,7 @@
 @property(nonatomic,strong) UILabel * progressTips;
 @property(nonatomic,strong) UIView * gaySpace;
 
+
 @end
 
 @implementation LearnPlaneSectionHeaderView
@@ -20,7 +21,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     
     if (self=[super initWithFrame:frame]) {
-        self.backgroundColor=[UIColor whiteColor];
+        self.backgroundColor=[UIColor greenColor];
         [self initView];
     }
     
@@ -33,6 +34,7 @@
     [self addSubview:self.title];
     [self addSubview:self.tips];
     [self addSubview:self.progressTips];
+    
 }
 
 -(void)setTitle:(NSString *)titleStr setTips:(NSString *)tipsStr setProgressTips:(NSString *)progressTipsStr
@@ -77,7 +79,7 @@
 -(UIView *)gaySpace{
     if (_gaySpace==nil) {
         _gaySpace=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 10)];
-        _gaySpace.backgroundColor=LCBackGroundColor;
+        _gaySpace.backgroundColor=[UIColor greenColor];
     }
     
     return _gaySpace;
